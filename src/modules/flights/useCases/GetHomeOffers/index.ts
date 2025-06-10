@@ -1,0 +1,1 @@
+export { GetHomeOffersService } from './GetHomeOffersService';

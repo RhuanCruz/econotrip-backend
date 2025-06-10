@@ -1,0 +1,42 @@
+{
+  "entryFile": "src/index.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "controllerPathGlobs": [
+    "./src/**/*Service.ts"
+  ],
+  "spec": {
+    "outputDirectory": "./src/swagger",
+    "specVersion": 3
+  },
+  "routes": {
+    "routesDir": "./src/swagger"
+  },
+  "compilerOptions": {
+    "paths": {
+      "@src/*": [
+        "./src/*"
+      ],
+      "@common/*": [
+        "./src/common/*"
+      ],
+      "@config/*": [
+        "./src/config/*"
+      ],
+      "@providers/*": [
+        "./src/common/providers/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@modules/*": [
+        "./src/modules/*"
+      ],
+      "@repositories/*": [
+        "./src/modules/permission/infra/database/repositories/*",
+        "./src/modules/permission/repositories/*",
+        "./src/modules/user/infra/database/repositories/*",
+        "./src/modules/user/repositories/*"
+      ]
+    }
+  }
+}

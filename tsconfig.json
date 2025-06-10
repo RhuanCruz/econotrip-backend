@@ -1,0 +1,64 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022"
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": [
+        "./src/*"
+      ],
+      "@common/*": [
+        "./src/common/*"
+      ],
+      "@database/*": [
+        "./src/common/infra/database/*"
+      ],
+      "@config/*": [
+        "./src/config/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@modules/*": [
+        "./src/modules/*"
+      ],
+      "@repositories/*": [
+        "./src/modules/permission/infra/database/repositories/*",
+        "./src/modules/permission/repositories/*",
+        "./src/modules/user/infra/database/repositories/*",
+        "./src/modules/user/repositories/*",
+        "./src/modules/location/repositories/*",
+        "./src/modules/radar/repositories/*",
+        "./src/modules/planner/repositories/*"
+      ],
+      "@providers/*": [
+        "./src/common/providers/StorageProvider/repositories/*",
+        "./src/common/providers/AmadeusProvider/repositories/*",
+        "./src/common/providers/SeatsAeroProvider/repositories/*",
+        "./src/common/providers/SkyScannerProvider/repositories/*"
+      ],
+      "tsoa": [
+        "node_modules/tsoa/dist"
+      ],
+      "tsoa/": [
+        "node_modules/tsoa/dist/"
+      ]
+    },
+    "resolveJsonModule": true,
+    "outDir": "./build",
+    "removeComments": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true
+  }
+}

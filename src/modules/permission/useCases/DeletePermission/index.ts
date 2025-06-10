@@ -1,0 +1,1 @@
+export { DeletePermissionService } from './DeletePermissionService';

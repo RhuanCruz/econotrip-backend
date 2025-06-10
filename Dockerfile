@@ -1,0 +1,18 @@
+FROM node:22-slim
+
+WORKDIR /app
+
+COPY entrypoint.sh .
+COPY tsconfig.json .
+COPY package.json .
+
+COPY ./src ./src
+COPY ./prisma ./prisma
+
+RUN mkdir tmp
+RUN mkdir logs
+RUN yarn install --production
+
+EXPOSE ${API_PORT}
+
+CMD ["/bin/bash", "/app/entrypoint.sh"]

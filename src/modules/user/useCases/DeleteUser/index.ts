@@ -1,0 +1,1 @@
+export { DeleteUserService } from './DeleteUserService';

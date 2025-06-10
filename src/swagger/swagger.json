@@ -1,0 +1,4360 @@
+{
+	"openapi": "3.0.0",
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"UpdateUserType": {
+				"properties": {
+					"login": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"cpf": {
+						"type": "string",
+						"nullable": true
+					},
+					"avatar": {
+						"type": "string",
+						"nullable": true
+					},
+					"birthdate": {
+						"type": "string"
+					},
+					"gender": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DefaultSelection_Prisma._36_UserPayload_": {
+				"properties": {
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"admin": {
+						"type": "boolean"
+					},
+					"gender": {
+						"type": "string"
+					},
+					"birthdate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"avatar": {
+						"type": "string"
+					},
+					"cpf": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"login": {
+						"type": "string"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"updatedAt",
+					"createdAt",
+					"admin",
+					"gender",
+					"birthdate",
+					"avatar",
+					"cpf",
+					"phone",
+					"email",
+					"login",
+					"id"
+				],
+				"type": "object"
+			},
+			"User": {
+				"$ref": "#/components/schemas/DefaultSelection_Prisma._36_UserPayload_",
+				"description": "Model User"
+			},
+			"PaginationResponse_User_": {
+				"properties": {
+					"records": {
+						"items": {
+							"$ref": "#/components/schemas/User"
+						},
+						"type": "array"
+					},
+					"metadata": {
+						"properties": {
+							"total": {
+								"type": "number",
+								"format": "double"
+							},
+							"items": {
+								"type": "number",
+								"format": "double"
+							},
+							"offset": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"total",
+							"items",
+							"offset"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"records",
+					"metadata"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ListUserType": {
+				"properties": {
+					"dataControl": {
+						"properties": {
+							"paging": {
+								"type": "boolean"
+							},
+							"offset": {
+								"type": "number",
+								"format": "double"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"paging",
+							"offset",
+							"limit"
+						],
+						"type": "object"
+					},
+					"orderBy": {
+						"items": {
+							"properties": {
+								"direction": {
+									"type": "string",
+									"enum": [
+										"ASC",
+										"DESC"
+									]
+								},
+								"attribute": {
+									"type": "string"
+								},
+								"order": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"direction",
+								"attribute",
+								"order"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"filters": {
+						"properties": {
+							"createdEnd": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"createdBegin": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"cpf": {
+								"type": "string"
+							},
+							"email": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"type": "object"
+					}
+				},
+				"required": [
+					"dataControl",
+					"orderBy"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateUserType": {
+				"properties": {
+					"login": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"cpf": {
+						"type": "string",
+						"nullable": true
+					},
+					"avatar": {
+						"type": "string",
+						"nullable": true
+					},
+					"birthdate": {
+						"type": "string"
+					},
+					"gender": {
+						"type": "string",
+						"enum": [
+							"MALE",
+							"FEMALE",
+							"OTHER"
+						]
+					},
+					"password": {
+						"type": "string"
+					},
+					"roles": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"login",
+					"email",
+					"phone",
+					"birthdate",
+					"gender",
+					"password",
+					"roles"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CheckUserExistenceResponse": {
+				"properties": {
+					"exists": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"exists"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CheckUserExistenceType": {
+				"properties": {
+					"email": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateRadarType": {
+				"properties": {
+					"start": {
+						"type": "string"
+					},
+					"end": {
+						"type": "string"
+					},
+					"origin": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DefaultSelection_Prisma._36_RadarPayload_": {
+				"properties": {
+					"destination": {
+						"type": "string"
+					},
+					"origin": {
+						"type": "string"
+					},
+					"end": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"start": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userId": {
+						"type": "number",
+						"format": "double"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"destination",
+					"origin",
+					"end",
+					"start",
+					"userId",
+					"updatedAt",
+					"createdAt",
+					"id"
+				],
+				"type": "object"
+			},
+			"Radar": {
+				"$ref": "#/components/schemas/DefaultSelection_Prisma._36_RadarPayload_",
+				"description": "Model Radar"
+			},
+			"PaginationResponse_Radar_": {
+				"properties": {
+					"records": {
+						"items": {
+							"$ref": "#/components/schemas/Radar"
+						},
+						"type": "array"
+					},
+					"metadata": {
+						"properties": {
+							"total": {
+								"type": "number",
+								"format": "double"
+							},
+							"items": {
+								"type": "number",
+								"format": "double"
+							},
+							"offset": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"total",
+							"items",
+							"offset"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"records",
+					"metadata"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ListRadarType": {
+				"properties": {
+					"dataControl": {
+						"properties": {
+							"paging": {
+								"type": "boolean"
+							},
+							"offset": {
+								"type": "number",
+								"format": "double"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"paging",
+							"offset",
+							"limit"
+						],
+						"type": "object"
+					},
+					"orderBy": {
+						"items": {
+							"properties": {
+								"direction": {
+									"type": "string",
+									"enum": [
+										"ASC",
+										"DESC"
+									]
+								},
+								"attribute": {
+									"type": "string"
+								},
+								"order": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"direction",
+								"attribute",
+								"order"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"filters": {
+						"properties": {
+							"createdEnd": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"createdBegin": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"type": "object"
+					}
+				},
+				"required": [
+					"dataControl",
+					"orderBy"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetRadarFlightsResponse": {
+				"properties": {
+					"records": {
+						"items": {
+							"properties": {
+								"price": {
+									"type": "number",
+									"format": "double"
+								},
+								"date": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"price",
+								"date"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"destination": {
+						"type": "string"
+					},
+					"origin": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"records",
+					"destination",
+					"origin"
+				],
+				"type": "object"
+			},
+			"CreateRadarType": {
+				"properties": {
+					"start": {
+						"type": "string"
+					},
+					"end": {
+						"type": "string"
+					},
+					"origin": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"start",
+					"end",
+					"origin",
+					"destination"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdatePlannerType": {
+				"properties": {
+					"start": {
+						"type": "string"
+					},
+					"end": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					},
+					"content": {}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"JsonValue": {
+				"anyOf": [
+					{
+						"type": "string"
+					},
+					{
+						"type": "number",
+						"format": "double"
+					},
+					{
+						"type": "boolean"
+					},
+					{
+						"$ref": "#/components/schemas/JsonObject"
+					},
+					{
+						"$ref": "#/components/schemas/JsonArray"
+					}
+				],
+				"nullable": true,
+				"description": "From https://github.com/sindresorhus/type-fest/\r\nMatches any valid JSON value."
+			},
+			"JsonObject": {
+				"properties": {},
+				"additionalProperties": {
+					"$ref": "#/components/schemas/JsonValue"
+				},
+				"type": "object",
+				"description": "From https://github.com/sindresorhus/type-fest/\r\nMatches a JSON object.\r\nThis type can be useful to enforce some input to be JSON-compatible or as a super-type to be extended from."
+			},
+			"JsonArray": {
+				"description": "From https://github.com/sindresorhus/type-fest/\r\nMatches a JSON array.",
+				"properties": {},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DefaultSelection_Prisma._36_PlannerPayload_": {
+				"properties": {
+					"content": {
+						"$ref": "#/components/schemas/JsonValue"
+					},
+					"destination": {
+						"type": "string"
+					},
+					"end": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"start": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"userId": {
+						"type": "number",
+						"format": "double"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"content",
+					"destination",
+					"end",
+					"start",
+					"userId",
+					"updatedAt",
+					"createdAt",
+					"id"
+				],
+				"type": "object"
+			},
+			"Planner": {
+				"$ref": "#/components/schemas/DefaultSelection_Prisma._36_PlannerPayload_",
+				"description": "Model Planner"
+			},
+			"PaginationResponse_Planner_": {
+				"properties": {
+					"records": {
+						"items": {
+							"$ref": "#/components/schemas/Planner"
+						},
+						"type": "array"
+					},
+					"metadata": {
+						"properties": {
+							"total": {
+								"type": "number",
+								"format": "double"
+							},
+							"items": {
+								"type": "number",
+								"format": "double"
+							},
+							"offset": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"total",
+							"items",
+							"offset"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"records",
+					"metadata"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ListPlannerType": {
+				"properties": {
+					"dataControl": {
+						"properties": {
+							"paging": {
+								"type": "boolean"
+							},
+							"offset": {
+								"type": "number",
+								"format": "double"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"paging",
+							"offset",
+							"limit"
+						],
+						"type": "object"
+					},
+					"orderBy": {
+						"items": {
+							"properties": {
+								"direction": {
+									"type": "string",
+									"enum": [
+										"ASC",
+										"DESC"
+									]
+								},
+								"attribute": {
+									"type": "string"
+								},
+								"order": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"direction",
+								"attribute",
+								"order"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"filters": {
+						"properties": {
+							"createdEnd": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"createdBegin": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"type": "object"
+					}
+				},
+				"required": [
+					"dataControl",
+					"orderBy"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GeneratePlannerType": {
+				"properties": {
+					"start": {
+						"type": "string"
+					},
+					"end": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"start",
+					"end",
+					"destination"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreatePlannerType": {
+				"properties": {
+					"start": {
+						"type": "string"
+					},
+					"end": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					},
+					"content": {}
+				},
+				"required": [
+					"start",
+					"end",
+					"destination",
+					"content"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdateRoleType": {
+				"properties": {
+					"short": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UpdatePermissionType": {
+				"properties": {
+					"short": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"UnlinkPermissionType": {
+				"properties": {
+					"permissions": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"permissions"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DefaultSelection_Prisma._36_RolePayload_": {
+				"properties": {
+					"description": {
+						"type": "string"
+					},
+					"short": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"description",
+					"short",
+					"updatedAt",
+					"createdAt",
+					"id",
+					"name"
+				],
+				"type": "object"
+			},
+			"Role": {
+				"$ref": "#/components/schemas/DefaultSelection_Prisma._36_RolePayload_",
+				"description": "Model Role"
+			},
+			"PaginationResponse_Role_": {
+				"properties": {
+					"records": {
+						"items": {
+							"$ref": "#/components/schemas/Role"
+						},
+						"type": "array"
+					},
+					"metadata": {
+						"properties": {
+							"total": {
+								"type": "number",
+								"format": "double"
+							},
+							"items": {
+								"type": "number",
+								"format": "double"
+							},
+							"offset": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"total",
+							"items",
+							"offset"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"records",
+					"metadata"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ListRoleType": {
+				"properties": {
+					"dataControl": {
+						"properties": {
+							"paging": {
+								"type": "boolean"
+							},
+							"offset": {
+								"type": "number",
+								"format": "double"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"paging",
+							"offset",
+							"limit"
+						],
+						"type": "object"
+					},
+					"orderBy": {
+						"items": {
+							"properties": {
+								"direction": {
+									"type": "string",
+									"enum": [
+										"ASC",
+										"DESC"
+									]
+								},
+								"attribute": {
+									"type": "string"
+								},
+								"order": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"direction",
+								"attribute",
+								"order"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"filters": {
+						"properties": {
+							"createdEnd": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"createdBegin": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"name": {
+								"type": "string"
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"type": "object"
+					}
+				},
+				"required": [
+					"dataControl",
+					"orderBy"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DefaultSelection_Prisma._36_PermissionPayload_": {
+				"properties": {
+					"description": {
+						"type": "string"
+					},
+					"short": {
+						"type": "string"
+					},
+					"updatedAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"description",
+					"short",
+					"updatedAt",
+					"createdAt",
+					"id",
+					"name"
+				],
+				"type": "object"
+			},
+			"Permission": {
+				"$ref": "#/components/schemas/DefaultSelection_Prisma._36_PermissionPayload_",
+				"description": "Model Permission"
+			},
+			"PaginationResponse_Permission_": {
+				"properties": {
+					"records": {
+						"items": {
+							"$ref": "#/components/schemas/Permission"
+						},
+						"type": "array"
+					},
+					"metadata": {
+						"properties": {
+							"total": {
+								"type": "number",
+								"format": "double"
+							},
+							"items": {
+								"type": "number",
+								"format": "double"
+							},
+							"offset": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"total",
+							"items",
+							"offset"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"records",
+					"metadata"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ListPermissionType": {
+				"properties": {
+					"dataControl": {
+						"properties": {
+							"paging": {
+								"type": "boolean"
+							},
+							"offset": {
+								"type": "number",
+								"format": "double"
+							},
+							"limit": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"paging",
+							"offset",
+							"limit"
+						],
+						"type": "object"
+					},
+					"orderBy": {
+						"items": {
+							"properties": {
+								"direction": {
+									"type": "string",
+									"enum": [
+										"ASC",
+										"DESC"
+									]
+								},
+								"attribute": {
+									"type": "string"
+								},
+								"order": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"direction",
+								"attribute",
+								"order"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"filters": {
+						"properties": {
+							"createdEnd": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"createdBegin": {
+								"type": "string",
+								"format": "date-time"
+							},
+							"name": {
+								"type": "string"
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"type": "object"
+					}
+				},
+				"required": [
+					"dataControl",
+					"orderBy"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LinkPermissionType": {
+				"properties": {
+					"permissions": {
+						"items": {
+							"type": "number",
+							"format": "double"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"permissions"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreateRoleType": {
+				"properties": {
+					"short": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"required": [
+					"short",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreatePermissionType": {
+				"properties": {
+					"short": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"required": [
+					"short",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"DefaultSelection_Prisma._36_LocationPayload_": {
+				"properties": {
+					"cordinateLat": {
+						"type": "number",
+						"format": "double"
+					},
+					"cordinateLon": {
+						"type": "number",
+						"format": "double"
+					},
+					"type": {
+						"type": "string"
+					},
+					"timezone": {
+						"type": "string"
+					},
+					"iata": {
+						"type": "string"
+					},
+					"city": {
+						"type": "string"
+					},
+					"country": {
+						"type": "string"
+					},
+					"createdAt": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"cordinateLat",
+					"cordinateLon",
+					"type",
+					"timezone",
+					"iata",
+					"city",
+					"country",
+					"createdAt",
+					"id",
+					"name"
+				],
+				"type": "object"
+			},
+			"Location": {
+				"$ref": "#/components/schemas/DefaultSelection_Prisma._36_LocationPayload_",
+				"description": "Model Location"
+			},
+			"ListLocationType": {
+				"properties": {
+					"keyword": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"keyword"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SearchMileageProgramsResponse": {
+				"items": {
+					"properties": {
+						"first": {
+							"properties": {
+								"taxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"price": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"taxes",
+								"price"
+							],
+							"type": "object"
+						},
+						"business": {
+							"properties": {
+								"taxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"price": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"taxes",
+								"price"
+							],
+							"type": "object"
+						},
+						"premium": {
+							"properties": {
+								"taxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"price": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"taxes",
+								"price"
+							],
+							"type": "object"
+						},
+						"economy": {
+							"properties": {
+								"taxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"price": {
+									"type": "number",
+									"format": "double"
+								}
+							},
+							"required": [
+								"taxes",
+								"price"
+							],
+							"type": "object"
+						},
+						"currency": {
+							"type": "string"
+						},
+						"source": {
+							"type": "string"
+						},
+						"destiantionIata": {
+							"type": "string"
+						},
+						"originIata": {
+							"type": "string"
+						},
+						"id": {
+							"type": "string"
+						}
+					},
+					"required": [
+						"first",
+						"business",
+						"premium",
+						"economy",
+						"currency",
+						"source",
+						"destiantionIata",
+						"originIata",
+						"id"
+					],
+					"type": "object"
+				},
+				"type": "array"
+			},
+			"SearchMileageProgramsType": {
+				"properties": {
+					"origin": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					},
+					"departure": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"origin",
+					"destination",
+					"departure"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SearchFlightsByMileageResponse": {
+				"properties": {
+					"data": {
+						"items": {
+							"properties": {
+								"AvailabilityTrips": {
+									"anyOf": [
+										{
+											"type": "string"
+										},
+										{
+											"type": "number",
+											"format": "double"
+										}
+									],
+									"nullable": true
+								},
+								"UpdatedAt": {
+									"type": "string"
+								},
+								"CreatedAt": {
+									"type": "string"
+								},
+								"Source": {
+									"type": "string"
+								},
+								"FDirectRaw": {
+									"type": "boolean"
+								},
+								"JDirectRaw": {
+									"type": "boolean"
+								},
+								"WDirectRaw": {
+									"type": "boolean"
+								},
+								"YDirectRaw": {
+									"type": "boolean"
+								},
+								"FDirect": {
+									"type": "boolean"
+								},
+								"JDirect": {
+									"type": "boolean"
+								},
+								"WDirect": {
+									"type": "boolean"
+								},
+								"YDirect": {
+									"type": "boolean"
+								},
+								"FDirectAirlinesRaw": {
+									"type": "string"
+								},
+								"JDirectAirlinesRaw": {
+									"type": "string"
+								},
+								"WDirectAirlinesRaw": {
+									"type": "string"
+								},
+								"YDirectAirlinesRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"FDirectAirlines": {
+									"type": "string"
+								},
+								"JDirectAirlines": {
+									"type": "string"
+								},
+								"WDirectAirlines": {
+									"type": "string"
+								},
+								"YDirectAirlines": {
+									"type": "number",
+									"format": "double"
+								},
+								"FAirlinesRaw": {
+									"type": "string"
+								},
+								"JAirlinesRaw": {
+									"type": "string"
+								},
+								"WAirlinesRaw": {
+									"type": "string"
+								},
+								"YAirlinesRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"FAirlines": {
+									"type": "string"
+								},
+								"JAirlines": {
+									"type": "string"
+								},
+								"WAirlines": {
+									"type": "string"
+								},
+								"YAirlines": {
+									"type": "number",
+									"format": "double"
+								},
+								"FDirectRemainingSeatsRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"JDirectRemainingSeatsRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"WDirectRemainingSeatsRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"YDirectRemainingSeatsRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"FDirectRemainingSeats": {
+									"type": "number",
+									"format": "double"
+								},
+								"JDirectRemainingSeats": {
+									"type": "number",
+									"format": "double"
+								},
+								"WDirectRemainingSeats": {
+									"type": "number",
+									"format": "double"
+								},
+								"YDirectRemainingSeats": {
+									"type": "number",
+									"format": "double"
+								},
+								"FRemainingSeatsRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"JRemainingSeatsRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"WRemainingSeatsRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"YRemainingSeatsRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"FRemainingSeats": {
+									"type": "number",
+									"format": "double"
+								},
+								"JRemainingSeats": {
+									"type": "number",
+									"format": "double"
+								},
+								"WRemainingSeats": {
+									"type": "number",
+									"format": "double"
+								},
+								"YRemainingSeats": {
+									"type": "number",
+									"format": "double"
+								},
+								"FDirectTotalTaxesRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"JDirectTotalTaxesRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"WDirectTotalTaxesRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"YDirectTotalTaxesRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"FDirectTotalTaxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"JDirectTotalTaxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"WDirectTotalTaxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"YDirectTotalTaxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"FTotalTaxesRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"JTotalTaxesRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"WTotalTaxesRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"YTotalTaxesRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"FTotalTaxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"JTotalTaxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"WTotalTaxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"YTotalTaxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"TaxesCurrency": {
+									"type": "string"
+								},
+								"FDirectMileageCostRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"JDirectMileageCostRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"WDirectMileageCostRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"YDirectMileageCostRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"FDirectMileageCost": {
+									"type": "number",
+									"format": "double"
+								},
+								"JDirectMileageCost": {
+									"type": "number",
+									"format": "double"
+								},
+								"WDirectMileageCost": {
+									"type": "number",
+									"format": "double"
+								},
+								"YDirectMileageCost": {
+									"type": "number",
+									"format": "double"
+								},
+								"FMileageCostRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"JMileageCostRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"WMileageCostRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"YMileageCostRaw": {
+									"type": "number",
+									"format": "double"
+								},
+								"FMileageCost": {
+									"type": "number",
+									"format": "double"
+								},
+								"JMileageCost": {
+									"type": "number",
+									"format": "double"
+								},
+								"WMileageCost": {
+									"type": "number",
+									"format": "double"
+								},
+								"YMileageCost": {
+									"type": "number",
+									"format": "double"
+								},
+								"FAvailableRaw": {
+									"type": "boolean"
+								},
+								"JAvailableRaw": {
+									"type": "boolean"
+								},
+								"WAvailableRaw": {
+									"type": "boolean"
+								},
+								"YAvailableRaw": {
+									"type": "boolean"
+								},
+								"FAvailable": {
+									"type": "boolean"
+								},
+								"JAvailable": {
+									"type": "boolean"
+								},
+								"WAvailable": {
+									"type": "boolean"
+								},
+								"YAvailable": {
+									"type": "boolean"
+								},
+								"ParsedDate": {
+									"type": "string"
+								},
+								"Date": {
+									"type": "string"
+								},
+								"Route": {
+									"properties": {
+										"Source": {
+											"type": "string"
+										},
+										"Distance": {
+											"type": "number",
+											"format": "double"
+										},
+										"NumDaysOut": {
+											"type": "number",
+											"format": "double"
+										},
+										"DestinationRegion": {
+											"type": "string"
+										},
+										"DestinationAirport": {
+											"type": "string"
+										},
+										"OriginRegion": {
+											"type": "string"
+										},
+										"OriginAirport": {
+											"type": "string"
+										},
+										"ID": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"Source",
+										"Distance",
+										"NumDaysOut",
+										"DestinationRegion",
+										"DestinationAirport",
+										"OriginRegion",
+										"OriginAirport",
+										"ID"
+									],
+									"type": "object"
+								},
+								"RouteID": {
+									"type": "string"
+								},
+								"ID": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"AvailabilityTrips",
+								"UpdatedAt",
+								"CreatedAt",
+								"Source",
+								"FDirectRaw",
+								"JDirectRaw",
+								"WDirectRaw",
+								"YDirectRaw",
+								"FDirect",
+								"JDirect",
+								"WDirect",
+								"YDirect",
+								"FDirectAirlinesRaw",
+								"JDirectAirlinesRaw",
+								"WDirectAirlinesRaw",
+								"YDirectAirlinesRaw",
+								"FDirectAirlines",
+								"JDirectAirlines",
+								"WDirectAirlines",
+								"YDirectAirlines",
+								"FAirlinesRaw",
+								"JAirlinesRaw",
+								"WAirlinesRaw",
+								"YAirlinesRaw",
+								"FAirlines",
+								"JAirlines",
+								"WAirlines",
+								"YAirlines",
+								"FDirectRemainingSeatsRaw",
+								"JDirectRemainingSeatsRaw",
+								"WDirectRemainingSeatsRaw",
+								"YDirectRemainingSeatsRaw",
+								"FDirectRemainingSeats",
+								"JDirectRemainingSeats",
+								"WDirectRemainingSeats",
+								"YDirectRemainingSeats",
+								"FRemainingSeatsRaw",
+								"JRemainingSeatsRaw",
+								"WRemainingSeatsRaw",
+								"YRemainingSeatsRaw",
+								"FRemainingSeats",
+								"JRemainingSeats",
+								"WRemainingSeats",
+								"YRemainingSeats",
+								"FDirectTotalTaxesRaw",
+								"JDirectTotalTaxesRaw",
+								"WDirectTotalTaxesRaw",
+								"YDirectTotalTaxesRaw",
+								"FDirectTotalTaxes",
+								"JDirectTotalTaxes",
+								"WDirectTotalTaxes",
+								"YDirectTotalTaxes",
+								"FTotalTaxesRaw",
+								"JTotalTaxesRaw",
+								"WTotalTaxesRaw",
+								"YTotalTaxesRaw",
+								"FTotalTaxes",
+								"JTotalTaxes",
+								"WTotalTaxes",
+								"YTotalTaxes",
+								"TaxesCurrency",
+								"FDirectMileageCostRaw",
+								"JDirectMileageCostRaw",
+								"WDirectMileageCostRaw",
+								"YDirectMileageCostRaw",
+								"FDirectMileageCost",
+								"JDirectMileageCost",
+								"WDirectMileageCost",
+								"YDirectMileageCost",
+								"FMileageCostRaw",
+								"JMileageCostRaw",
+								"WMileageCostRaw",
+								"YMileageCostRaw",
+								"FMileageCost",
+								"JMileageCost",
+								"WMileageCost",
+								"YMileageCost",
+								"FAvailableRaw",
+								"JAvailableRaw",
+								"WAvailableRaw",
+								"YAvailableRaw",
+								"FAvailable",
+								"JAvailable",
+								"WAvailable",
+								"YAvailable",
+								"ParsedDate",
+								"Date",
+								"Route",
+								"RouteID",
+								"ID"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"data"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SearchFlightsByMileageType": {
+				"properties": {
+					"origin": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					},
+					"departure": {
+						"type": "string"
+					},
+					"return": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"origin",
+					"destination",
+					"departure"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Flight": {
+				"properties": {
+					"departure_airport": {
+						"properties": {
+							"time": {
+								"type": "string"
+							},
+							"id": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"time",
+							"id",
+							"name"
+						],
+						"type": "object"
+					},
+					"arrival_airport": {
+						"properties": {
+							"time": {
+								"type": "string"
+							},
+							"id": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"time",
+							"id",
+							"name"
+						],
+						"type": "object"
+					},
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"airplane": {
+						"type": "string"
+					},
+					"airline": {
+						"type": "string"
+					},
+					"airline_logo": {
+						"type": "string"
+					},
+					"travel_class": {
+						"type": "string"
+					},
+					"flight_number": {
+						"type": "string"
+					},
+					"extensions": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"ticket_also_sold_by": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"legroom": {
+						"type": "string"
+					},
+					"overnight": {
+						"type": "boolean"
+					},
+					"often_delayed_by_over_30_min": {
+						"type": "boolean"
+					},
+					"plane_and_crew_by": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"departure_airport",
+					"arrival_airport",
+					"duration",
+					"airplane",
+					"airline",
+					"airline_logo",
+					"travel_class",
+					"flight_number",
+					"extensions",
+					"ticket_also_sold_by",
+					"legroom",
+					"overnight",
+					"often_delayed_by_over_30_min",
+					"plane_and_crew_by"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Layovers": {
+				"properties": {
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					},
+					"overnight": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"duration",
+					"name",
+					"id",
+					"overnight"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SearchFlightOffersResponse": {
+				"properties": {
+					"best_flights": {
+						"items": {
+							"properties": {
+								"booking_token": {
+									"type": "string"
+								},
+								"departure_token": {
+									"type": "string"
+								},
+								"extensions": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"airline_logo": {
+									"type": "string"
+								},
+								"type": {
+									"type": "string"
+								},
+								"price": {
+									"type": "number",
+									"format": "double"
+								},
+								"carbon_emissions": {
+									"properties": {
+										"difference_percent": {
+											"type": "number",
+											"format": "double"
+										},
+										"typical_for_this_route": {
+											"type": "number",
+											"format": "double"
+										},
+										"this_flight": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": [
+										"difference_percent",
+										"typical_for_this_route",
+										"this_flight"
+									],
+									"type": "object"
+								},
+								"total_duration": {
+									"type": "number",
+									"format": "double"
+								},
+								"layovers": {
+									"items": {
+										"$ref": "#/components/schemas/Layovers"
+									},
+									"type": "array"
+								},
+								"flights": {
+									"items": {
+										"$ref": "#/components/schemas/Flight"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"booking_token",
+								"departure_token",
+								"extensions",
+								"airline_logo",
+								"type",
+								"price",
+								"carbon_emissions",
+								"total_duration",
+								"layovers",
+								"flights"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"other_flights": {
+						"items": {
+							"properties": {
+								"booking_token": {
+									"type": "string"
+								},
+								"departure_token": {
+									"type": "string"
+								},
+								"extensions": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"airline_logo": {
+									"type": "string"
+								},
+								"type": {
+									"type": "string"
+								},
+								"price": {
+									"type": "number",
+									"format": "double"
+								},
+								"carbon_emissions": {
+									"properties": {
+										"difference_percent": {
+											"type": "number",
+											"format": "double"
+										},
+										"typical_for_this_route": {
+											"type": "number",
+											"format": "double"
+										},
+										"this_flight": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": [
+										"difference_percent",
+										"typical_for_this_route",
+										"this_flight"
+									],
+									"type": "object"
+								},
+								"total_duration": {
+									"type": "number",
+									"format": "double"
+								},
+								"layovers": {
+									"items": {
+										"$ref": "#/components/schemas/Layovers"
+									},
+									"type": "array"
+								},
+								"flights": {
+									"items": {
+										"$ref": "#/components/schemas/Flight"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"booking_token",
+								"departure_token",
+								"extensions",
+								"airline_logo",
+								"type",
+								"price",
+								"carbon_emissions",
+								"total_duration",
+								"layovers",
+								"flights"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"best_flights",
+					"other_flights"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SearchFlightOffersType": {
+				"properties": {
+					"origin": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					},
+					"departure": {
+						"type": "string"
+					},
+					"return": {
+						"type": "string"
+					},
+					"departureToken": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"origin",
+					"destination",
+					"departure"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"FlightDetail": {
+				"properties": {
+					"departure_airport": {
+						"properties": {
+							"time": {
+								"type": "string"
+							},
+							"id": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"time",
+							"id",
+							"name"
+						],
+						"type": "object"
+					},
+					"arrival_airport": {
+						"properties": {
+							"time": {
+								"type": "string"
+							},
+							"id": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"time",
+							"id",
+							"name"
+						],
+						"type": "object"
+					},
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"airplane": {
+						"type": "string"
+					},
+					"airline": {
+						"type": "string"
+					},
+					"airline_logo": {
+						"type": "string"
+					},
+					"travel_class": {
+						"type": "string"
+					},
+					"flight_number": {
+						"type": "string"
+					},
+					"extensions": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"ticket_also_sold_by": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"legroom": {
+						"type": "string"
+					},
+					"overnight": {
+						"type": "boolean"
+					},
+					"often_delayed_by_over_30_min": {
+						"type": "boolean"
+					},
+					"plane_and_crew_by": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"departure_airport",
+					"arrival_airport",
+					"duration",
+					"airplane",
+					"airline",
+					"airline_logo",
+					"travel_class",
+					"flight_number",
+					"extensions",
+					"ticket_also_sold_by",
+					"legroom",
+					"overnight",
+					"often_delayed_by_over_30_min",
+					"plane_and_crew_by"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LayoversDetail": {
+				"properties": {
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"id": {
+						"type": "string"
+					},
+					"overnight": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"duration",
+					"name",
+					"id",
+					"overnight"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SearchFlightOfferDetailResponse": {
+				"properties": {
+					"selected_flights": {
+						"items": {
+							"properties": {
+								"booking_token": {
+									"type": "string"
+								},
+								"departure_token": {
+									"type": "string"
+								},
+								"extensions": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"airline_logo": {
+									"type": "string"
+								},
+								"type": {
+									"type": "string"
+								},
+								"price": {
+									"type": "number",
+									"format": "double"
+								},
+								"carbon_emissions": {
+									"properties": {
+										"difference_percent": {
+											"type": "number",
+											"format": "double"
+										},
+										"typical_for_this_route": {
+											"type": "number",
+											"format": "double"
+										},
+										"this_flight": {
+											"type": "number",
+											"format": "double"
+										}
+									},
+									"required": [
+										"difference_percent",
+										"typical_for_this_route",
+										"this_flight"
+									],
+									"type": "object"
+								},
+								"total_duration": {
+									"type": "number",
+									"format": "double"
+								},
+								"layovers": {
+									"items": {
+										"$ref": "#/components/schemas/LayoversDetail"
+									},
+									"type": "array"
+								},
+								"flights": {
+									"items": {
+										"$ref": "#/components/schemas/FlightDetail"
+									},
+									"type": "array"
+								}
+							},
+							"required": [
+								"booking_token",
+								"departure_token",
+								"extensions",
+								"airline_logo",
+								"type",
+								"price",
+								"carbon_emissions",
+								"total_duration",
+								"layovers",
+								"flights"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"baggage_prices": {
+						"properties": {
+							"returning": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"departing": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"together": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							}
+						},
+						"required": [
+							"returning",
+							"departing",
+							"together"
+						],
+						"type": "object"
+					},
+					"booking_options": {
+						"items": {
+							"properties": {
+								"together": {
+									"properties": {
+										"estimated_phone_service_fee": {
+											"type": "number",
+											"format": "double"
+										},
+										"booking_phone": {
+											"type": "string"
+										},
+										"booking_request": {
+											"properties": {
+												"post_data": {
+													"type": "string"
+												},
+												"url": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"post_data",
+												"url"
+											],
+											"type": "object"
+										},
+										"baggage_prices": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"extensions": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"option_title": {
+											"type": "string"
+										},
+										"local_prices": {
+											"properties": {
+												"price": {
+													"type": "number",
+													"format": "double"
+												},
+												"currency": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"price",
+												"currency"
+											],
+											"type": "object"
+										},
+										"price": {
+											"type": "number",
+											"format": "double"
+										},
+										"marketed_as": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"airline_logos": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"book_with": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"estimated_phone_service_fee",
+										"booking_phone",
+										"booking_request",
+										"baggage_prices",
+										"extensions",
+										"option_title",
+										"local_prices",
+										"price",
+										"marketed_as",
+										"airline_logos",
+										"book_with"
+									],
+									"type": "object"
+								},
+								"separate_tickets": {
+									"type": "boolean"
+								}
+							},
+							"required": [
+								"together",
+								"separate_tickets"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"price_insights": {
+						"properties": {
+							"price_history": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"typical_price_range": {
+								"items": {
+									"type": "string"
+								},
+								"type": "array"
+							},
+							"price_level": {
+								"type": "string"
+							},
+							"lowest_price": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"price_history",
+							"typical_price_range",
+							"price_level",
+							"lowest_price"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"selected_flights",
+					"baggage_prices",
+					"booking_options",
+					"price_insights"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SearchFlightOfferDetailType": {
+				"properties": {
+					"origin": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					},
+					"departure": {
+						"type": "string"
+					},
+					"return": {
+						"type": "string"
+					},
+					"bookingToken": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"origin",
+					"destination",
+					"departure",
+					"bookingToken"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetTripByMileageResponse": {
+				"properties": {
+					"carriers": {
+						"properties": {
+							"G3": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"G3"
+						],
+						"type": "object"
+					},
+					"booking_links": {
+						"items": {
+							"properties": {
+								"primary": {
+									"type": "boolean"
+								},
+								"link": {
+									"type": "string"
+								},
+								"label": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"primary",
+								"link",
+								"label"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					},
+					"destination_coordinates": {
+						"properties": {
+							"Lon": {
+								"type": "number",
+								"format": "double"
+							},
+							"Lat": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"Lon",
+							"Lat"
+						],
+						"type": "object"
+					},
+					"origin_coordinates": {
+						"properties": {
+							"Lon": {
+								"type": "number",
+								"format": "double"
+							},
+							"Lat": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"Lon",
+							"Lat"
+						],
+						"type": "object"
+					},
+					"data": {
+						"items": {
+							"properties": {
+								"Source": {
+									"type": "string"
+								},
+								"UpdatedAt": {
+									"type": "string"
+								},
+								"CreatedAt": {
+									"type": "string"
+								},
+								"ArrivesAt": {
+									"type": "string"
+								},
+								"Cabin": {
+									"type": "string"
+								},
+								"DepartsAt": {
+									"type": "string"
+								},
+								"FlightNumbers": {
+									"type": "string"
+								},
+								"Aircraft": {
+									"items": {
+										"type": "string"
+									},
+									"type": "array"
+								},
+								"DestinationAirport": {
+									"type": "string"
+								},
+								"OriginAirport": {
+									"type": "string"
+								},
+								"TotalSegmentDistance": {
+									"type": "number",
+									"format": "double"
+								},
+								"TaxesCurrencySymbol": {
+									"type": "string"
+								},
+								"TaxesCurrency": {
+									"type": "string"
+								},
+								"TotalTaxes": {
+									"type": "number",
+									"format": "double"
+								},
+								"MileageCost": {
+									"type": "number",
+									"format": "double"
+								},
+								"RemainingSeats": {
+									"type": "number",
+									"format": "double"
+								},
+								"Carriers": {
+									"type": "string"
+								},
+								"Stops": {
+									"type": "number",
+									"format": "double"
+								},
+								"TotalDuration": {
+									"type": "number",
+									"format": "double"
+								},
+								"AvailabilitySegments": {
+									"items": {
+										"properties": {
+											"Order": {
+												"type": "number",
+												"format": "double"
+											},
+											"Cabin": {
+												"type": "string"
+											},
+											"Source": {
+												"type": "string"
+											},
+											"UpdatedAt": {
+												"type": "string"
+											},
+											"CreatedAt": {
+												"type": "string"
+											},
+											"ArrivesAt": {
+												"type": "string"
+											},
+											"DepartsAt": {
+												"type": "string"
+											},
+											"DestinationAirport": {
+												"type": "string"
+											},
+											"OriginAirport": {
+												"type": "string"
+											},
+											"AircraftCode": {
+												"type": "string"
+											},
+											"AircraftName": {
+												"type": "string"
+											},
+											"FareClass": {
+												"type": "string"
+											},
+											"Distance": {
+												"type": "number",
+												"format": "double"
+											},
+											"FlightNumber": {
+												"type": "string"
+											},
+											"AvailabilityTripID": {
+												"type": "string"
+											},
+											"AvailabilityID": {
+												"type": "string"
+											},
+											"RouteID": {
+												"type": "string"
+											},
+											"ID": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"Order",
+											"Cabin",
+											"Source",
+											"UpdatedAt",
+											"CreatedAt",
+											"ArrivesAt",
+											"DepartsAt",
+											"DestinationAirport",
+											"OriginAirport",
+											"AircraftCode",
+											"AircraftName",
+											"FareClass",
+											"Distance",
+											"FlightNumber",
+											"AvailabilityTripID",
+											"AvailabilityID",
+											"RouteID",
+											"ID"
+										],
+										"type": "object"
+									},
+									"type": "array"
+								},
+								"AvailabilityID": {
+									"type": "string"
+								},
+								"RouteID": {
+									"type": "string"
+								},
+								"ID": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"Source",
+								"UpdatedAt",
+								"CreatedAt",
+								"ArrivesAt",
+								"Cabin",
+								"DepartsAt",
+								"FlightNumbers",
+								"Aircraft",
+								"DestinationAirport",
+								"OriginAirport",
+								"TotalSegmentDistance",
+								"TaxesCurrencySymbol",
+								"TaxesCurrency",
+								"TotalTaxes",
+								"MileageCost",
+								"RemainingSeats",
+								"Carriers",
+								"Stops",
+								"TotalDuration",
+								"AvailabilitySegments",
+								"AvailabilityID",
+								"RouteID",
+								"ID"
+							],
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"carriers",
+					"booking_links",
+					"destination_coordinates",
+					"origin_coordinates",
+					"data"
+				],
+				"type": "object"
+			},
+			"ContinentOvreview": {
+				"properties": {
+					"price": {
+						"type": "number",
+						"format": "double"
+					},
+					"date": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					},
+					"origin": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"price",
+					"date",
+					"destination",
+					"origin"
+				],
+				"type": "object"
+			},
+			"GetHomeOfferResponse": {
+				"properties": {
+					"others": {
+						"items": {
+							"$ref": "#/components/schemas/ContinentOvreview"
+						},
+						"type": "array"
+					},
+					"asia": {
+						"items": {
+							"$ref": "#/components/schemas/ContinentOvreview"
+						},
+						"type": "array"
+					},
+					"northAmerica": {
+						"items": {
+							"$ref": "#/components/schemas/ContinentOvreview"
+						},
+						"type": "array"
+					},
+					"middleAmerica": {
+						"items": {
+							"$ref": "#/components/schemas/ContinentOvreview"
+						},
+						"type": "array"
+					},
+					"southAmerica": {
+						"items": {
+							"$ref": "#/components/schemas/ContinentOvreview"
+						},
+						"type": "array"
+					},
+					"europe": {
+						"items": {
+							"$ref": "#/components/schemas/ContinentOvreview"
+						},
+						"type": "array"
+					},
+					"general": {
+						"items": {
+							"$ref": "#/components/schemas/ContinentOvreview"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"others",
+					"asia",
+					"northAmerica",
+					"middleAmerica",
+					"southAmerica",
+					"europe",
+					"general"
+				],
+				"type": "object"
+			},
+			"LoginResponse": {
+				"properties": {
+					"accessToken": {
+						"type": "string"
+					},
+					"accessTokenExp": {
+						"type": "string"
+					},
+					"refreshToken": {
+						"type": "string"
+					},
+					"refreshTokenExp": {
+						"type": "string"
+					},
+					"user": {
+						"$ref": "#/components/schemas/User"
+					}
+				},
+				"required": [
+					"accessToken",
+					"accessTokenExp",
+					"refreshToken",
+					"refreshTokenExp",
+					"user"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoginType": {
+				"properties": {
+					"login": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"login",
+					"password"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "econotrip-api",
+		"version": "1.0.0",
+		"license": {
+			"name": "MIT"
+		},
+		"contact": {}
+	},
+	"paths": {
+		"/users/{userId}": {
+			"patch": {
+				"operationId": "update_user",
+				"responses": {
+					"204": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateUserType"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "get_user",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "delete_user",
+				"responses": {
+					"204": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/users/list": {
+			"post": {
+				"operationId": "list_user",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PaginationResponse_User_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ListUserType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users": {
+			"post": {
+				"operationId": "create_user",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/User"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateUserType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/users/check": {
+			"post": {
+				"operationId": "check_user_existence",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CheckUserExistenceResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CheckUserExistenceType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/radars/{radarId}": {
+			"patch": {
+				"operationId": "update_radar",
+				"responses": {
+					"204": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"Radar"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "radarId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateRadarType"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "get_radar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Radar"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Radar"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "radarId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "delete_radar",
+				"responses": {
+					"204": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"Radar"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "radarId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/radars/list": {
+			"post": {
+				"operationId": "list_radar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PaginationResponse_Radar_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Radar"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ListRadarType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/radars/{radarId}/flights": {
+			"get": {
+				"operationId": "get_radar_flights",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetRadarFlightsResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Radar"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "radarId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/radars": {
+			"post": {
+				"operationId": "create_radar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Radar"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Radar"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateRadarType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/planners/{plannerId}": {
+			"patch": {
+				"operationId": "update_planner",
+				"responses": {
+					"204": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"Planner"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "plannerId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdatePlannerType"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "get_planner",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Planner"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Planner"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "plannerId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "delete_planner",
+				"responses": {
+					"204": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"Planner"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "plannerId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/planners/list": {
+			"post": {
+				"operationId": "list_planner",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PaginationResponse_Planner_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Planner"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ListPlannerType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/planners/generate": {
+			"post": {
+				"operationId": "generate_planner",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Planner"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/GeneratePlannerType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/planners": {
+			"post": {
+				"operationId": "create_planner",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Planner"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Planner"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreatePlannerType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/roles/{roleId}": {
+			"patch": {
+				"operationId": "update_role",
+				"responses": {
+					"204": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "roleId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdateRoleType"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "get_role",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Role"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "roleId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "delete_role",
+				"responses": {
+					"204": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "roleId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/permissions/{permissionId}": {
+			"patch": {
+				"operationId": "update_permission",
+				"responses": {
+					"204": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"Permission"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "permissionId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UpdatePermissionType"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "get_permission",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Permission"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Permission"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "permissionId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "delete_permission",
+				"responses": {
+					"204": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"Permission"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "permissionId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/roles/{roleId}/permissions": {
+			"delete": {
+				"operationId": "unlink_permission",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "roleId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/UnlinkPermissionType"
+							}
+						}
+					}
+				}
+			},
+			"post": {
+				"operationId": "link_permission",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "roleId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LinkPermissionType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/roles/list": {
+			"post": {
+				"operationId": "list_role",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PaginationResponse_Role_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ListRoleType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/permissions/list": {
+			"post": {
+				"operationId": "list_permission",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PaginationResponse_Permission_"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Permission"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ListPermissionType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/roles": {
+			"post": {
+				"operationId": "create_role",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Role"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Role"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreateRoleType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/permissions": {
+			"post": {
+				"operationId": "create_permission",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Permission"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Permission"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreatePermissionType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/locations/list": {
+			"post": {
+				"operationId": "list_location",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Location"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Location"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ListLocationType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/flights/mileage/programs/search": {
+			"post": {
+				"operationId": "Execute",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SearchMileageProgramsResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Flight"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SearchMileageProgramsType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/flights/mileage/search": {
+			"post": {
+				"operationId": "search_flight_by_mileage",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SearchFlightsByMileageResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Flight"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SearchFlightsByMileageType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/flights/offers/search": {
+			"post": {
+				"operationId": "search_flight_offers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SearchFlightOffersResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Flight"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SearchFlightOffersType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/flights/offers/search/detail": {
+			"post": {
+				"operationId": "search_flight_offer_detail",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SearchFlightOfferDetailResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Flight"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SearchFlightOfferDetailType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/flights/mileage/{tripId}": {
+			"post": {
+				"operationId": "get_trips_by_mileage",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetTripByMileageResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Flight"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "tripId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/flights/offers/home": {
+			"post": {
+				"operationId": "search_offers_home",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetHomeOfferResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Flight"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/auth": {
+			"post": {
+				"operationId": "login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoginResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LoginType"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
