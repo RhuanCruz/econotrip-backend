@@ -1,11 +1,9 @@
 import { Body, Post, Route, Tags, Security, OperationId } from 'tsoa';
 import { injectable } from 'inversify';
-import OpenAI from 'openai';
 
 import { GeneratePlannerType } from './GeneratePlannerSchema';
 
-import { getItneraryPrompt } from './prompts';
-import { AppError, Errors } from '@src/common/errors';
+import { AITravelEstimator, EstimativaViagem } from './AITravelEstimator';
 import Config from '@src/config';
 
 @injectable()
@@ -15,25 +13,24 @@ class GeneratePlannerService {
   @Post('/generate')
   @Security('BearerAuth')
   @OperationId('generate_planner')
-  public async execute(@Body() data: GeneratePlannerType): Promise<void> {
-    const openai = new OpenAI({
+  public async execute(@Body() data: GeneratePlannerType): Promise<EstimativaViagem> {
+    const estimator = new AITravelEstimator({
       apiKey: Config.openai.apiKey,
+      provider: 'openai',
     });
 
-    const prompt = getItneraryPrompt(data);
-
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4',
-      messages: [{ role: 'user', content: prompt }],
-      temperature: 0.7,
+    const response = await estimator.gerarEstimativa({
+      destino: data.destination,
+      estiloViagem: 'econômico',
+      numerosPessoas: data.amountPeople ?? 1,
+      origem: data.origin,
+      periodo: {
+        inicio: data.start,
+        fim: data.end,
+      },
     });
 
-    const responseText = completion.choices[0].message.content;
-    if (!responseText) throw AppError.createAppError(Errors.UNDOCUMENTED_ERROR);
-
-    const itinerary = JSON.parse(responseText);
-
-    return itinerary;
+    return response;
   }
 }
 
