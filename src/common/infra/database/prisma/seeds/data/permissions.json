@@ -1,0 +1,37 @@
+[
+  {
+    "short": "CREATE_USER_ANY",
+    "name": "Criar usuário",
+    "description": "Criar usuário"
+  },
+  {
+    "short": "GET_USER_ANY",
+    "name": "Recuperar qualquer usuário",
+    "description": "Recuperar qualquer usuário"
+  },
+  {
+    "short": "GET_USER_OWN",
+    "name": "Recuperar seu usuário",
+    "description": "Recuperar seu usuário"
+  },
+  {
+    "short": "UPDATE_USER_ANY",
+    "name": "Atualizar qualquer usuário",
+    "description": "Atualizar qualquer usuário"
+  },
+  {
+    "short": "UPDATE_USER_OWN",
+    "name": "Atualizar seu usuário",
+    "description": "Atualizar seu usuário"
+  },
+  {
+    "short": "DELETE_USER_ANY",
+    "name": "Deletar qualquer usuário",
+    "description": "Deletar qualquer usuário"
+  },
+  {
+    "short": "DELETE_USER_OWN",
+    "name": "Deletar seu usuário",
+    "description": "Deletar seu usuário"
+  }
+]

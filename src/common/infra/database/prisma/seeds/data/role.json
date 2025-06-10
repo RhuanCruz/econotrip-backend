@@ -1,0 +1,17 @@
+[
+  {
+    "short": "SYSADMIN",
+    "name": "Administrador",
+    "description": "Administrador"
+  },
+  {
+    "short": "PROVIDER",
+    "name": "Profissional",
+    "description": "Profissional"
+  },
+  {
+    "short": "TAKER",
+    "name": "Paciente",
+    "description": "Paciente"
+  }
+]

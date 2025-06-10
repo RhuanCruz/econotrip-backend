@@ -6,4 +6,4 @@ yarn.lock
 build
 exec/*
 !exec/.gitkeep
-data
+/data

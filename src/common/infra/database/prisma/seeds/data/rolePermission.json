@@ -1,0 +1,42 @@
+[
+  {
+    "role": "SYSADMIN",
+    "permission": "CREATE_USER_ANY"
+  },
+  {
+    "role": "SYSADMIN",
+    "permission": "GET_USER_ANY"
+  },
+  {
+    "role": "SYSADMIN",
+    "permission": "UPDATE_USER_ANY"
+  },
+  {
+    "role": "SYSADMIN",
+    "permission": "DELETE_USER_ANY"
+  },
+  {
+    "role": "PROVIDER",
+    "permission": "GET_USER_OWN"
+  },
+  {
+    "role": "PROVIDER",
+    "permission": "UPDATE_USER_OWN"
+  },
+  {
+    "role": "PROVIDER",
+    "permission": "DELETE_USER_OWN"
+  },
+  {
+    "role": "TAKER",
+    "permission": "GET_USER_OWN"
+  },
+  {
+    "role": "TAKER",
+    "permission": "UPDATE_USER_OWN"
+  },
+  {
+    "role": "TAKER",
+    "permission": "DELETE_USER_OWN"
+  }
+]
