@@ -22,6 +22,7 @@ class CreateSuperAdminService {
 
     const user = await this.userRepository.create({
       login: email,
+      fullname: 'Admin',
       email,
       phone: '83999999999',
       cpf: '00000000000',

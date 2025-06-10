@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 
 import { Types } from '@src/common/container/';
-import IAmadeusProvider from '@providers/AmadeusProvider/repositories/IAmadeusProvider';
+import IAmadeusProvider from '@providers/IAmadeusProvider';
 
 @injectable()
 class GetEuropeanDestinationService {

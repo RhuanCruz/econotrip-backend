@@ -9,6 +9,7 @@ COPY package.json .
 COPY ./src ./src
 COPY ./prisma ./prisma
 
+RUN apt-get update -y && apt-get install -y openssl libssl-dev && rm -rf /var/lib/apt/lists/*
 RUN mkdir tmp
 RUN mkdir logs
 RUN yarn install --production
