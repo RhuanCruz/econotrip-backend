@@ -24,10 +24,8 @@ class GeneratePlannerService {
       estiloViagem: 'econômico',
       numerosPessoas: data.amountPeople ?? 1,
       origem: data.origin,
-      periodo: {
-        inicio: data.start,
-        fim: data.end,
-      },
+      inicio: data.start,
+      duracao: data.duration,
     });
 
     return response;

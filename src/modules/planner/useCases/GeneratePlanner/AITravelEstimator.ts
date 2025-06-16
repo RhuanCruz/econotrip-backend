@@ -3,10 +3,8 @@ import axios from 'axios';
 interface TravelParams {
   destino: string;
   origem: string;
-  periodo: {
-    inicio: string;
-    fim: string;
-  };
+  inicio: string;
+  duracao: number;
   numerosPessoas: number;
   estiloViagem: 'econômico' | 'médio' | 'luxo';
   interesses?: string[];
@@ -95,7 +93,8 @@ Você é um especialista em planejamento de viagens e análise de custos. Sua ta
 Analise cuidadosamente as seguintes informações de entrada:
 - **Destino**: {destino}
 - **Origem**: {origem}  
-- **Período**: {periodo}
+- **Inicio da Viagem**: {inicio}
+- **Duração(em dias)**: {duracao}
 - **Número de pessoas**: {numerosPessoas}
 - **Estilo de viagem**: {estiloViagem}
 - **Interesses**: {interesses}
@@ -306,7 +305,8 @@ Responda APENAS com o JSON solicitado, sem texto adicional.
     return this.promptTemplate
       .replace('{destino}', params.destino)
       .replace('{origem}', params.origem)
-      .replace('{periodo}', `${params.periodo.inicio} a ${params.periodo.fim}`)
+      .replace('{inicio}', `${params.inicio}`)
+      .replace('{duracao}', `${params.duracao}`)
       .replace('{numerosPessoas}', params.numerosPessoas.toString())
       .replace('{estiloViagem}', params.estiloViagem)
       .replace('{interesses}', params.interesses?.join(', ') || 'cultura, gastronomia')

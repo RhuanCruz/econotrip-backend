@@ -2,7 +2,7 @@ import { number, object, string } from 'zod';
 
 const GeneratePlannerSchema = object({
   start: string().date().transform((date) => `${date}T00:00:00.000Z`),
-  end: string().date().transform((date) => `${date}T00:00:00.000Z`),
+  duration: number().int().min(1).max(20),
   amountPeople: number(),
   tripStyle: string(),
   origin: string().max(32),
@@ -11,7 +11,7 @@ const GeneratePlannerSchema = object({
 
 interface GeneratePlannerType {
   start: string;
-  end: string;
+  duration: number;
   amountPeople?: number;
   tripStyle?: string;
   origin: string;
