@@ -18,6 +18,10 @@ class PlannerRepository implements IPlannerRepository {
     return this.prisma.planner.findUnique({ where: { id } });
   }
 
+  public async findCurrent(userId: number): Promise<Planner | null> {
+    return this.prisma.planner.findFirst({ where: { userId, current: true } });
+  }
+
   public async list(filters: Prisma.PlannerFindManyArgs<DefaultArgs>): Promise<Planner[]> {
     return this.prisma.planner.findMany(filters);
   }

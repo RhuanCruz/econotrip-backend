@@ -9,6 +9,7 @@ import { CreatePlannerService, CreatePlannerSchema } from '@src/modules/planner/
 import { UpdatePlannerService, UpdatePlannerSchema } from '@src/modules/planner/useCases/UpdatePlanner';
 import { ListPlannerService, ListPlannerSchema } from '@src/modules/planner/useCases/ListPlanner';
 import { DeletePlannerService } from '@src/modules/planner/useCases/DeletePlanner';
+import { GetCurrentPlannerService } from '@src/modules/planner/useCases/GetCurrentPlanner';
 import { GetPlannerService } from '@src/modules/planner/useCases/GetPlanner';
 
 class PlannerController {
@@ -25,6 +26,11 @@ class PlannerController {
     const { plannerId } = req.params;
 
     const response = await AppContainer.resolve(GetPlannerService).execute(Number(plannerId));
+    res.status(StatusCodes.OK).json(response);
+  }
+
+  public async getCurrent(req: Request, res: Response): Promise<void> {
+    const response = await AppContainer.resolve(GetCurrentPlannerService).execute(req);
     res.status(StatusCodes.OK).json(response);
   }
 

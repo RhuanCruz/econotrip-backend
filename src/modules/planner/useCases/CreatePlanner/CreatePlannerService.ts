@@ -8,6 +8,7 @@ import { CreatePlannerType } from './CreatePlannerSchema';
 import { Types } from '@src/common/container/';
 
 import IPlannerRepository from '@repositories/IPlannerRepository';
+import { AppError, Errors } from '@src/common/errors';
 
 @injectable()
 @Route('planners')
@@ -19,12 +20,17 @@ class CreatePlannerService {
   @Security('BearerAuth')
   @OperationId('create_planner')
   public async execute(@Body() data: CreatePlannerType, @Request() req: ExpressRequest): Promise<Planner> {
+    if (await this.plannerRepository.findCurrent(req.auth.user!)) {
+      throw AppError.createAppError(Errors.AUTH_UNAUTHORIZED);
+    }
+
     const planner = await this.plannerRepository.create({
       userId: req.auth.user!,
       start: data.start,
       end: data.end,
       destination: data.destination,
       content: data.content,
+      current: true,
     });
 
     return instanceToInstance(planner);

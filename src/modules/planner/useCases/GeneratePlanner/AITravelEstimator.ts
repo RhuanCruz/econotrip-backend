@@ -138,6 +138,8 @@ Forneça a estimativa EXCLUSIVAMENTE no seguinte formato JSON em português bras
 - Deixe tempo livre para exploração espontânea
 - Classifique atividades como "imperdível", "recomendada" ou "opcional"
 - Considere horários de funcionamento e melhores momentos para visitar
+- **Inclua as refeições (café da manhã, almoço, jantar, etc.) como atividades no array de atividades, usando a categoria "refeição". Não utilize um array separado para refeições.**
+- **Não inclua atividades de categoria "transporte" ou "acomodação" no array de atividades do itinerário detalhado. Transporte e acomodação devem ser detalhados apenas nos campos apropriados, não como atividades.**
 
 Responda APENAS com o JSON solicitado, sem texto adicional.
 `;
@@ -159,7 +161,6 @@ Responda APENAS com o JSON solicitado, sem texto adicional.
               content: prompt,
             },
           ],
-          max_tokens: 4000,
           temperature: 0.3,
           response_format: { type: 'json_object' },
         },
@@ -238,19 +239,10 @@ Responda APENAS com o JSON solicitado, sem texto adicional.
           "duracao_estimada": "string",
           "custo_por_pessoa": number,
           "custo_total": number,
-          "categoria": "string",
+          "categoria": "string", // Inclua refeições como atividades, usando categoria "refeição" para café da manhã, almoço, jantar, etc.
           "nivel_prioridade": "string",
           "dicas": "string",
           "endereco_aproximado": "string"
-        }
-      ],
-      "refeicoes": [
-        {
-          "tipo_refeicao": "string",
-          "local_sugerido": "string",
-          "custo_estimado_por_pessoa": number,
-          "custo_total": number,
-          "observacoes": "string"
         }
       ],
       "transporte_do_dia": {
@@ -346,6 +338,7 @@ Responda APENAS com o JSON solicitado, sem texto adicional.
   public async gerarEstimativa(params: TravelParams): Promise<EstimativaViagem> {
     try {
       const prompt = this.buildPrompt(params);
+      console.log(prompt);
       console.log('🤖 Gerando estimativa com IA...');
 
       let aiResponse: string;

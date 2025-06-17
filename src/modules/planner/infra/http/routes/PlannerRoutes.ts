@@ -24,6 +24,12 @@ plannerRoutes.post(
 );
 
 plannerRoutes.get(
+  '/current',
+  AuthenticationMiddleware(),
+  plannerController.getCurrent,
+);
+
+plannerRoutes.get(
   '/:plannerId',
   AuthenticationMiddleware(),
   plannerController.getById,

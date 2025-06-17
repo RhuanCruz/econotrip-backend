@@ -3,6 +3,8 @@ interface IUpdatePlannerDTO {
   end?: string;
   destination?: string;
   content?: any;
+  current?: boolean;
+  status?: string;
 }
 
 export default IUpdatePlannerDTO;

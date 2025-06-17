@@ -1,10 +1,10 @@
-import { array, object, string } from 'zod';
+import { object, string } from 'zod';
 
 const CreatePlannerSchema = object({
   start: string().date().transform((date) => `${date}T00:00:00.000Z`),
   end: string().date().transform((date) => `${date}T00:00:00.000Z`),
   destination: string().max(32),
-  content: array(object({}).passthrough()),
+  content: object({}).passthrough(),
 });
 
 interface CreatePlannerType {

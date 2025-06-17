@@ -11,8 +11,8 @@ model User {
   id        Int      @id @default(autoincrement())
   login     String   @unique @db.VarChar(255)
   email     String   @unique @db.VarChar(255)
-  fullname  String?   @db.VarChar(255)
-  phone     String?   @db.VarChar(16)
+  fullname  String?  @db.VarChar(255)
+  phone     String?  @db.VarChar(16)
   cpf       String?  @unique @db.VarChar(14)
   avatar    String?  @db.VarChar(1024)
   birthdate DateTime @db.Date
@@ -27,9 +27,9 @@ model User {
   userActionLog            UserActionLog[]
   flightOfferSearchHistory FlightOfferSearchHistory[]
   radars                   Radar[]
+  Planner                  Planner[]
 
   @@map("user")
-  Planner Planner[]
 }
 
 model UserPassword {
@@ -151,7 +151,7 @@ model Location {
   name         String   @db.VarChar(255)
   country      String   @map("country_code") @db.VarChar(2)
   city         String   @map("city_code") @db.VarChar(3)
-  iata         String?   @map("iata_code") @db.VarChar(3)
+  iata         String?  @map("iata_code") @db.VarChar(3)
   timezone     String   @db.VarChar(32)
   type         String   @db.VarChar(8)
   cordinateLon Float    @map("cordinate_lon") @db.DoublePrecision
@@ -183,6 +183,8 @@ model Planner {
   end         DateTime
   destination String   @db.VarChar(255)
   content     Json
+  current     Boolean  @default(false)
+  status      String   @default("DRAFT") @db.VarChar(16)
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
@@ -190,4 +192,3 @@ model Planner {
 
   @@map("planner")
 }
-
