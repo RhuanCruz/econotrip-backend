@@ -49,6 +49,9 @@ const ConfigSchema = Zod.object({
     url: Zod.string(),
     apiKey: Zod.string(),
   }),
+  radarRoutines: Zod.object({
+    url: Zod.string(),
+  }),
 });
 
 export default ConfigSchema;

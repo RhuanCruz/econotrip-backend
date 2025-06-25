@@ -151,6 +151,24 @@ const Errors = {
     code: 'RADAR_NOT_DELETED',
     statusCode: StatusCodes.UNPROCESSABLE_ENTITY,
   },
+  RADAR_ROUTINE_NOT_CREATED: {
+    title: 'Radar routine not created',
+    detail: 'Radar routine not created',
+    code: 'RADAR_ROUTINE_NOT_CREATED',
+    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+  },
+  RADAR_ROUTINE_NOT_DELETED: {
+    title: 'Radar routine not deleted',
+    detail: 'Radar routine not deleted',
+    code: 'RADAR_ROUTINE_NOT_DELETED',
+    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+  },
+  RADAR_ROUTINE_RESULTS_NOT_LISTED: {
+    title: 'Radar routine results not listed',
+    detail: 'Radar routine results not listed',
+    code: 'RADAR_ROUTINE_RESULTS_NOT_LISTED',
+    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+  },
 };
 
 export default Errors;

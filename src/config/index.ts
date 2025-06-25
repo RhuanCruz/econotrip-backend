@@ -49,6 +49,9 @@ const Config = ConfigSchema.parse({
     url: process.env.SEATSAERO_URL,
     apiKey: process.env.SEATSAERO_API_KEY,
   },
+  radarRoutines: {
+    url: process.env.RADAR_ROUTINE_URL,
+  },
 });
 
 export default Config;

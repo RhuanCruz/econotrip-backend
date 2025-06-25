@@ -8,12 +8,15 @@ import { CreateRadarType } from './CreateRadarSchema';
 import { Types } from '@src/common/container/';
 
 import IRadarRepository from '@repositories/IRadarRepository';
+import IRadarRoutineProvider from '@src/common/providers/RadarRoutineProvider/repositories/IRadarRoutineProvider';
 
 @injectable()
 @Route('radars')
 @Tags('Radar')
 class CreateRadarService {
   @inject(Types.RadarRepository) private radarRepository: IRadarRepository;
+
+  @inject(Types.RadarRoutineProvider) private radarRoutineProvider: IRadarRoutineProvider;
 
   @Post('/')
   @Security('BearerAuth')
@@ -25,6 +28,14 @@ class CreateRadarService {
       end: data.end,
       origin: data.origin,
       destination: data.destination,
+    });
+
+    await this.radarRoutineProvider.create({
+      origin: data.origin,
+      destination: data.destination,
+      type: 'MONEY',
+    }).catch(() => {
+      console.error('Could not create radar routine');
     });
 
     return instanceToInstance(radar);
