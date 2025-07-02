@@ -482,40 +482,62 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"GetRadarFlightsResponse": {
+			"ListRoutineResultResponse": {
 				"properties": {
-					"records": {
+					"results": {
 						"items": {
 							"properties": {
-								"price": {
+								"__v": {
+									"type": "number",
+									"format": "double"
+								},
+								"createdAt": {
+									"type": "string"
+								},
+								"value": {
 									"type": "number",
 									"format": "double"
 								},
 								"date": {
 									"type": "string"
+								},
+								"type": {
+									"type": "string",
+									"enum": [
+										"MONEY",
+										"AIRMILES"
+									]
+								},
+								"destination": {
+									"type": "string"
+								},
+								"origin": {
+									"type": "string"
+								},
+								"_id": {
+									"type": "string"
 								}
 							},
 							"required": [
-								"price",
-								"date"
+								"__v",
+								"createdAt",
+								"value",
+								"date",
+								"type",
+								"destination",
+								"origin",
+								"_id"
 							],
 							"type": "object"
 						},
 						"type": "array"
-					},
-					"destination": {
-						"type": "string"
-					},
-					"origin": {
-						"type": "string"
 					}
 				},
 				"required": [
-					"records",
-					"destination",
-					"origin"
+					"results"
 				],
-				"type": "object"
+				"type": "object",
+				"additionalProperties": false
 			},
 			"CreateRadarType": {
 				"properties": {
@@ -1487,60 +1509,120 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"DefaultSelection_Prisma._36_LocationPayload_": {
+			"IListLocationResponse": {
 				"properties": {
-					"cordinateLat": {
-						"type": "number",
-						"format": "double"
+					"data": {
+						"items": {
+							"properties": {
+								"navigation": {
+									"properties": {
+										"relevantHotelParams": {
+											"properties": {
+												"localizedName": {
+													"type": "string"
+												},
+												"entityType": {
+													"type": "string"
+												},
+												"entityId": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"localizedName",
+												"entityType",
+												"entityId"
+											],
+											"type": "object"
+										},
+										"relevantFlightParams": {
+											"properties": {
+												"localizedName": {
+													"type": "string"
+												},
+												"flightPlaceType": {
+													"type": "string"
+												},
+												"entityId": {
+													"type": "string"
+												},
+												"skyId": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"localizedName",
+												"flightPlaceType",
+												"entityId",
+												"skyId"
+											],
+											"type": "object"
+										},
+										"localizedName": {
+											"type": "string"
+										},
+										"entityType": {
+											"type": "string"
+										},
+										"entityId": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"relevantHotelParams",
+										"relevantFlightParams",
+										"localizedName",
+										"entityType",
+										"entityId"
+									],
+									"type": "object"
+								},
+								"presentation": {
+									"properties": {
+										"id": {
+											"type": "string"
+										},
+										"subtitle": {
+											"type": "string"
+										},
+										"suggestionTitle": {
+											"type": "string"
+										},
+										"title": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"id",
+										"subtitle",
+										"suggestionTitle",
+										"title"
+									],
+									"type": "object"
+								}
+							},
+							"required": [
+								"navigation",
+								"presentation"
+							],
+							"type": "object"
+						},
+						"type": "array"
 					},
-					"cordinateLon": {
-						"type": "number",
-						"format": "double"
+					"status": {
+						"type": "boolean"
 					},
-					"type": {
-						"type": "string"
-					},
-					"timezone": {
-						"type": "string"
-					},
-					"iata": {
-						"type": "string"
-					},
-					"city": {
-						"type": "string"
-					},
-					"country": {
-						"type": "string"
-					},
-					"createdAt": {
-						"type": "string",
-						"format": "date-time"
-					},
-					"id": {
-						"type": "number",
-						"format": "double"
-					},
-					"name": {
+					"message": {
 						"type": "string"
 					}
 				},
 				"required": [
-					"cordinateLat",
-					"cordinateLon",
-					"type",
-					"timezone",
-					"iata",
-					"city",
-					"country",
-					"createdAt",
-					"id",
-					"name"
+					"data",
+					"status",
+					"message"
 				],
-				"type": "object"
-			},
-			"Location": {
-				"$ref": "#/components/schemas/DefaultSelection_Prisma._36_LocationPayload_",
-				"description": "Model Location"
+				"type": "object",
+				"additionalProperties": false
 			},
 			"ListLocationType": {
 				"properties": {
@@ -3671,7 +3753,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/GetRadarFlightsResponse"
+									"$ref": "#/components/schemas/ListRoutineResultResponse"
 								}
 							}
 						}
@@ -4397,10 +4479,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/Location"
-									},
-									"type": "array"
+									"$ref": "#/components/schemas/IListLocationResponse"
 								}
 							}
 						}

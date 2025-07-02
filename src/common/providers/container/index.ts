@@ -16,6 +16,9 @@ import LocalStorageProvider from '@common/providers/StorageProvider/implementati
 import IRadarRoutineProvider from '@common/providers/RadarRoutineProvider/repositories/IRadarRoutineProvider';
 import RadarRoutineProvider from '@common/providers/RadarRoutineProvider/implementations/RadarRoutineProvider';
 
+import IFlightScraperSkyProvider from '@common/providers/FlightScraperSkyProvider/repositories/IFlightScraperSkyProvider';
+import FlightScraperSkyProvider from '@common/providers/FlightScraperSkyProvider/implementations/FlightScraperSkyProvider';
+
 const ProviderContainer = new Container();
 
 ProviderContainer.bind<ISkyScannerProvider>(ProviderTypes.SkyScannerProvider).to(SkyScannerProvider);
@@ -23,5 +26,6 @@ ProviderContainer.bind<IAmadeusProvider>(ProviderTypes.AmadeusProvider).to(Amade
 ProviderContainer.bind<ISeatsAeroProvider>(ProviderTypes.SeatsAeroProvider).to(SeatsAeroProvider);
 ProviderContainer.bind<IStorageProvider>(ProviderTypes.LocalStorageProvider).to(LocalStorageProvider);
 ProviderContainer.bind<IRadarRoutineProvider>(ProviderTypes.RadarRoutineProvider).to(RadarRoutineProvider);
+ProviderContainer.bind<IFlightScraperSkyProvider>(ProviderTypes.FlightScraperSkyProvider).to(FlightScraperSkyProvider);
 
 export default ProviderContainer;

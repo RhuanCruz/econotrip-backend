@@ -4,6 +4,7 @@ const ProviderTypes = {
   SeatsAeroProvider: Symbol('SeatsAeroProvider'),
   LocalStorageProvider: Symbol('LocalStorageProvider'),
   RadarRoutineProvider: Symbol('RadarRoutineProvider'),
+  FlightScraperSkyProvider: Symbol('FlightScraperSkyProvider'),
 };
 
 export default ProviderTypes;

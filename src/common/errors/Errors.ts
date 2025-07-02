@@ -169,6 +169,12 @@ const Errors = {
     code: 'RADAR_ROUTINE_RESULTS_NOT_LISTED',
     statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
   },
+  FLIGHT_SCRAPER_SKY_NOT_LIST_LOCATIONS: {
+    title: 'Flight screaper sky not list locations as expected',
+    detail: 'Flight screaper sky not list locations as expected',
+    code: 'FLIGHT_SCRAPER_SKY_NOT_LIST_LOCATIONS',
+    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+  },
 };
 
 export default Errors;

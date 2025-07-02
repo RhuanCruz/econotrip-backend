@@ -52,6 +52,10 @@ const ConfigSchema = Zod.object({
   radarRoutines: Zod.object({
     url: Zod.string(),
   }),
+  flightScraperSky: Zod.object({
+    url: Zod.string(),
+    apiKey: Zod.string(),
+  }),
 });
 
 export default ConfigSchema;

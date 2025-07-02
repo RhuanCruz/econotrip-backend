@@ -52,6 +52,10 @@ const Config = ConfigSchema.parse({
   radarRoutines: {
     url: process.env.RADAR_ROUTINE_URL,
   },
+  flightScraperSky: {
+    url: process.env.FLIGHT_SCRAPER_SKY_URL,
+    apiKey: process.env.FLIGHT_SCRAPER_SKY_API_KEY,
+  },
 });
 
 export default Config;
