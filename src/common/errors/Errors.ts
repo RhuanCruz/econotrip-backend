@@ -175,6 +175,18 @@ const Errors = {
     code: 'FLIGHT_SCRAPER_SKY_NOT_LIST_LOCATIONS',
     statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
   },
+  FLIGHT_SCRAPER_SKY_NOT_SEARCH_ONE_WAY: {
+    title: 'Flight screaper sky not list one way flights as expected',
+    detail: 'Flight screaper sky not list one way flights as expected',
+    code: 'FLIGHT_SCRAPER_SKY_NOT_SEARCH_ONE_WAY',
+    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+  },
+  FLIGHT_SCRAPER_SKY_NOT_SEARCH_DETAIL: {
+    title: 'Flight screaper sky not get flight details as expected',
+    detail: 'Flight screaper sky not get flight details as expected',
+    code: 'FLIGHT_SCRAPER_SKY_NOT_SEARCH_DETAIL',
+    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+  },
 };
 
 export default Errors;

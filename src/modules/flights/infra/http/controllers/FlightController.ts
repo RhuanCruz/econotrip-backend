@@ -10,6 +10,8 @@ import { SearchFlightsByMileageService, SearchFlightsByMileageSchema } from '@sr
 import { SearchMileageProgramsService, SearchMileageProgramsSchema } from '@src/modules/flights/useCases/SearchMileagePrograms';
 import { GetHomeOffersService } from '@src/modules/flights/useCases/GetHomeOffers';
 import { GetTripByMileageService } from '@src/modules/flights/useCases/GetTripsByMileage';
+import { SearchFlightSchema, SearchFlightService } from '@src/modules/flights/useCases/SearchFlight';
+import { SearchFlightDetailSchema, SearchFlightDetailService } from '@src/modules/flights/useCases/SearchFlightDetail';
 
 class FlightController {
   public async getOffersToHome(req: Request, res: Response): Promise<void> {
@@ -57,6 +59,24 @@ class FlightController {
     const { tripId } = req.params;
 
     const response = await AppContainer.resolve(GetTripByMileageService).execute(tripId);
+    res.status(StatusCodes.OK).json(response);
+  }
+
+  public async searchSkyScrapperFlight(req: Request, res: Response): Promise<void> {
+    const data = await SearchFlightSchema.parseAsync(req.body).catch((err) => {
+      throw ParseZodError(err);
+    });
+
+    const response = await AppContainer.resolve(SearchFlightService).execute(data);
+    res.status(StatusCodes.OK).json(response);
+  }
+
+  public async searchSkyScrapperFlightDetail(req: Request, res: Response): Promise<void> {
+    const data = await SearchFlightDetailSchema.parseAsync(req.body).catch((err) => {
+      throw ParseZodError(err);
+    });
+
+    const response = await AppContainer.resolve(SearchFlightDetailService).execute(data);
     res.status(StatusCodes.OK).json(response);
   }
 }

@@ -41,4 +41,16 @@ flightsRoutes.post(
   flightsController.getTripsByMileage,
 );
 
+flightsRoutes.post(
+  '/skyscrapper/search',
+  AuthenticationMiddleware('OPTIONAL'),
+  flightsController.searchSkyScrapperFlight,
+);
+
+flightsRoutes.post(
+  '/skyscrapper/search/detail',
+  AuthenticationMiddleware('OPTIONAL'),
+  flightsController.searchSkyScrapperFlightDetail,
+);
+
 export default flightsRoutes;

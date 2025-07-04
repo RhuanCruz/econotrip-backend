@@ -2993,6 +2993,1527 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"ISearchDetailResponse": {
+				"properties": {
+					"data": {
+						"properties": {
+							"bookingSessionId": {
+								"type": "string"
+							},
+							"pollingCompleted": {
+								"type": "boolean"
+							},
+							"itinerary": {
+								"properties": {
+									"transferProtectionDetails": {
+										"properties": {
+											"urlTitle": {
+												"type": "string"
+											},
+											"url": {
+												"type": "string"
+											},
+											"body": {
+												"type": "string"
+											},
+											"title": {
+												"type": "string"
+											}
+										},
+										"required": [
+											"urlTitle",
+											"url",
+											"body",
+											"title"
+										],
+										"type": "object"
+									},
+									"flexibleTicketPolicies": {
+										"items": {},
+										"type": "array"
+									},
+									"operatingCarrierSafetyAttributes": {
+										"items": {
+											"properties": {
+												"safetyUrl": {
+													"type": "string",
+													"nullable": true
+												},
+												"foodServiceChanges": {
+													"type": "boolean",
+													"nullable": true
+												},
+												"cleaningPacksProvided": {
+													"type": "boolean",
+													"nullable": true
+												},
+												"attendantsWearPPE": {
+													"type": "boolean",
+													"nullable": true
+												},
+												"aircraftDeepCleanedDaily": {
+													"type": "boolean",
+													"nullable": true
+												},
+												"faceMasksCompulsory": {
+													"type": "boolean",
+													"nullable": true
+												},
+												"carrierName": {
+													"type": "string"
+												},
+												"carrierID": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"safetyUrl",
+												"foodServiceChanges",
+												"cleaningPacksProvided",
+												"attendantsWearPPE",
+												"aircraftDeepCleanedDaily",
+												"faceMasksCompulsory",
+												"carrierName",
+												"carrierID"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"destinationImage": {
+										"type": "string"
+									},
+									"isTransferRequired": {
+										"type": "boolean"
+									},
+									"pricingOptions": {
+										"items": {
+											"properties": {
+												"id": {
+													"type": "string"
+												},
+												"fare": {
+													"properties": {
+														"leg_details": {
+															"items": {},
+															"type": "array"
+														}
+													},
+													"required": [
+														"leg_details"
+													],
+													"type": "object"
+												},
+												"totalPrice": {
+													"type": "number",
+													"format": "double"
+												},
+												"agents": {
+													"items": {
+														"properties": {
+															"quoteAge": {
+																"type": "number",
+																"format": "double"
+															},
+															"isDirectDBookUrl": {
+																"type": "boolean"
+															},
+															"transferProtection": {
+																"type": "string"
+															},
+															"segments": {
+																"items": {
+																	"properties": {
+																		"goodToKnowItems": {
+																			"items": {
+																				"properties": {
+																					"date": {
+																						"properties": {
+																							"position": {
+																								"type": "number",
+																								"format": "double"
+																							},
+																							"isHighlighted": {
+																								"type": "boolean"
+																							},
+																							"value": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"position",
+																							"isHighlighted",
+																							"value"
+																						],
+																						"type": "object"
+																					},
+																					"badge": {
+																						"properties": {
+																							"position": {
+																								"type": "number",
+																								"format": "double"
+																							},
+																							"isHighlighted": {
+																								"type": "boolean"
+																							},
+																							"value": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"position",
+																							"isHighlighted",
+																							"value"
+																						],
+																						"type": "object"
+																					},
+																					"body": {
+																						"properties": {
+																							"position": {
+																								"type": "number",
+																								"format": "double"
+																							},
+																							"isHighlighted": {
+																								"type": "boolean"
+																							},
+																							"value": {
+																								"type": "string"
+																							}
+																						},
+																						"required": [
+																							"position",
+																							"isHighlighted",
+																							"value"
+																						],
+																						"type": "object"
+																					},
+																					"icon": {
+																						"type": "string"
+																					}
+																				},
+																				"required": [
+																					"body",
+																					"icon"
+																				],
+																				"type": "object"
+																			},
+																			"type": "array"
+																		},
+																		"operatingCarrier": {
+																			"properties": {
+																				"brandColor": {
+																					"type": "string"
+																				},
+																				"altId": {
+																					"type": "string"
+																				},
+																				"logo": {
+																					"type": "string"
+																				},
+																				"displayCodeType": {
+																					"type": "string"
+																				},
+																				"displayCode": {
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"id": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"altId",
+																				"logo",
+																				"displayCodeType",
+																				"displayCode",
+																				"name",
+																				"id"
+																			],
+																			"type": "object"
+																		},
+																		"marketingCarrier": {
+																			"properties": {
+																				"brandColor": {
+																					"type": "string"
+																				},
+																				"altId": {
+																					"type": "string"
+																				},
+																				"logo": {
+																					"type": "string"
+																				},
+																				"displayCodeType": {
+																					"type": "string"
+																				},
+																				"displayCode": {
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"id": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"altId",
+																				"logo",
+																				"displayCodeType",
+																				"displayCode",
+																				"name",
+																				"id"
+																			],
+																			"type": "object"
+																		},
+																		"arrival": {
+																			"type": "string"
+																		},
+																		"departure": {
+																			"type": "string"
+																		},
+																		"flightNumber": {
+																			"type": "string"
+																		},
+																		"dayChange": {
+																			"type": "number",
+																			"format": "double"
+																		},
+																		"duration": {
+																			"type": "number",
+																			"format": "double"
+																		},
+																		"destination": {
+																			"properties": {
+																				"city": {
+																					"type": "string"
+																				},
+																				"displayCode": {
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"id": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"city",
+																				"displayCode",
+																				"name",
+																				"id"
+																			],
+																			"type": "object"
+																		},
+																		"origin": {
+																			"properties": {
+																				"city": {
+																					"type": "string"
+																				},
+																				"displayCode": {
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"id": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"city",
+																				"displayCode",
+																				"name",
+																				"id"
+																			],
+																			"type": "object"
+																		},
+																		"id": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"goodToKnowItems",
+																		"operatingCarrier",
+																		"marketingCarrier",
+																		"arrival",
+																		"departure",
+																		"flightNumber",
+																		"dayChange",
+																		"duration",
+																		"destination",
+																		"origin",
+																		"id"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"updateStatus": {
+																"type": "string"
+															},
+															"rating": {
+																"properties": {
+																	"count": {
+																		"type": "number",
+																		"format": "double"
+																	},
+																	"value": {
+																		"type": "number",
+																		"format": "double"
+																	}
+																},
+																"required": [
+																	"count",
+																	"value"
+																],
+																"type": "object"
+															},
+															"price": {
+																"type": "number",
+																"format": "double"
+															},
+															"url": {
+																"type": "string"
+															},
+															"bookingProposition": {
+																"type": "string"
+															},
+															"isCarrier": {
+																"type": "boolean"
+															},
+															"name": {
+																"type": "string"
+															},
+															"id": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"quoteAge",
+															"isDirectDBookUrl",
+															"transferProtection",
+															"segments",
+															"updateStatus",
+															"rating",
+															"price",
+															"url",
+															"bookingProposition",
+															"isCarrier",
+															"name",
+															"id"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												}
+											},
+											"required": [
+												"id",
+												"fare",
+												"totalPrice",
+												"agents"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"legs": {
+										"items": {
+											"properties": {
+												"dayChange": {
+													"type": "number",
+													"format": "double"
+												},
+												"arrival": {
+													"type": "string"
+												},
+												"departure": {
+													"type": "string"
+												},
+												"stopCount": {
+													"type": "number",
+													"format": "double"
+												},
+												"duration": {
+													"type": "number",
+													"format": "double"
+												},
+												"layovers": {
+													"items": {
+														"properties": {
+															"duration": {
+																"type": "number",
+																"format": "double"
+															},
+															"destination": {
+																"properties": {
+																	"city": {
+																		"type": "string"
+																	},
+																	"displayCode": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"id": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"city",
+																	"displayCode",
+																	"name",
+																	"id"
+																],
+																"type": "object"
+															},
+															"origin": {
+																"properties": {
+																	"city": {
+																		"type": "string"
+																	},
+																	"displayCode": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"id": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"city",
+																	"displayCode",
+																	"name",
+																	"id"
+																],
+																"type": "object"
+															},
+															"segmentId": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"duration",
+															"destination",
+															"origin",
+															"segmentId"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"segments": {
+													"items": {
+														"properties": {
+															"goodToKnowItems": {
+																"items": {
+																	"properties": {
+																		"date": {
+																			"properties": {
+																				"position": {
+																					"type": "number",
+																					"format": "double"
+																				},
+																				"isHighlighted": {
+																					"type": "boolean"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"position",
+																				"isHighlighted",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"badge": {
+																			"properties": {
+																				"position": {
+																					"type": "number",
+																					"format": "double"
+																				},
+																				"isHighlighted": {
+																					"type": "boolean"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"position",
+																				"isHighlighted",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"body": {
+																			"properties": {
+																				"position": {
+																					"type": "number",
+																					"format": "double"
+																				},
+																				"isHighlighted": {
+																					"type": "boolean"
+																				},
+																				"value": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"position",
+																				"isHighlighted",
+																				"value"
+																			],
+																			"type": "object"
+																		},
+																		"icon": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"body",
+																		"icon"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															},
+															"operatingCarrier": {
+																"properties": {
+																	"brandColor": {
+																		"type": "string"
+																	},
+																	"altId": {
+																		"type": "string"
+																	},
+																	"logo": {
+																		"type": "string"
+																	},
+																	"displayCodeType": {
+																		"type": "string"
+																	},
+																	"displayCode": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"id": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"altId",
+																	"logo",
+																	"displayCodeType",
+																	"displayCode",
+																	"name",
+																	"id"
+																],
+																"type": "object"
+															},
+															"marketingCarrier": {
+																"properties": {
+																	"brandColor": {
+																		"type": "string"
+																	},
+																	"altId": {
+																		"type": "string"
+																	},
+																	"logo": {
+																		"type": "string"
+																	},
+																	"displayCodeType": {
+																		"type": "string"
+																	},
+																	"displayCode": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"id": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"altId",
+																	"logo",
+																	"displayCodeType",
+																	"displayCode",
+																	"name",
+																	"id"
+																],
+																"type": "object"
+															},
+															"arrival": {
+																"type": "string"
+															},
+															"departure": {
+																"type": "string"
+															},
+															"flightNumber": {
+																"type": "string"
+															},
+															"dayChange": {
+																"type": "number",
+																"format": "double"
+															},
+															"duration": {
+																"type": "number",
+																"format": "double"
+															},
+															"destination": {
+																"properties": {
+																	"city": {
+																		"type": "string"
+																	},
+																	"displayCode": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"id": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"city",
+																	"displayCode",
+																	"name",
+																	"id"
+																],
+																"type": "object"
+															},
+															"origin": {
+																"properties": {
+																	"city": {
+																		"type": "string"
+																	},
+																	"displayCode": {
+																		"type": "string"
+																	},
+																	"name": {
+																		"type": "string"
+																	},
+																	"id": {
+																		"type": "string"
+																	}
+																},
+																"required": [
+																	"city",
+																	"displayCode",
+																	"name",
+																	"id"
+																],
+																"type": "object"
+															},
+															"id": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"goodToKnowItems",
+															"operatingCarrier",
+															"marketingCarrier",
+															"arrival",
+															"departure",
+															"flightNumber",
+															"dayChange",
+															"duration",
+															"destination",
+															"origin",
+															"id"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"destination": {
+													"properties": {
+														"city": {
+															"type": "string"
+														},
+														"displayCode": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														},
+														"id": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"city",
+														"displayCode",
+														"name",
+														"id"
+													],
+													"type": "object"
+												},
+												"origin": {
+													"properties": {
+														"city": {
+															"type": "string"
+														},
+														"displayCode": {
+															"type": "string"
+														},
+														"name": {
+															"type": "string"
+														},
+														"id": {
+															"type": "string"
+														}
+													},
+													"required": [
+														"city",
+														"displayCode",
+														"name",
+														"id"
+													],
+													"type": "object"
+												},
+												"id": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"dayChange",
+												"arrival",
+												"departure",
+												"stopCount",
+												"duration",
+												"layovers",
+												"segments",
+												"destination",
+												"origin",
+												"id"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"id": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"transferProtectionDetails",
+									"flexibleTicketPolicies",
+									"operatingCarrierSafetyAttributes",
+									"destinationImage",
+									"isTransferRequired",
+									"pricingOptions",
+									"legs",
+									"id"
+								],
+								"type": "object"
+							}
+						},
+						"required": [
+							"bookingSessionId",
+							"pollingCompleted",
+							"itinerary"
+						],
+						"type": "object"
+					},
+					"status": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"data",
+					"status",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SearchFlightDetailType": {
+				"properties": {
+					"token": {
+						"type": "string"
+					},
+					"itineraryId": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"token",
+					"itineraryId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Record_string.any_": {
+				"properties": {},
+				"additionalProperties": {},
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"ISearchFlightResponse": {
+				"properties": {
+					"data": {
+						"properties": {
+							"token": {
+								"type": "string"
+							},
+							"destinationImageUrl": {
+								"type": "string"
+							},
+							"flightsSessionId": {
+								"type": "string"
+							},
+							"filterStats": {
+								"properties": {
+									"stopPrices": {
+										"properties": {
+											"twoOrMore": {
+												"properties": {
+													"formattedPrice": {
+														"type": "string"
+													},
+													"isPresent": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"isPresent"
+												],
+												"type": "object"
+											},
+											"one": {
+												"properties": {
+													"formattedPrice": {
+														"type": "string"
+													},
+													"isPresent": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"isPresent"
+												],
+												"type": "object"
+											},
+											"direct": {
+												"properties": {
+													"isPresent": {
+														"type": "boolean"
+													}
+												},
+												"required": [
+													"isPresent"
+												],
+												"type": "object"
+											}
+										},
+										"required": [
+											"twoOrMore",
+											"one",
+											"direct"
+										],
+										"type": "object"
+									},
+									"carriers": {
+										"items": {
+											"properties": {
+												"name": {
+													"type": "string"
+												},
+												"logoUrl": {
+													"type": "string"
+												},
+												"id": {
+													"type": "number",
+													"format": "double"
+												}
+											},
+											"required": [
+												"name",
+												"logoUrl",
+												"id"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"airports": {
+										"items": {
+											"properties": {
+												"airports": {
+													"items": {
+														"properties": {
+															"name": {
+																"type": "string"
+															},
+															"id": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"name",
+															"id"
+														],
+														"type": "object"
+													},
+													"type": "array"
+												},
+												"city": {
+													"type": "string"
+												}
+											},
+											"required": [
+												"airports",
+												"city"
+											],
+											"type": "object"
+										},
+										"type": "array"
+									},
+									"duration": {
+										"properties": {
+											"multiCityMax": {
+												"type": "number",
+												"format": "double"
+											},
+											"multiCityMin": {
+												"type": "number",
+												"format": "double"
+											},
+											"max": {
+												"type": "number",
+												"format": "double"
+											},
+											"min": {
+												"type": "number",
+												"format": "double"
+											}
+										},
+										"required": [
+											"multiCityMax",
+											"multiCityMin",
+											"max",
+											"min"
+										],
+										"type": "object"
+									}
+								},
+								"required": [
+									"stopPrices",
+									"carriers",
+									"airports",
+									"duration"
+								],
+								"type": "object"
+							},
+							"messages": {
+								"items": {},
+								"type": "array"
+							},
+							"itineraries": {
+								"items": {
+									"properties": {
+										"score": {
+											"type": "number",
+											"format": "double"
+										},
+										"hasFlexibleOptions": {
+											"type": "boolean"
+										},
+										"isMashUp": {
+											"type": "boolean"
+										},
+										"tags": {
+											"items": {
+												"type": "string"
+											},
+											"type": "array"
+										},
+										"fareAttributes": {
+											"$ref": "#/components/schemas/Record_string.any_"
+										},
+										"farePolicy": {
+											"properties": {
+												"isPartiallyRefundable": {
+													"type": "boolean"
+												},
+												"isCancellationAllowed": {
+													"type": "boolean"
+												},
+												"isPartiallyChangeable": {
+													"type": "boolean"
+												},
+												"isChangeAllowed": {
+													"type": "boolean"
+												}
+											},
+											"required": [
+												"isPartiallyRefundable",
+												"isCancellationAllowed",
+												"isPartiallyChangeable",
+												"isChangeAllowed"
+											],
+											"type": "object"
+										},
+										"isProtectedSelfTransfer": {
+											"type": "boolean"
+										},
+										"isSelfTransfer": {
+											"type": "boolean"
+										},
+										"legs": {
+											"items": {
+												"properties": {
+													"segments": {
+														"items": {
+															"properties": {
+																"operatingCarrier": {
+																	"properties": {
+																		"displayCode": {
+																			"type": "string"
+																		},
+																		"allianceId": {
+																			"type": "number",
+																			"format": "double"
+																		},
+																		"alternateId": {
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"id": {
+																			"type": "number",
+																			"format": "double"
+																		}
+																	},
+																	"required": [
+																		"displayCode",
+																		"allianceId",
+																		"alternateId",
+																		"name",
+																		"id"
+																	],
+																	"type": "object"
+																},
+																"marketingCarrier": {
+																	"properties": {
+																		"displayCode": {
+																			"type": "string"
+																		},
+																		"allianceId": {
+																			"type": "number",
+																			"format": "double"
+																		},
+																		"alternateId": {
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"id": {
+																			"type": "number",
+																			"format": "double"
+																		}
+																	},
+																	"required": [
+																		"displayCode",
+																		"allianceId",
+																		"alternateId",
+																		"name",
+																		"id"
+																	],
+																	"type": "object"
+																},
+																"flightNumber": {
+																	"type": "string"
+																},
+																"durationInMinutes": {
+																	"type": "number",
+																	"format": "double"
+																},
+																"arrival": {
+																	"type": "string"
+																},
+																"departure": {
+																	"type": "string"
+																},
+																"destination": {
+																	"properties": {
+																		"type": {
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"parent": {
+																			"properties": {
+																				"type": {
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"displayCode": {
+																					"type": "string"
+																				},
+																				"flightPlaceId": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"name",
+																				"displayCode",
+																				"flightPlaceId"
+																			],
+																			"type": "object"
+																		},
+																		"displayCode": {
+																			"type": "string"
+																		},
+																		"flightPlaceId": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"name",
+																		"displayCode",
+																		"flightPlaceId"
+																	],
+																	"type": "object"
+																},
+																"origin": {
+																	"properties": {
+																		"type": {
+																			"type": "string"
+																		},
+																		"name": {
+																			"type": "string"
+																		},
+																		"parent": {
+																			"properties": {
+																				"type": {
+																					"type": "string"
+																				},
+																				"name": {
+																					"type": "string"
+																				},
+																				"displayCode": {
+																					"type": "string"
+																				},
+																				"flightPlaceId": {
+																					"type": "string"
+																				}
+																			},
+																			"required": [
+																				"type",
+																				"name",
+																				"displayCode",
+																				"flightPlaceId"
+																			],
+																			"type": "object"
+																		},
+																		"displayCode": {
+																			"type": "string"
+																		},
+																		"flightPlaceId": {
+																			"type": "string"
+																		}
+																	},
+																	"required": [
+																		"type",
+																		"name",
+																		"displayCode",
+																		"flightPlaceId"
+																	],
+																	"type": "object"
+																},
+																"id": {
+																	"type": "string"
+																}
+															},
+															"required": [
+																"operatingCarrier",
+																"marketingCarrier",
+																"flightNumber",
+																"durationInMinutes",
+																"arrival",
+																"departure",
+																"destination",
+																"origin",
+																"id"
+															],
+															"type": "object"
+														},
+														"type": "array"
+													},
+													"carriers": {
+														"properties": {
+															"operationType": {
+																"type": "string"
+															},
+															"marketing": {
+																"items": {
+																	"properties": {
+																		"name": {
+																			"type": "string"
+																		},
+																		"logoUrl": {
+																			"type": "string"
+																		},
+																		"id": {
+																			"type": "number",
+																			"format": "double"
+																		}
+																	},
+																	"required": [
+																		"name",
+																		"logoUrl",
+																		"id"
+																	],
+																	"type": "object"
+																},
+																"type": "array"
+															}
+														},
+														"required": [
+															"operationType",
+															"marketing"
+														],
+														"type": "object"
+													},
+													"timeDeltaInDays": {
+														"type": "number",
+														"format": "double"
+													},
+													"arrival": {
+														"type": "string"
+													},
+													"departure": {
+														"type": "string"
+													},
+													"isSmallestStops": {
+														"type": "boolean"
+													},
+													"stopCount": {
+														"type": "number",
+														"format": "double"
+													},
+													"durationInMinutes": {
+														"type": "number",
+														"format": "double"
+													},
+													"destination": {
+														"properties": {
+															"isHighlighted": {
+																"type": "boolean"
+															},
+															"country": {
+																"type": "string"
+															},
+															"city": {
+																"type": "string"
+															},
+															"displayCode": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															},
+															"id": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"isHighlighted",
+															"country",
+															"city",
+															"displayCode",
+															"name",
+															"id"
+														],
+														"type": "object"
+													},
+													"origin": {
+														"properties": {
+															"isHighlighted": {
+																"type": "boolean"
+															},
+															"country": {
+																"type": "string"
+															},
+															"city": {
+																"type": "string"
+															},
+															"displayCode": {
+																"type": "string"
+															},
+															"name": {
+																"type": "string"
+															},
+															"id": {
+																"type": "string"
+															}
+														},
+														"required": [
+															"isHighlighted",
+															"country",
+															"city",
+															"displayCode",
+															"name",
+															"id"
+														],
+														"type": "object"
+													},
+													"id": {
+														"type": "string"
+													}
+												},
+												"required": [
+													"segments",
+													"carriers",
+													"timeDeltaInDays",
+													"arrival",
+													"departure",
+													"isSmallestStops",
+													"stopCount",
+													"durationInMinutes",
+													"destination",
+													"origin",
+													"id"
+												],
+												"type": "object"
+											},
+											"type": "array"
+										},
+										"price": {
+											"properties": {
+												"pricingOptionId": {
+													"type": "string"
+												},
+												"formatted": {
+													"type": "string"
+												},
+												"raw": {
+													"type": "number",
+													"format": "double"
+												}
+											},
+											"required": [
+												"pricingOptionId",
+												"formatted",
+												"raw"
+											],
+											"type": "object"
+										},
+										"id": {
+											"type": "string"
+										}
+									},
+									"required": [
+										"score",
+										"hasFlexibleOptions",
+										"isMashUp",
+										"tags",
+										"fareAttributes",
+										"farePolicy",
+										"isProtectedSelfTransfer",
+										"isSelfTransfer",
+										"legs",
+										"price",
+										"id"
+									],
+									"type": "object"
+								},
+								"type": "array"
+							},
+							"context": {
+								"properties": {
+									"totalResults": {
+										"type": "number",
+										"format": "double"
+									},
+									"sessionId": {
+										"type": "string"
+									},
+									"status": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"totalResults",
+									"sessionId",
+									"status"
+								],
+								"type": "object"
+							}
+						},
+						"required": [
+							"token",
+							"destinationImageUrl",
+							"flightsSessionId",
+							"filterStats",
+							"messages",
+							"itineraries",
+							"context"
+						],
+						"type": "object"
+					},
+					"status": {
+						"type": "boolean"
+					},
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"data",
+					"status",
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SearchFlightType": {
+				"properties": {
+					"origin": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					},
+					"departure": {
+						"type": "string"
+					},
+					"return": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"origin",
+					"destination",
+					"departure"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"GetTripByMileageResponse": {
 				"properties": {
 					"carriers": {
@@ -4644,6 +6165,78 @@
 						"application/json": {
 							"schema": {
 								"$ref": "#/components/schemas/SearchFlightOfferDetailType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/flights/skyscrapper/search/detail": {
+			"post": {
+				"operationId": "search_flight_detail",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ISearchDetailResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Flight"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SearchFlightDetailType"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/flights/skyscrapper/search": {
+			"post": {
+				"operationId": "search_flight",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ISearchFlightResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Flight"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SearchFlightType"
 							}
 						}
 					}
