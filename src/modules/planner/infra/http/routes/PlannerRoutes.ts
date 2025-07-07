@@ -41,6 +41,12 @@ plannerRoutes.patch(
   plannerController.update,
 );
 
+plannerRoutes.patch(
+  '/current/cancel',
+  AuthenticationMiddleware(),
+  plannerController.cancelCurrent,
+);
+
 plannerRoutes.delete(
   '/:plannerId',
   AuthenticationMiddleware(),

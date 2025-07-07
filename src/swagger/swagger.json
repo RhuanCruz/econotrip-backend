@@ -5571,6 +5571,35 @@
 				}
 			}
 		},
+		"/planners/{plannerId}/cancel": {
+			"delete": {
+				"operationId": "cancel_current_planner",
+				"responses": {
+					"204": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"Planner"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "plannerId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
 		"/roles/{roleId}": {
 			"patch": {
 				"operationId": "update_role",

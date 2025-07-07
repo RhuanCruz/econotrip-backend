@@ -168,6 +168,8 @@ model Radar {
   end         DateTime
   origin      String   @db.VarChar(32)
   destination String   @db.VarChar(32)
+  value       Float?
+  type        String?  @db.VarChar(32)
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 

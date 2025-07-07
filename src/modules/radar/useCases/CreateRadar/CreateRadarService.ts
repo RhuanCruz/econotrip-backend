@@ -28,6 +28,8 @@ class CreateRadarService {
       end: data.end,
       origin: data.origin,
       destination: data.destination,
+      type: data.type,
+      value: data.value,
     });
 
     await this.radarRoutineProvider.create({
