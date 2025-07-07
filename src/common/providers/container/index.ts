@@ -19,6 +19,9 @@ import RadarRoutineProvider from '@common/providers/RadarRoutineProvider/impleme
 import IFlightScraperSkyProvider from '@common/providers/FlightScraperSkyProvider/repositories/IFlightScraperSkyProvider';
 import FlightScraperSkyProvider from '@common/providers/FlightScraperSkyProvider/implementations/FlightScraperSkyProvider';
 
+import IEmailProvider from '@common/providers/EmailProvider/repositories/IEmailProvider';
+import EmailProvider from '@common/providers/EmailProvider/implementations/EmailProvider';
+
 const ProviderContainer = new Container();
 
 ProviderContainer.bind<ISkyScannerProvider>(ProviderTypes.SkyScannerProvider).to(SkyScannerProvider);
@@ -27,5 +30,6 @@ ProviderContainer.bind<ISeatsAeroProvider>(ProviderTypes.SeatsAeroProvider).to(S
 ProviderContainer.bind<IStorageProvider>(ProviderTypes.LocalStorageProvider).to(LocalStorageProvider);
 ProviderContainer.bind<IRadarRoutineProvider>(ProviderTypes.RadarRoutineProvider).to(RadarRoutineProvider);
 ProviderContainer.bind<IFlightScraperSkyProvider>(ProviderTypes.FlightScraperSkyProvider).to(FlightScraperSkyProvider);
+ProviderContainer.bind<IEmailProvider>(ProviderTypes.EmailProvider).to(EmailProvider);
 
 export default ProviderContainer;

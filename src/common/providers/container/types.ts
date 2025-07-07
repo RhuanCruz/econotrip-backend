@@ -5,6 +5,7 @@ const ProviderTypes = {
   LocalStorageProvider: Symbol('LocalStorageProvider'),
   RadarRoutineProvider: Symbol('RadarRoutineProvider'),
   FlightScraperSkyProvider: Symbol('FlightScraperSkyProvider'),
+  EmailProvider: Symbol('EmailProvider'),
 };
 
 export default ProviderTypes;

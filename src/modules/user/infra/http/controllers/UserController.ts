@@ -5,6 +5,8 @@ import { AppContainer } from '@src/common/container';
 import { ParseZodError } from '@src/common/errors';
 
 import { CheckUserExistenceService, CheckUserExistenceSchema } from '@src/modules/user/useCases/CheckUserExistence';
+import { ForgotPasswordService, ForgotPasswordSchema } from '@src/modules/user/useCases/ForgotPassword';
+import { ResetPasswordService, ResetPasswordSchema } from '@src/modules/user/useCases/ResetPassword';
 import { CreateUserService, CreateUserSchema } from '@src/modules/user/useCases/CreateUser';
 import { UpdateUserService, UpdateUserSchema } from '@src/modules/user/useCases/UpdateUser';
 import { ListUserService, ListUserSchema } from '@src/modules/user/useCases/ListUser';
@@ -62,6 +64,24 @@ class UserController {
 
     const response = await AppContainer.resolve(CheckUserExistenceService).execute(data);
     res.status(StatusCodes.OK).json(response);
+  }
+
+  public async forgotPassword(req: Request, res: Response): Promise<void> {
+    const data = await ForgotPasswordSchema.parseAsync(req.body).catch((err) => {
+      throw ParseZodError(err);
+    });
+
+    await AppContainer.resolve(ForgotPasswordService).execute(data);
+    res.status(StatusCodes.NO_CONTENT).json({});
+  }
+
+  public async resetPassword(req: Request, res: Response): Promise<void> {
+    const data = await ResetPasswordSchema.parseAsync(req.body).catch((err) => {
+      throw ParseZodError(err);
+    });
+
+    await AppContainer.resolve(ResetPasswordService).execute(data);
+    res.status(StatusCodes.NO_CONTENT).json({});
   }
 }
 

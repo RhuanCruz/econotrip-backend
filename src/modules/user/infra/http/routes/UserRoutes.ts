@@ -25,6 +25,16 @@ userRoutes.post(
   userController.checkExistence,
 );
 
+userRoutes.post(
+  '/forgot-password',
+  userController.forgotPassword,
+);
+
+userRoutes.post(
+  '/reset-password',
+  userController.resetPassword,
+);
+
 userRoutes.get(
   '/:userId',
   AuthenticationMiddleware(),

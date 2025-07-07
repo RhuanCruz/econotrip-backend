@@ -187,6 +187,12 @@ const Errors = {
     code: 'FLIGHT_SCRAPER_SKY_NOT_SEARCH_DETAIL',
     statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
   },
+  EMAIL_COULD_NOT_SEND: {
+    title: 'Could not send e-mail',
+    detail: 'Could not send e-mail',
+    code: 'EMAIL_COULD_NOT_SEND',
+    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+  },
 };
 
 export default Errors;

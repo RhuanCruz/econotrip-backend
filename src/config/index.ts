@@ -56,6 +56,25 @@ const Config = ConfigSchema.parse({
     url: process.env.FLIGHT_SCRAPER_SKY_URL,
     apiKey: process.env.FLIGHT_SCRAPER_SKY_API_KEY,
   },
+  email: {
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
+    secure: process.env.EMAIL_TLS === 'true',
+    name: process.env.EMAIL_NAME,
+    from: process.env.EMAIL_FROM,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD,
+    },
+    authMethod: process.env.EMAIL_AUTHENTICATION,
+    tls: {
+      rejectUnauthorized: false,
+      ciphers: 'HIGH:MEDIUM:!aNULL:!eNULL:@STRENGTH:!DH:!kEDH',
+    },
+  },
+  links: {
+    forgotPassword: process.env.LINK_FORGOT_PASSWORD,
+  },
 });
 
 export default Config;

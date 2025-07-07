@@ -56,6 +56,25 @@ const ConfigSchema = Zod.object({
     url: Zod.string(),
     apiKey: Zod.string(),
   }),
+  email: Zod.object({
+    host: Zod.string(),
+    port: Zod.string().transform(Number),
+    secure: Zod.boolean(),
+    name: Zod.string(),
+    from: Zod.string(),
+    auth: Zod.object({
+      user: Zod.string(),
+      pass: Zod.string(),
+    }),
+    authMethod: Zod.string(),
+    tls: Zod.object({
+      rejectUnauthorized: Zod.boolean(),
+      ciphers: Zod.string().default('HIGH:MEDIUM:!aNULL:!eNULL:@STRENGTH:!DH:!kEDH'),
+    }),
+  }),
+  links: Zod.object({
+    forgotPassword: Zod.string(),
+  }),
 });
 
 export default ConfigSchema;

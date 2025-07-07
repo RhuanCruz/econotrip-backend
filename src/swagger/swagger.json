@@ -224,6 +224,18 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"ForgotPasswordType": {
+				"properties": {
+					"email": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"CreateUserType": {
 				"properties": {
 					"login": {
@@ -322,6 +334,13 @@
 			},
 			"DefaultSelection_Prisma._36_RadarPayload_": {
 				"properties": {
+					"type": {
+						"type": "string"
+					},
+					"value": {
+						"type": "number",
+						"format": "double"
+					},
 					"destination": {
 						"type": "string"
 					},
@@ -354,6 +373,8 @@
 					}
 				},
 				"required": [
+					"type",
+					"value",
 					"destination",
 					"origin",
 					"end",
@@ -552,13 +573,26 @@
 					},
 					"destination": {
 						"type": "string"
+					},
+					"value": {
+						"type": "number",
+						"format": "double"
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"MONEY",
+							"AIRMILES"
+						]
 					}
 				},
 				"required": [
 					"start",
 					"end",
 					"origin",
-					"destination"
+					"destination",
+					"value",
+					"type"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -5057,6 +5091,35 @@
 				}
 			}
 		},
+		"/users/forgot-password": {
+			"post": {
+				"operationId": "forgot_password",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ForgotPasswordType"
+							}
+						}
+					}
+				}
+			}
+		},
 		"/users": {
 			"post": {
 				"operationId": "create_user",
@@ -5571,7 +5634,7 @@
 				}
 			}
 		},
-		"/planners/{plannerId}/cancel": {
+		"/planners/current/cancel": {
 			"delete": {
 				"operationId": "cancel_current_planner",
 				"responses": {
@@ -5587,17 +5650,7 @@
 						"BearerAuth": []
 					}
 				],
-				"parameters": [
-					{
-						"in": "path",
-						"name": "plannerId",
-						"required": true,
-						"schema": {
-							"format": "double",
-							"type": "number"
-						}
-					}
-				]
+				"parameters": []
 			}
 		},
 		"/roles/{roleId}": {
