@@ -67,6 +67,7 @@ const ConfigSchema = Zod.object({
       pass: Zod.string(),
     }),
     authMethod: Zod.string(),
+    requireTLS: Zod.boolean(),
     tls: Zod.object({
       rejectUnauthorized: Zod.boolean(),
       ciphers: Zod.string().default('HIGH:MEDIUM:!aNULL:!eNULL:@STRENGTH:!DH:!kEDH'),

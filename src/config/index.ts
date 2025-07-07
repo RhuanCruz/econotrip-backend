@@ -67,9 +67,9 @@ const Config = ConfigSchema.parse({
       pass: process.env.EMAIL_PASSWORD,
     },
     authMethod: process.env.EMAIL_AUTHENTICATION,
+    requireTLS: true,
     tls: {
       rejectUnauthorized: false,
-      ciphers: 'HIGH:MEDIUM:!aNULL:!eNULL:@STRENGTH:!DH:!kEDH',
     },
   },
   links: {
