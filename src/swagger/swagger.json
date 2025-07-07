@@ -39,6 +39,26 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"ResetPasswordType": {
+				"properties": {
+					"token": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"confirmPassword": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"token",
+					"password",
+					"confirmPassword"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"DefaultSelection_Prisma._36_UserPayload_": {
 				"properties": {
 					"updatedAt": {
@@ -5053,6 +5073,35 @@
 						}
 					}
 				]
+			}
+		},
+		"/users/reset-password": {
+			"post": {
+				"operationId": "reset_password",
+				"responses": {
+					"204": {
+						"description": "No content"
+					}
+				},
+				"tags": [
+					"User"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/ResetPasswordType"
+							}
+						}
+					}
+				}
 			}
 		},
 		"/users/list": {
