@@ -41,6 +41,8 @@ class EmailProvider implements IEmailProvider {
       await this.transporter.sendMail(mailOptions);
     } catch (err: any) {
       console.log(`ERROR SENDING EMAIL: ${err.message}`);
+      console.log(mailOptions);
+      console.log(Config.email);
       throw AppError.createAppError(Errors.EMAIL_COULD_NOT_SEND);
     }
   }
