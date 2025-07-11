@@ -9,6 +9,7 @@ import { CreatePlannerService, CreatePlannerSchema } from '@src/modules/planner/
 import { UpdatePlannerService, UpdatePlannerSchema } from '@src/modules/planner/useCases/UpdatePlanner';
 import { ListPlannerService, ListPlannerSchema } from '@src/modules/planner/useCases/ListPlanner';
 import { CancelCurrentPlannerService } from '@src/modules/planner/useCases/CancelCurrentPlanner';
+import { FinishCurrentPlannerService } from '@src/modules/planner/useCases/FinishCurrentPlanner';
 import { DeletePlannerService } from '@src/modules/planner/useCases/DeletePlanner';
 import { GetCurrentPlannerService } from '@src/modules/planner/useCases/GetCurrentPlanner';
 import { GetPlannerService } from '@src/modules/planner/useCases/GetPlanner';
@@ -57,6 +58,11 @@ class PlannerController {
 
   public async cancelCurrent(req: Request, res: Response): Promise<void> {
     await AppContainer.resolve(CancelCurrentPlannerService).execute(req);
+    res.status(StatusCodes.NO_CONTENT).json({});
+  }
+
+  public async finishCurrent(req: Request, res: Response): Promise<void> {
+    await AppContainer.resolve(FinishCurrentPlannerService).execute(req);
     res.status(StatusCodes.NO_CONTENT).json({});
   }
 

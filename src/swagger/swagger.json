@@ -5647,6 +5647,25 @@
 				}
 			}
 		},
+		"/planners/current/finish": {
+			"delete": {
+				"operationId": "finish_current_planner",
+				"responses": {
+					"204": {
+						"description": ""
+					}
+				},
+				"tags": [
+					"Planner"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": []
+			}
+		},
 		"/planners": {
 			"post": {
 				"operationId": "create_planner",
