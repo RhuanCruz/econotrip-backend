@@ -14,7 +14,7 @@ class RadarRoutineProvider implements IRadarRoutineProvider {
 
   async create(data: ICreateRadarRoutineDTO): Promise<void> {
     await this.api.post('/routines', data)
-      .catch((err) => { console.log(err); throw AppError.createAppError(Errors.RADAR_ROUTINE_NOT_CREATED); });
+      .catch((err) => { console.log(err.cause); throw AppError.createAppError(Errors.RADAR_ROUTINE_NOT_CREATED); });
   }
 
   async delete(data: IDeleteRadarRoutineDTO): Promise<void> {

@@ -35,7 +35,7 @@ class CreateRadarService {
     await this.radarRoutineProvider.create({
       origin: data.origin,
       destination: data.destination,
-      type: 'MONEY',
+      type: data.type,
     }).catch(() => {
       console.error('Could not create radar routine');
     });

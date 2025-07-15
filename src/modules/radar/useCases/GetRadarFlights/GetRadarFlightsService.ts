@@ -26,7 +26,7 @@ class GetRadarFlightsService {
     const response = await this.radarRoutineProvider.listResults({
       origin: radar.origin,
       destination: radar.destination,
-      type: 'MONEY',
+      type: radar.type as 'MONEY' | 'AIRMILES',
       periodStart: radar.start.toLocaleDateString('en-CA'),
       periodEnd: radar.end.toLocaleDateString('en-CA'),
     });
