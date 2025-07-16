@@ -38,21 +38,21 @@ userRoutes.post(
 userRoutes.get(
   '/:userId',
   AuthenticationMiddleware(),
-  AccessControlMiddleware(['GET_USER_ANY', 'GET_USER_OWN']),
+  // AccessControlMiddleware(['GET_USER_ANY', 'GET_USER_OWN']),
   userController.getById,
 );
 
 userRoutes.patch(
   '/:userId',
   AuthenticationMiddleware(),
-  AccessControlMiddleware(['UPDATE_USER_ANY', 'UPDATE_USER_OWN']),
+  // AccessControlMiddleware(['UPDATE_USER_ANY', 'UPDATE_USER_OWN']),
   userController.update,
 );
 
 userRoutes.delete(
   '/:userId',
   AuthenticationMiddleware(),
-  AccessControlMiddleware(['DELETE_USER_ANY', 'DELETE_USER_OWN']),
+  // AccessControlMiddleware(['DELETE_USER_ANY', 'DELETE_USER_OWN']),
   userController.delete,
 );
 
