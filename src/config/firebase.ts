@@ -8,7 +8,7 @@ const serviceAccount = {
   type: 'service_account',
   project_id: Config.firebase.projectId,
   private_key_id: Config.firebase.privateKeyId,
-  private_key: Config.firebase.privateKey.replace(/\\n/g, '\n'),
+  private_key: Buffer.from(Config.firebase.privateKey, 'base64').toString('utf-8'),
   client_email: Config.firebase.clientEmail,
   client_id: Config.firebase.clientId,
   auth_uri: 'https://accounts.google.com/o/oauth2/auth',
