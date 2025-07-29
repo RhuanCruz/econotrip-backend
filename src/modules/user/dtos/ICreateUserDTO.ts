@@ -5,8 +5,8 @@ interface ICreateUserDTO {
   fullname: string;
   cpf?: string | null;
   avatar?: string | null;
-  birthdate: string;
-  gender: string;
+  birthdate?: string;
+  gender?: string;
   admin?: boolean;
 }
 

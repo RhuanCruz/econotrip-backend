@@ -27,8 +27,8 @@ class GetRadarFlightsService {
       origin: radar.origin,
       destination: radar.destination,
       type: radar.type as 'MONEY' | 'AIRMILES',
-      periodStart: radar.start.toLocaleDateString('en-CA'),
-      periodEnd: radar.end.toLocaleDateString('en-CA'),
+      periodStart: radar.start?.toLocaleDateString('en-CA'),
+      periodEnd: radar.end?.toLocaleDateString('en-CA'),
     });
 
     return response;

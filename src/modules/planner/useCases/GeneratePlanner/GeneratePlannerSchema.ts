@@ -5,8 +5,8 @@ const GeneratePlannerSchema = object({
   duration: number().int().min(1).max(20),
   amountPeople: number(),
   tripStyle: string(),
-  origin: string().max(32),
-  destination: string().max(32),
+  origin: string(),
+  destination: string(),
 });
 
 interface GeneratePlannerType {

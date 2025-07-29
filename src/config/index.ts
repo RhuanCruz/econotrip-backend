@@ -49,6 +49,18 @@ const Config = ConfigSchema.parse({
     url: process.env.SEATSAERO_URL,
     apiKey: process.env.SEATSAERO_API_KEY,
   },
+  geonames: {
+    url: process.env.GEONAMES_URL,
+    username: process.env.GEONAMES_USERNAME,
+  },
+  tripadvisor: {
+    apiKey: process.env.TRIPADVISOR_API_KEY,
+    baseUrl: process.env.TRIPADVISOR_BASE_URL,
+  },
+  googlePlaces: {
+    apiKey: process.env.GOOGLE_PLACES_API_KEY,
+    baseUrl: process.env.GOOGLE_PLACES_BASE_URL,
+  },
   radarRoutines: {
     url: process.env.RADAR_ROUTINE_URL,
   },
@@ -74,6 +86,18 @@ const Config = ConfigSchema.parse({
   },
   links: {
     forgotPassword: process.env.LINK_FORGOT_PASSWORD,
+  },
+  firebase: {
+    apiKey: process.env.FIREBASE_API_KEY,
+    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.FIREBASE_APP_ID,
+    privateKeyId: process.env.FIREBASE_PRIVATE_KEY_ID,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY,
+    clientId: process.env.FIREBASE_CLIENT_ID,
+    clientEmail: process.env.FIREBASE_CLIENTE_EMAIL,
   },
 });
 

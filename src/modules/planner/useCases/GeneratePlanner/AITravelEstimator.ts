@@ -59,8 +59,6 @@ export interface EstimativaViagem {
       observacoes: string;
     };
   };
-  itinerario_detalhado: any[];
-  alternativas_atividades: any[];
   resumo_financeiro: {
     custo_total_viagem: number;
     custo_por_pessoa: number;
@@ -71,6 +69,7 @@ export interface EstimativaViagem {
   dicas_otimizacao_tempo: string[];
   observacoes_importantes: string[];
   informacoes_praticas: any;
+  itinerario_detalhado?: any[];
   data_estimativa: string;
 }
 
@@ -98,6 +97,10 @@ Analise cuidadosamente as seguintes informações de entrada:
 - **Número de pessoas**: {numerosPessoas}
 - **Estilo de viagem**: {estiloViagem}
 - **Interesses**: {interesses}
+
+## Formatação de Datas:
+- O campo "periodo" deve estar no formato: DD/MM/YYYY a DD/MM/YYYY
+- Calcule a data de fim baseada na data de início + duração em dias
 
 ## IMPORTANTE:
 - Use valores REALISTAS baseados em dados atuais de mercado para {ano}
@@ -129,17 +132,6 @@ Forneça a estimativa EXCLUSIVAMENTE no seguinte formato JSON em português bras
 - **Transporte Local**: Táxis, transporte público, transfers aeroporto
 - **Atividades**: Principais pontos turísticos, tours, ingressos baseados nos interesses
 - **Outros**: Seguro viagem, compras, emergências (5-10% do total)
-
-## Itinerário Detalhado:
-
-- Organize atividades por proximidade geográfica
-- Considere tempo de deslocamento entre atividades
-- Misture diferentes tipos de experiências
-- Deixe tempo livre para exploração espontânea
-- Classifique atividades como "imperdível", "recomendada" ou "opcional"
-- Considere horários de funcionamento e melhores momentos para visitar
-- **Inclua as refeições (café da manhã, almoço, jantar, etc.) como atividades no array de atividades, usando a categoria "refeição". Não utilize um array separado para refeições.**
-- **Não inclua atividades de categoria "transporte" ou "acomodação" no array de atividades do itinerário detalhado. Transporte e acomodação devem ser detalhados apenas nos campos apropriados, não como atividades.**
 
 Responda APENAS com o JSON solicitado, sem texto adicional.
 `;
@@ -189,7 +181,7 @@ Responda APENAS com o JSON solicitado, sem texto adicional.
     "origem": "string",
     "duracao_dias": number,
     "numero_pessoas": number,
-    "periodo": "string",
+    "periodo": "DD/MM/YYYY a DD/MM/YYYY",
     "estilo_viagem": "string"
   },
   "custos_estimados": {
@@ -226,47 +218,6 @@ Responda APENAS com o JSON solicitado, sem texto adicional.
       "observacoes": "string"
     }
   },
-  "itinerario_detalhado": [
-    {
-      "dia": number,
-      "data": "string",
-      "tema_do_dia": "string",
-      "atividades": [
-        {
-          "horario": "string",
-          "nome_atividade": "string",
-          "descricao": "string",
-          "duracao_estimada": "string",
-          "custo_por_pessoa": number,
-          "custo_total": number,
-          "categoria": "string", // Inclua refeições como atividades, usando categoria "refeição" para café da manhã, almoço, jantar, etc.
-          "nivel_prioridade": "string",
-          "dicas": "string",
-          "endereco_aproximado": "string"
-        }
-      ],
-      "transporte_do_dia": {
-        "meios_utilizados": ["string"],
-        "custo_total": number,
-        "observacoes": "string"
-      },
-      "custo_total_dia": number,
-      "tempo_livre": "string",
-      "observacoes_dia": "string"
-    }
-  ],
-  "alternativas_atividades": [
-    {
-      "atividade_original": "string",
-      "alternativas": [
-        {
-          "nome": "string",
-          "custo_por_pessoa": number,
-          "motivo_alternativa": "string"
-        }
-      ]
-    }
-  ],
   "resumo_financeiro": {
     "custo_total_viagem": number,
     "custo_por_pessoa": number,

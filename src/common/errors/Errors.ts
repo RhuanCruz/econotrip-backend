@@ -193,6 +193,24 @@ const Errors = {
     code: 'EMAIL_COULD_NOT_SEND',
     statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
   },
+  GEONAMES_SEARCH_FAILED: {
+    title: 'GeoNames search failed',
+    detail: 'GeoNames search failed',
+    code: 'GEONAMES_SEARCH_FAILED',
+    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+  },
+  TRIPADVISOR_SEARCH_FAILED: {
+    title: 'TripAdvisor search failed',
+    detail: 'TripAdvisor search failed',
+    code: 'TRIPADVISOR_SEARCH_FAILED',
+    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+  },
+  GOOGLE_PLACES_SEARCH_FAILED: {
+    title: 'Google Places search failed',
+    detail: 'Google Places search failed',
+    code: 'GOOGLE_PLACES_SEARCH_FAILED',
+    statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
+  },
 };
 
 export default Errors;

@@ -8,18 +8,18 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  login     String   @unique @db.VarChar(255)
-  email     String   @unique @db.VarChar(255)
-  fullname  String?  @db.VarChar(255)
-  phone     String?  @db.VarChar(16)
-  cpf       String?  @unique @db.VarChar(14)
-  avatar    String?  @db.VarChar(1024)
-  birthdate DateTime @db.Date
-  gender    String   @db.VarChar(16)
-  admin     Boolean  @default(false)
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id        Int       @id @default(autoincrement())
+  login     String    @unique @db.VarChar(255)
+  email     String    @unique @db.VarChar(255)
+  fullname  String?   @db.VarChar(255)
+  phone     String?   @db.VarChar(16)
+  cpf       String?   @unique @db.VarChar(14)
+  avatar    String?   @db.VarChar(1024)
+  birthdate DateTime? @db.Date
+  gender    String?   @db.VarChar(16)
+  admin     Boolean   @default(false)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
 
   roles                    UserRole[]
   passwords                UserPassword[]
@@ -162,16 +162,16 @@ model Location {
 }
 
 model Radar {
-  id          Int      @id @default(autoincrement())
-  userId      Int      @map("user_id")
-  start       DateTime
-  end         DateTime
-  origin      String   @db.VarChar(32)
-  destination String   @db.VarChar(32)
+  id          Int       @id @default(autoincrement())
+  userId      Int       @map("user_id")
+  start       DateTime?
+  end         DateTime?
+  origin      String    @db.VarChar(32)
+  destination String    @db.VarChar(32)
   value       Float?
-  type        String?  @db.VarChar(32)
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
+  type        String?   @db.VarChar(32)
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
 
   user User @relation(fields: [userId], references: [id])
 

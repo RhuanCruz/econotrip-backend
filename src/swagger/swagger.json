@@ -7,6 +7,392 @@
 		"requestBodies": {},
 		"responses": {},
 		"schemas": {
+			"GeoNameItem": {
+				"properties": {
+					"adminCode1": {
+						"type": "string"
+					},
+					"lng": {
+						"type": "string"
+					},
+					"geonameId": {
+						"type": "number",
+						"format": "double"
+					},
+					"toponymName": {
+						"type": "string"
+					},
+					"countryId": {
+						"type": "string"
+					},
+					"fcl": {
+						"type": "string"
+					},
+					"population": {
+						"type": "number",
+						"format": "double"
+					},
+					"countryCode": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"fclName": {
+						"type": "string"
+					},
+					"adminCodes1": {
+						"properties": {
+							"ISO3166_2": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"ISO3166_2"
+						],
+						"type": "object"
+					},
+					"countryName": {
+						"type": "string"
+					},
+					"fcodeName": {
+						"type": "string"
+					},
+					"adminName1": {
+						"type": "string"
+					},
+					"lat": {
+						"type": "string"
+					},
+					"fcode": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"adminCode1",
+					"lng",
+					"geonameId",
+					"toponymName",
+					"countryId",
+					"fcl",
+					"population",
+					"countryCode",
+					"name",
+					"fclName",
+					"adminCodes1",
+					"countryName",
+					"fcodeName",
+					"adminName1",
+					"lat",
+					"fcode"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ISearchCitiesResponse": {
+				"properties": {
+					"totalResultsCount": {
+						"type": "number",
+						"format": "double"
+					},
+					"geonames": {
+						"items": {
+							"$ref": "#/components/schemas/GeoNameItem"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"totalResultsCount",
+					"geonames"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EstimativaViagem": {
+				"properties": {
+					"resumo_viagem": {
+						"properties": {
+							"estilo_viagem": {
+								"type": "string"
+							},
+							"periodo": {
+								"type": "string"
+							},
+							"numero_pessoas": {
+								"type": "number",
+								"format": "double"
+							},
+							"duracao_dias": {
+								"type": "number",
+								"format": "double"
+							},
+							"origem": {
+								"type": "string"
+							},
+							"destino": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"estilo_viagem",
+							"periodo",
+							"numero_pessoas",
+							"duracao_dias",
+							"origem",
+							"destino"
+						],
+						"type": "object"
+					},
+					"custos_estimados": {
+						"properties": {
+							"outros_gastos": {
+								"properties": {
+									"observacoes": {
+										"type": "string"
+									},
+									"itens_incluidos": {
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"valor_total": {
+										"type": "number",
+										"format": "double"
+									}
+								},
+								"required": [
+									"observacoes",
+									"itens_incluidos",
+									"valor_total"
+								],
+								"type": "object"
+							},
+							"atividades_turismo": {
+								"properties": {
+									"observacoes": {
+										"type": "string"
+									},
+									"principais_atividades": {
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"valor_total": {
+										"type": "number",
+										"format": "double"
+									}
+								},
+								"required": [
+									"observacoes",
+									"principais_atividades",
+									"valor_total"
+								],
+								"type": "object"
+							},
+							"transporte_local": {
+								"properties": {
+									"observacoes": {
+										"type": "string"
+									},
+									"tipos_incluidos": {
+										"items": {
+											"type": "string"
+										},
+										"type": "array"
+									},
+									"valor_total": {
+										"type": "number",
+										"format": "double"
+									}
+								},
+								"required": [
+									"observacoes",
+									"tipos_incluidos",
+									"valor_total"
+								],
+								"type": "object"
+							},
+							"alimentacao": {
+								"properties": {
+									"observacoes": {
+										"type": "string"
+									},
+									"valor_total": {
+										"type": "number",
+										"format": "double"
+									},
+									"valor_por_pessoa_por_dia": {
+										"type": "number",
+										"format": "double"
+									}
+								},
+								"required": [
+									"observacoes",
+									"valor_total",
+									"valor_por_pessoa_por_dia"
+								],
+								"type": "object"
+							},
+							"hospedagem": {
+								"properties": {
+									"observacoes": {
+										"type": "string"
+									},
+									"tipo_acomodacao": {
+										"type": "string"
+									},
+									"valor_total": {
+										"type": "number",
+										"format": "double"
+									},
+									"total_noites": {
+										"type": "number",
+										"format": "double"
+									},
+									"valor_por_noite": {
+										"type": "number",
+										"format": "double"
+									}
+								},
+								"required": [
+									"observacoes",
+									"tipo_acomodacao",
+									"valor_total",
+									"total_noites",
+									"valor_por_noite"
+								],
+								"type": "object"
+							},
+							"passagens_aereas": {
+								"properties": {
+									"observacoes": {
+										"type": "string"
+									},
+									"valor_total": {
+										"type": "number",
+										"format": "double"
+									},
+									"valor_por_pessoa": {
+										"type": "number",
+										"format": "double"
+									}
+								},
+								"required": [
+									"observacoes",
+									"valor_total",
+									"valor_por_pessoa"
+								],
+								"type": "object"
+							}
+						},
+						"required": [
+							"outros_gastos",
+							"atividades_turismo",
+							"transporte_local",
+							"alimentacao",
+							"hospedagem",
+							"passagens_aereas"
+						],
+						"type": "object"
+					},
+					"resumo_financeiro": {
+						"properties": {
+							"moeda": {
+								"type": "string"
+							},
+							"distribuicao_por_categoria": {},
+							"custo_por_pessoa": {
+								"type": "number",
+								"format": "double"
+							},
+							"custo_total_viagem": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"moeda",
+							"distribuicao_por_categoria",
+							"custo_por_pessoa",
+							"custo_total_viagem"
+						],
+						"type": "object"
+					},
+					"dicas_economia": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"dicas_otimizacao_tempo": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"observacoes_importantes": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"informacoes_praticas": {},
+					"itinerario_detalhado": {
+						"items": {},
+						"type": "array"
+					},
+					"data_estimativa": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"resumo_viagem",
+					"custos_estimados",
+					"resumo_financeiro",
+					"dicas_economia",
+					"dicas_otimizacao_tempo",
+					"observacoes_importantes",
+					"informacoes_praticas",
+					"data_estimativa"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GeneratePlannerType": {
+				"properties": {
+					"start": {
+						"type": "string"
+					},
+					"duration": {
+						"type": "number",
+						"format": "double"
+					},
+					"amountPeople": {
+						"type": "number",
+						"format": "double"
+					},
+					"tripStyle": {
+						"type": "string"
+					},
+					"origin": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"start",
+					"duration",
+					"origin",
+					"destination"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"UpdateUserType": {
 				"properties": {
 					"login": {
@@ -33,6 +419,9 @@
 						"type": "string"
 					},
 					"password": {
+						"type": "string"
+					},
+					"confirmPassword": {
 						"type": "string"
 					}
 				},
@@ -607,11 +996,8 @@
 					}
 				},
 				"required": [
-					"start",
-					"end",
 					"origin",
 					"destination",
-					"value",
 					"type"
 				],
 				"type": "object",
@@ -835,296 +1221,6 @@
 				"required": [
 					"dataControl",
 					"orderBy"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"EstimativaViagem": {
-				"properties": {
-					"resumo_viagem": {
-						"properties": {
-							"estilo_viagem": {
-								"type": "string"
-							},
-							"periodo": {
-								"type": "string"
-							},
-							"numero_pessoas": {
-								"type": "number",
-								"format": "double"
-							},
-							"duracao_dias": {
-								"type": "number",
-								"format": "double"
-							},
-							"origem": {
-								"type": "string"
-							},
-							"destino": {
-								"type": "string"
-							}
-						},
-						"required": [
-							"estilo_viagem",
-							"periodo",
-							"numero_pessoas",
-							"duracao_dias",
-							"origem",
-							"destino"
-						],
-						"type": "object"
-					},
-					"custos_estimados": {
-						"properties": {
-							"outros_gastos": {
-								"properties": {
-									"observacoes": {
-										"type": "string"
-									},
-									"itens_incluidos": {
-										"items": {
-											"type": "string"
-										},
-										"type": "array"
-									},
-									"valor_total": {
-										"type": "number",
-										"format": "double"
-									}
-								},
-								"required": [
-									"observacoes",
-									"itens_incluidos",
-									"valor_total"
-								],
-								"type": "object"
-							},
-							"atividades_turismo": {
-								"properties": {
-									"observacoes": {
-										"type": "string"
-									},
-									"principais_atividades": {
-										"items": {
-											"type": "string"
-										},
-										"type": "array"
-									},
-									"valor_total": {
-										"type": "number",
-										"format": "double"
-									}
-								},
-								"required": [
-									"observacoes",
-									"principais_atividades",
-									"valor_total"
-								],
-								"type": "object"
-							},
-							"transporte_local": {
-								"properties": {
-									"observacoes": {
-										"type": "string"
-									},
-									"tipos_incluidos": {
-										"items": {
-											"type": "string"
-										},
-										"type": "array"
-									},
-									"valor_total": {
-										"type": "number",
-										"format": "double"
-									}
-								},
-								"required": [
-									"observacoes",
-									"tipos_incluidos",
-									"valor_total"
-								],
-								"type": "object"
-							},
-							"alimentacao": {
-								"properties": {
-									"observacoes": {
-										"type": "string"
-									},
-									"valor_total": {
-										"type": "number",
-										"format": "double"
-									},
-									"valor_por_pessoa_por_dia": {
-										"type": "number",
-										"format": "double"
-									}
-								},
-								"required": [
-									"observacoes",
-									"valor_total",
-									"valor_por_pessoa_por_dia"
-								],
-								"type": "object"
-							},
-							"hospedagem": {
-								"properties": {
-									"observacoes": {
-										"type": "string"
-									},
-									"tipo_acomodacao": {
-										"type": "string"
-									},
-									"valor_total": {
-										"type": "number",
-										"format": "double"
-									},
-									"total_noites": {
-										"type": "number",
-										"format": "double"
-									},
-									"valor_por_noite": {
-										"type": "number",
-										"format": "double"
-									}
-								},
-								"required": [
-									"observacoes",
-									"tipo_acomodacao",
-									"valor_total",
-									"total_noites",
-									"valor_por_noite"
-								],
-								"type": "object"
-							},
-							"passagens_aereas": {
-								"properties": {
-									"observacoes": {
-										"type": "string"
-									},
-									"valor_total": {
-										"type": "number",
-										"format": "double"
-									},
-									"valor_por_pessoa": {
-										"type": "number",
-										"format": "double"
-									}
-								},
-								"required": [
-									"observacoes",
-									"valor_total",
-									"valor_por_pessoa"
-								],
-								"type": "object"
-							}
-						},
-						"required": [
-							"outros_gastos",
-							"atividades_turismo",
-							"transporte_local",
-							"alimentacao",
-							"hospedagem",
-							"passagens_aereas"
-						],
-						"type": "object"
-					},
-					"itinerario_detalhado": {
-						"items": {},
-						"type": "array"
-					},
-					"alternativas_atividades": {
-						"items": {},
-						"type": "array"
-					},
-					"resumo_financeiro": {
-						"properties": {
-							"moeda": {
-								"type": "string"
-							},
-							"distribuicao_por_categoria": {},
-							"custo_por_pessoa": {
-								"type": "number",
-								"format": "double"
-							},
-							"custo_total_viagem": {
-								"type": "number",
-								"format": "double"
-							}
-						},
-						"required": [
-							"moeda",
-							"distribuicao_por_categoria",
-							"custo_por_pessoa",
-							"custo_total_viagem"
-						],
-						"type": "object"
-					},
-					"dicas_economia": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					},
-					"dicas_otimizacao_tempo": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					},
-					"observacoes_importantes": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
-					},
-					"informacoes_praticas": {},
-					"data_estimativa": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"resumo_viagem",
-					"custos_estimados",
-					"itinerario_detalhado",
-					"alternativas_atividades",
-					"resumo_financeiro",
-					"dicas_economia",
-					"dicas_otimizacao_tempo",
-					"observacoes_importantes",
-					"informacoes_praticas",
-					"data_estimativa"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"GeneratePlannerType": {
-				"properties": {
-					"start": {
-						"type": "string"
-					},
-					"duration": {
-						"type": "number",
-						"format": "double"
-					},
-					"amountPeople": {
-						"type": "number",
-						"format": "double"
-					},
-					"tripStyle": {
-						"type": "string"
-					},
-					"origin": {
-						"type": "string"
-					},
-					"destination": {
-						"type": "string"
-					}
-				},
-				"required": [
-					"start",
-					"duration",
-					"origin",
-					"destination"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -4919,6 +5015,46 @@
 				],
 				"type": "object"
 			},
+			"SocialLoginResponse": {
+				"properties": {
+					"accessToken": {
+						"type": "string"
+					},
+					"accessTokenExp": {
+						"type": "string"
+					},
+					"refreshToken": {
+						"type": "string"
+					},
+					"refreshTokenExp": {
+						"type": "string"
+					},
+					"user": {
+						"$ref": "#/components/schemas/User"
+					}
+				},
+				"required": [
+					"accessToken",
+					"accessTokenExp",
+					"refreshToken",
+					"refreshTokenExp",
+					"user"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SocialLoginType": {
+				"properties": {
+					"token": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"token"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"LoginResponse": {
 				"properties": {
 					"accessToken": {
@@ -4975,6 +5111,77 @@
 		"contact": {}
 	},
 	"paths": {
+		"/locations/cities/search": {
+			"get": {
+				"operationId": "search_cities",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ISearchCitiesResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Location"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "cityName",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/planners/generate": {
+			"post": {
+				"operationId": "generate_planner",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/EstimativaViagem"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Planner"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/GeneratePlannerType"
+							}
+						}
+					}
+				}
+			}
+		},
 		"/users/{userId}": {
 			"patch": {
 				"operationId": "update_user",
@@ -5609,42 +5816,6 @@
 					}
 				],
 				"parameters": []
-			}
-		},
-		"/planners/generate": {
-			"post": {
-				"operationId": "generate_planner",
-				"responses": {
-					"200": {
-						"description": "Ok",
-						"content": {
-							"application/json": {
-								"schema": {
-									"$ref": "#/components/schemas/EstimativaViagem"
-								}
-							}
-						}
-					}
-				},
-				"tags": [
-					"Planner"
-				],
-				"security": [
-					{
-						"BearerAuth": []
-					}
-				],
-				"parameters": [],
-				"requestBody": {
-					"required": true,
-					"content": {
-						"application/json": {
-							"schema": {
-								"$ref": "#/components/schemas/GeneratePlannerType"
-							}
-						}
-					}
-				}
 			}
 		},
 		"/planners/current/finish": {
@@ -6452,6 +6623,42 @@
 					}
 				],
 				"parameters": []
+			}
+		},
+		"/auth/social": {
+			"post": {
+				"operationId": "social_login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SocialLoginResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Auth"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/SocialLoginType"
+							}
+						}
+					}
+				}
 			}
 		},
 		"/auth": {

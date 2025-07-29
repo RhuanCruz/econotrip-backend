@@ -1,11 +1,11 @@
 interface ICreateRadarDTO {
   userId: number;
-  start: string;
-  end: string;
+  start?: string;
+  end?: string;
   origin: string;
   destination: string;
   type: string;
-  value: number;
+  value?: number;
 }
 
 export default ICreateRadarDTO;

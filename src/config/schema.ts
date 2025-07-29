@@ -49,6 +49,18 @@ const ConfigSchema = Zod.object({
     url: Zod.string(),
     apiKey: Zod.string(),
   }),
+  geonames: Zod.object({
+    url: Zod.string().url(),
+    username: Zod.string(),
+  }),
+  tripadvisor: Zod.object({
+    apiKey: Zod.string().optional(),
+    baseUrl: Zod.string().url().default('https://api.content.tripadvisor.com'),
+  }),
+  googlePlaces: Zod.object({
+    apiKey: Zod.string(),
+    baseUrl: Zod.string().url().default('https://maps.googleapis.com/maps/api/place'),
+  }),
   radarRoutines: Zod.object({
     url: Zod.string(),
   }),
@@ -75,6 +87,13 @@ const ConfigSchema = Zod.object({
   }),
   links: Zod.object({
     forgotPassword: Zod.string(),
+  }),
+  firebase: Zod.object({
+    projectId: Zod.string(),
+    privateKeyId: Zod.string(),
+    privateKey: Zod.string(),
+    clientId: Zod.string(),
+    clientEmail: Zod.string(),
   }),
 });
 

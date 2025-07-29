@@ -5,6 +5,7 @@ import { AppContainer } from '@src/common/container';
 import { ParseZodError } from '@src/common/errors';
 
 import { GeneratePlannerService, GeneratePlannerSchema } from '@src/modules/planner/useCases/GeneratePlanner';
+import PlannerTypes from '@modules/planner/container/types';
 import { CreatePlannerService, CreatePlannerSchema } from '@src/modules/planner/useCases/CreatePlanner';
 import { UpdatePlannerService, UpdatePlannerSchema } from '@src/modules/planner/useCases/UpdatePlanner';
 import { ListPlannerService, ListPlannerSchema } from '@src/modules/planner/useCases/ListPlanner';
@@ -78,7 +79,8 @@ class PlannerController {
       throw ParseZodError(err);
     });
 
-    const response = await AppContainer.resolve(GeneratePlannerService).execute(data);
+    const generatePlannerService = AppContainer.get<GeneratePlannerService>(PlannerTypes.GeneratePlannerService);
+    const response = await generatePlannerService.execute(data);
     res.status(StatusCodes.OK).json(response);
   }
 }

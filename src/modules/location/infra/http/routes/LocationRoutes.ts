@@ -12,4 +12,10 @@ locationRoutes.post(
   locationController.list,
 );
 
+locationRoutes.get(
+  '/cities/search',
+  AuthenticationMiddleware('OPTIONAL'),
+  locationController.searchCities,
+);
+
 export { locationRoutes };

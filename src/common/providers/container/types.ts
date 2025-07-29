@@ -6,6 +6,9 @@ const ProviderTypes = {
   RadarRoutineProvider: Symbol('RadarRoutineProvider'),
   FlightScraperSkyProvider: Symbol('FlightScraperSkyProvider'),
   EmailProvider: Symbol('EmailProvider'),
+  GeoNamesProvider: Symbol('GeoNamesProvider'),
+  TripAdvisorProvider: Symbol('TripAdvisorProvider'),
+  GooglePlacesProvider: Symbol('GooglePlacesProvider'),
 };
 
 export default ProviderTypes;
