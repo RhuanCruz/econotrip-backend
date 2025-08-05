@@ -1,7 +1,7 @@
 interface IUpdatePlannerDTO {
   start?: string;
   end?: string;
-  destination?: string;
+  destination?: string[];
   content?: any;
   current?: boolean;
   status?: string;

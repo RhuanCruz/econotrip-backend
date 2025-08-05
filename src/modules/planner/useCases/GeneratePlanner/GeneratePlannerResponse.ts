@@ -1,5 +1,6 @@
 export type GeneratePlannerResponse = {
-  destination: string;
+  destinations: string[];
+  destination: string; // mantendo para compatibilidade
   startDate: string;
   endDate: string;
   currency: string;

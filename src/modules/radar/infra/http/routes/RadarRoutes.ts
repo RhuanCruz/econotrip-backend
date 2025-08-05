@@ -41,4 +41,10 @@ radarRoutes.get(
   radarController.getFlights,
 );
 
+radarRoutes.get(
+  '/continents/:continent',
+  AuthenticationMiddleware(),
+  radarController.listResultsByContinent,
+);
+
 export default radarRoutes;

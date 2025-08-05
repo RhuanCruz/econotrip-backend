@@ -9,6 +9,16 @@ import ProviderTypes from '@common/providers/container/types';
 import IGooglePlacesProvider from '@common/providers/GooglePlacesProvider/repositories/IGooglePlacesProvider';
 import { GooglePlace } from '@common/providers/GooglePlacesProvider/responses/ISearchTouristPlacesResponse';
 
+interface GooglePlaceWithCity extends GooglePlace {
+  cityName: string;
+  cityDays: number;
+}
+
+interface DestinoDetalhado {
+  cidade: string;
+  dias: number;
+}
+
 @injectable()
 @Route('planners')
 @Tags('Planner')
@@ -29,7 +39,10 @@ class GeneratePlannerService {
     });
 
     const response = await estimator.gerarEstimativa({
-      destino: data.destination,
+      destinos: data.destination.map((dest) => ({
+        cidade: dest.city,
+        dias: dest.duration,
+      })),
       estiloViagem: 'econômico',
       numerosPessoas: data.amountPeople ?? 1,
       origem: data.origin,
@@ -37,17 +50,36 @@ class GeneratePlannerService {
       duracao: data.duration,
     });
 
-    // 2. Buscar pontos turísticos do destino via Google Places
+    // 2. Buscar pontos turísticos de todos os destinos via Google Places
     try {
-      const placesResponse = await this.googlePlacesProvider.searchTouristPlaces({
-        cityName: data.destination,
-        language: 'pt',
+      const allPlaces: GooglePlaceWithCity[] = [];
+      const destinoDetalhes = data.destination.map((dest) => ({
+        cidade: dest.city,
+        dias: dest.duration,
+      }));
+
+      // Buscar pontos turísticos para cada destino
+      const placesPromises = destinoDetalhes.map(async (destino) => {
+        const placesResponse = await this.googlePlacesProvider.searchTouristPlaces({
+          cityName: destino.cidade,
+          language: 'pt',
+        });
+
+        // Marcar os pontos com a cidade correspondente
+        return placesResponse.results.map((place) => ({
+          ...place,
+          cityName: destino.cidade,
+          cityDays: destino.dias,
+        }));
       });
 
+      const placesResults = await Promise.all(placesPromises);
+      allPlaces.push(...placesResults.flat());
+
       // 3. Gerar itinerário baseado nos pontos turísticos encontrados
-      const itinerario = this.generateItinerary(
-        placesResponse.results,
-        data.duration,
+      const itinerario = this.generateMultiCityItinerary(
+        allPlaces,
+        destinoDetalhes,
         data.start,
       );
 
@@ -61,7 +93,45 @@ class GeneratePlannerService {
     return response;
   }
 
-  private generateItinerary(places: GooglePlace[], duration: number, startDate: string): any[] {
+  private generateMultiCityItinerary(
+    places: GooglePlaceWithCity[],
+    destinos: DestinoDetalhado[],
+    startDate: string,
+  ): any[] {
+    const itinerario: any[] = [];
+    let currentDay = 1;
+    const currentDate = new Date(startDate);
+
+    destinos.forEach((destino) => {
+      // Filtrar pontos turísticos para a cidade atual
+      const cityPlaces = places.filter((place) => place.cityName === destino.cidade);
+
+      // Gerar itinerário para esta cidade
+      const cityItinerary = this.generateCityItinerary(
+        cityPlaces,
+        destino.dias,
+        currentDate.toISOString().split('T')[0],
+        currentDay,
+        destino.cidade,
+      );
+
+      itinerario.push(...cityItinerary);
+
+      // Atualizar para próxima cidade
+      currentDay += destino.dias;
+      currentDate.setDate(currentDate.getDate() + destino.dias);
+    });
+
+    return itinerario;
+  }
+
+  private generateCityItinerary(
+    places: GooglePlace[],
+    duration: number,
+    startDate: string,
+    startDay: number,
+    cityName: string,
+  ): any[] {
     const itinerario = [];
 
     // Garantir pelo menos 2-3 atividades por dia
@@ -85,9 +155,9 @@ class GeneratePlannerService {
       });
     }
 
-    for (let day = 1; day <= duration; day += 1) {
+    for (let day = 0; day < duration; day += 1) {
       const dayDate = new Date(startDate);
-      dayDate.setDate(dayDate.getDate() + (day - 1));
+      dayDate.setDate(dayDate.getDate() + day);
 
       // Distribuir pontos turísticos de forma mais equilibrada
       const activitiesForDay = Math.min(
@@ -95,12 +165,12 @@ class GeneratePlannerService {
         maxActivitiesPerDay,
       );
 
-      const startIndex = (day - 1) * activitiesForDay;
+      const startIndex = day * activitiesForDay;
       const endIndex = Math.min(startIndex + activitiesForDay, allPlaces.length);
       let dayPlaces = allPlaces.slice(startIndex, endIndex);
 
       // Se ainda não temos atividades suficientes para este dia, pegar das restantes
-      if (dayPlaces.length < minActivitiesPerDay && day === duration) {
+      if (dayPlaces.length < minActivitiesPerDay && day === duration - 1) {
         const remainingPlaces = allPlaces.slice(endIndex);
         dayPlaces = [...dayPlaces, ...remainingPlaces];
       }
@@ -108,9 +178,9 @@ class GeneratePlannerService {
       // Se ainda não temos o mínimo, criar atividades genéricas
       while (dayPlaces.length < minActivitiesPerDay) {
         dayPlaces.push({
-          place_id: `generic-${day}-${dayPlaces.length}`,
-          name: `Exploração Local ${dayPlaces.length + 1}`,
-          formatted_address: 'Endereço não disponível',
+          place_id: `generic-${startDay + day}-${dayPlaces.length}`,
+          name: `Exploração Local em ${cityName} ${dayPlaces.length + 1}`,
+          formatted_address: `${cityName} - Endereço não disponível`,
           rating: 4.0,
           types: ['point_of_interest'],
           geometry: {
@@ -137,18 +207,19 @@ class GeneratePlannerService {
       }));
 
       itinerario.push({
-        dia: day,
+        dia: startDay + day,
         data: dayDate.toISOString().split('T')[0],
+        cidade: cityName,
         tema_do_dia: this.getDayTheme(dayPlaces),
         atividades: atividades.sort((a, b) => a.horario.localeCompare(b.horario)),
         transporte_do_dia: {
           meios_utilizados: ['transporte público', 'caminhada'],
           custo_total: 15,
-          observacoes: 'Considere usar transporte público ou caminhar entre atrações próximas',
+          observacoes: `Deslocamentos em ${cityName} - considere transporte público ou caminhada`,
         },
         custo_total_dia: atividades.reduce((sum, atividade) => sum + atividade.custo_por_pessoa, 15),
         tempo_livre: '30-60 minutos entre atividades',
-        observacoes_dia: `Dia focado em ${this.getDayTheme(dayPlaces).toLowerCase()}`,
+        observacoes_dia: `Dia ${day + 1} em ${cityName} - ${this.getDayTheme(dayPlaces).toLowerCase()}`,
       });
     }
 

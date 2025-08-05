@@ -381,7 +381,23 @@
 						"type": "string"
 					},
 					"destination": {
-						"type": "string"
+						"items": {
+							"properties": {
+								"duration": {
+									"type": "number",
+									"format": "double"
+								},
+								"city": {
+									"type": "string"
+								}
+							},
+							"required": [
+								"duration",
+								"city"
+							],
+							"type": "object"
+						},
+						"type": "array"
 					}
 				},
 				"required": [
@@ -738,6 +754,67 @@
 						"type": "string"
 					}
 				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RadarResult": {
+				"properties": {
+					"_id": {
+						"type": "string"
+					},
+					"origin": {
+						"type": "string"
+					},
+					"destination": {
+						"type": "string"
+					},
+					"continent": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"date": {
+						"type": "string"
+					},
+					"value": {
+						"type": "number",
+						"format": "double"
+					},
+					"createdAt": {
+						"type": "string"
+					},
+					"__v": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"_id",
+					"origin",
+					"destination",
+					"continent",
+					"type",
+					"date",
+					"value",
+					"createdAt",
+					"__v"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ListResultsByContinentResponse": {
+				"properties": {
+					"results": {
+						"items": {
+							"$ref": "#/components/schemas/RadarResult"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"results"
+				],
 				"type": "object",
 				"additionalProperties": false
 			},
@@ -5543,6 +5620,41 @@
 						"schema": {
 							"format": "double",
 							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/radars/continents/{continent}": {
+			"get": {
+				"operationId": "get_radar_continent_flights",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ListResultsByContinentResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Radar"
+				],
+				"security": [
+					{
+						"BearerAuth": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "continent",
+						"required": true,
+						"schema": {
+							"type": "string"
 						}
 					}
 				]

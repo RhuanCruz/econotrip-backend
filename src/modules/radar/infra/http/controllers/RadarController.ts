@@ -10,6 +10,7 @@ import { ListRadarService, ListRadarSchema } from '@src/modules/radar/useCases/L
 import { DeleteRadarService } from '@src/modules/radar/useCases/DeleteRadar';
 import { GetRadarFlightsService } from '@src/modules/radar/useCases/GetRadarFlights';
 import { GetRadarService } from '@src/modules/radar/useCases/GetRadar';
+import { ListResultsByContinentService } from '@src/modules/radar/useCases/ListResultsByContinent/ListResultsByContinentService';
 
 class RadarController {
   public async create(req: Request, res: Response): Promise<void> {
@@ -59,6 +60,13 @@ class RadarController {
     const { radarId } = req.params;
 
     const response = await AppContainer.resolve(GetRadarFlightsService).execute(Number(radarId));
+    res.status(StatusCodes.OK).json(response);
+  }
+
+  public async listResultsByContinent(req: Request, res: Response): Promise<void> {
+    const { continent } = req.params;
+
+    const response = await (AppContainer.resolve(ListResultsByContinentService) as ListResultsByContinentService).execute(continent);
     res.status(StatusCodes.OK).json(response);
   }
 }

@@ -183,7 +183,7 @@ model Planner {
   userId      Int      @map("user_id")
   start       DateTime
   end         DateTime
-  destination String   @db.VarChar(255)
+  destination String[] @db.VarChar(255)
   content     Json
   current     Boolean  @default(false)
   status      String   @default("DRAFT") @db.VarChar(16)
