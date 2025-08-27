@@ -12,10 +12,28 @@ locationRoutes.post(
   locationController.list,
 );
 
+locationRoutes.post(
+  '/list2',
+  AuthenticationMiddleware('OPTIONAL'),
+  locationController.list2,
+);
+
 locationRoutes.get(
   '/cities/search',
   AuthenticationMiddleware('OPTIONAL'),
   locationController.searchCities,
+);
+
+locationRoutes.post(
+  '/list-booking',
+  AuthenticationMiddleware('OPTIONAL'),
+  locationController.listByBooking,
+);
+
+locationRoutes.post(
+  '/list-google',
+  AuthenticationMiddleware('OPTIONAL'),
+  locationController.listByGoogle,
 );
 
 export { locationRoutes };

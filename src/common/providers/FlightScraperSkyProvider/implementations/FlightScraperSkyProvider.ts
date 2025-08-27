@@ -11,6 +11,9 @@ import IFilterSearchRoundTripDTO from '../dtos/IFilterSearchRoundTripDTO';
 import ISearchFlightResponse from '../responses/ISearchFlightResponse';
 import IGetSearchDetailDTO from '../dtos/IGetSearchDetailDTO';
 import ISearchDetailResponse from '../responses/ISearchDetailResponse';
+import IListLocation2Response from '../responses/IListLocation2Response';
+import IListLocationByBookingResponse from '../responses/IListLocationByBookingResponse';
+import IListLocationByGoogleResponse from '../responses/IListLocationByGoogleResponse';
 
 @injectable()
 class FlightScraperSkyProvider implements IFlightScraperSkyProvider {
@@ -21,6 +24,48 @@ class FlightScraperSkyProvider implements IFlightScraperSkyProvider {
       params: {
         query,
         locale: 'pt-BR',
+      },
+      headers: {
+        'x-rapidapi-key': Config.flightScraperSky.apiKey,
+        'x-rapidapi-host': 'flights-sky.p.rapidapi.com',
+      } })
+      .then((res) => res.data)
+      .catch((err) => { console.log(err); throw AppError.createAppError(Errors.FLIGHT_SCRAPER_SKY_NOT_LIST_LOCATIONS); });
+  }
+
+  public async listLocations2(query: string): Promise<IListLocation2Response> {
+    return this.api.get('web/flights/auto-complete', {
+      params: {
+        query,
+        locale: 'pt-BR',
+      },
+      headers: {
+        'x-rapidapi-key': Config.flightScraperSky.apiKey,
+        'x-rapidapi-host': 'flights-sky.p.rapidapi.com',
+      } })
+      .then((res) => res.data)
+      .catch((err) => { console.log(err); throw AppError.createAppError(Errors.FLIGHT_SCRAPER_SKY_NOT_LIST_LOCATIONS); });
+  }
+
+  public async listLocationsBooking(query: string): Promise<IListLocationByBookingResponse> {
+    return this.api.get('bookingcom/auto-complete', {
+      params: {
+        query,
+        languageCode: 'pt-br',
+      },
+      headers: {
+        'x-rapidapi-key': Config.flightScraperSky.apiKey,
+        'x-rapidapi-host': 'flights-sky.p.rapidapi.com',
+      } })
+      .then((res) => res.data)
+      .catch((err) => { console.log(err); throw AppError.createAppError(Errors.FLIGHT_SCRAPER_SKY_NOT_LIST_LOCATIONS); });
+  }
+
+  public async listLocationsByGoogle(query: string): Promise<IListLocationByGoogleResponse> {
+    return this.api.get('google/auto-complete', {
+      params: {
+        query,
+        language: 'pt-br',
       },
       headers: {
         'x-rapidapi-key': Config.flightScraperSky.apiKey,

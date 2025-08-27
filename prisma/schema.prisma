@@ -150,12 +150,13 @@ model Location {
   id           Int      @id @default(autoincrement())
   name         String   @db.VarChar(255)
   country      String   @map("country_code") @db.VarChar(2)
-  city         String   @map("city_code") @db.VarChar(3)
-  iata         String?  @map("iata_code") @db.VarChar(3)
-  timezone     String   @db.VarChar(32)
-  type         String   @db.VarChar(8)
-  cordinateLon Float    @map("cordinate_lon") @db.DoublePrecision
-  cordinateLat Float    @map("cordinate_lat") @db.DoublePrecision
+  cityCode     String   @map("city_code") @db.VarChar(32)
+  cityName     String   @map("city_name") @db.VarChar(255)
+  iata         String   @map("iata_code") @db.VarChar(3)
+  timezone     String?  @db.VarChar(32)
+  type         String?  @db.VarChar(8)
+  cordinateLon Float?   @map("cordinate_lon") @db.DoublePrecision
+  cordinateLat Float?   @map("cordinate_lat") @db.DoublePrecision
   createdAt    DateTime @default(now()) @map("created_at")
 
   @@map("location")

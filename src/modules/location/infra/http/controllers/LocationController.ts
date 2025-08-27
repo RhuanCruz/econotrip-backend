@@ -6,6 +6,9 @@ import { ParseZodError } from '@src/common/errors';
 import LocationTypes from '@modules/location/container/types';
 
 import { ListLocationService, ListLocationSchema } from '@src/modules/location/useCases/ListLocation';
+import { ListLocation2Service } from '@src/modules/location/useCases/ListLocation2';
+import { ListLocationByBookingService } from '@src/modules/location/useCases/ListLocationByBooking';
+import { ListLocationByGoogleService } from '@src/modules/location/useCases/ListLocationByGoogle';
 import SearchCitiesUseCase from '@modules/location/useCases/SearchCities/SearchCitiesUseCase';
 
 class LocationController {
@@ -15,6 +18,30 @@ class LocationController {
     });
 
     const response = await AppContainer.resolve(ListLocationService).execute(data);
+    res.status(StatusCodes.OK).json(response);
+  }
+
+  public async list2(req: Request, res: Response): Promise<void> {
+    const data = await ListLocationSchema.parseAsync(req.body).catch((err) => {
+      throw ParseZodError(err);
+    });
+    const response = await AppContainer.resolve(ListLocation2Service).execute(data);
+    res.status(StatusCodes.OK).json(response);
+  }
+
+  public async listByBooking(req: Request, res: Response): Promise<void> {
+    const data = await ListLocationSchema.parseAsync(req.body).catch((err) => {
+      throw ParseZodError(err);
+    });
+    const response = await AppContainer.resolve(ListLocationByBookingService).execute(data);
+    res.status(StatusCodes.OK).json(response);
+  }
+
+  public async listByGoogle(req: Request, res: Response): Promise<void> {
+    const data = await ListLocationSchema.parseAsync(req.body).catch((err) => {
+      throw ParseZodError(err);
+    });
+    const response = await AppContainer.resolve(ListLocationByGoogleService).execute(data);
     res.status(StatusCodes.OK).json(response);
   }
 
