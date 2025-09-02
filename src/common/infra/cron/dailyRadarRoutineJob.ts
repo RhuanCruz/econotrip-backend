@@ -21,8 +21,8 @@ cron.schedule('0 12 * * *', async () => {
       const bestOffer = result.results.reduce((min, curr) => (curr.value < min.value ? curr : min), result.results[0]);
       await pushProvider.sendPushNotification({
         userId: radar.userId,
-        title: 'Nova oferta encontrada!',
-        message: `Encontramos uma nova oferta para seu radar: ${bestOffer.origin} -> ${bestOffer.destination} por ${bestOffer.value}`,
+        title: `Oferta: ${bestOffer.origin} -> ${bestOffer.destination} por ${bestOffer.value}!`,
+        message: `Oferta: ${bestOffer.origin} -> ${bestOffer.destination} por ${bestOffer.value}!`,
         data: { offer: bestOffer },
       });
     }
