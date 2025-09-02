@@ -56,4 +56,10 @@ userRoutes.delete(
   userController.delete,
 );
 
+userRoutes.post(
+  '/push-subscription',
+  AuthenticationMiddleware(),
+  userController.savePushSubscription,
+);
+
 export default userRoutes;

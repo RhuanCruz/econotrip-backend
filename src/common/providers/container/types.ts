@@ -9,6 +9,7 @@ const ProviderTypes = {
   GeoNamesProvider: Symbol('GeoNamesProvider'),
   TripAdvisorProvider: Symbol('TripAdvisorProvider'),
   GooglePlacesProvider: Symbol('GooglePlacesProvider'),
+  PushNotificationProvider: Symbol('PushNotificationProvider'),
 };
 
 export default ProviderTypes;

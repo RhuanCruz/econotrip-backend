@@ -12,6 +12,7 @@ import { UpdateUserService, UpdateUserSchema } from '@src/modules/user/useCases/
 import { ListUserService, ListUserSchema } from '@src/modules/user/useCases/ListUser';
 import { DeleteUserService } from '@src/modules/user/useCases/DeleteUser';
 import { GetUserService } from '@src/modules/user/useCases/GetUser';
+import SavePushSubscriptionService from '@modules/user/useCases/SavePushSubscription/SavePushSubscriptionService';
 
 class UserController {
   public async create(req: Request, res: Response): Promise<void> {
@@ -82,6 +83,17 @@ class UserController {
 
     await AppContainer.resolve(ResetPasswordService).execute(data);
     res.status(StatusCodes.NO_CONTENT).json({});
+  }
+
+  public async savePushSubscription(req: Request, res: Response): Promise<void> {
+    const userId = req.auth?.user;
+    if (!userId) {
+      res.status(StatusCodes.UNAUTHORIZED).json({ error: 'Usuário não autenticado' });
+      return;
+    }
+    const { subscription } = req.body;
+    await AppContainer.resolve(SavePushSubscriptionService).execute({ userId, subscription });
+    res.status(StatusCodes.NO_CONTENT).send();
   }
 }
 

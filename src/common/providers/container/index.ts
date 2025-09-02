@@ -31,6 +31,9 @@ import TripAdvisorProvider from '@common/providers/TripAdvisorProvider/implement
 import IGooglePlacesProvider from '@common/providers/GooglePlacesProvider/repositories/IGooglePlacesProvider';
 import GooglePlacesProvider from '@common/providers/GooglePlacesProvider/implementations/GooglePlacesProvider';
 
+import { IPushNotificationProvider } from '@common/providers/PushNotificationProvider';
+import WebPushNotificationProvider from '@common/providers/PushNotificationProvider/implementations/WebPushNotificationProvider';
+
 const ProviderContainer = new Container();
 
 ProviderContainer.bind<ISkyScannerProvider>(ProviderTypes.SkyScannerProvider).to(SkyScannerProvider);
@@ -43,5 +46,6 @@ ProviderContainer.bind<IEmailProvider>(ProviderTypes.EmailProvider).to(EmailProv
 ProviderContainer.bind<IGeoNamesProvider>(ProviderTypes.GeoNamesProvider).to(GeoNamesProvider);
 ProviderContainer.bind<ITripAdvisorProvider>(ProviderTypes.TripAdvisorProvider).to(TripAdvisorProvider);
 ProviderContainer.bind<IGooglePlacesProvider>(ProviderTypes.GooglePlacesProvider).to(GooglePlacesProvider);
+ProviderContainer.bind<IPushNotificationProvider>(ProviderTypes.PushNotificationProvider).to(WebPushNotificationProvider);
 
 export default ProviderContainer;
