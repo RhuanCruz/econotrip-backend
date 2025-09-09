@@ -2,6 +2,7 @@ export interface StandardLocation {
   type: string;
   name: string;
   code: string;
+  cityCode?: string;
   city: string;
   country?: string;
   region?: string;
@@ -17,7 +18,7 @@ export interface StandardLocationResponse {
 
 export function mapListLocationResponse(response: any, source: string): StandardLocationResponse {
   const locations = (() => {
-    if (!response || !response.data) return [];
+    if (!response) return [];
     // IListLocationResponse
     if (source === 'sky') {
       return response.data.map((loc: any) => ({
@@ -72,6 +73,21 @@ export function mapListLocationResponse(response: any, source: string): Standard
           geoId: loc.info.geoId,
           source,
         }));
+    }
+    // IListLocationLocalResponse
+    if (source === 'local') {
+      // Espera array de objetos com os campos do modelo Location do Prisma
+      return response.map((loc: any) => ({
+        type: 'AIRPORT',
+        name: loc.name,
+        code: loc.iata,
+        cityCode: loc.cityCode,
+        city: loc.cityName,
+        country: loc.country,
+        region: undefined,
+        geoId: loc.id?.toString(),
+        source,
+      }));
     }
     return [];
   })();

@@ -32,12 +32,19 @@ class CreateRadarService {
       value: data.value,
     });
 
-    await this.radarRoutineProvider.create({
-      origin: data.origin,
-      destination: data.destination,
-      type: data.type,
-    }).catch(() => {
-      console.error('Could not create radar routine');
+    const origins = data.origin.split(',');
+    const destinations = data.destination.split(',');
+
+    origins.forEach(async (origin) => {
+      destinations.forEach(async (destination) => {
+        await this.radarRoutineProvider.create({
+          origin,
+          destination,
+          type: data.type,
+        }).catch(() => {
+          console.error('Could not create radar routine');
+        });
+      });
     });
 
     return instanceToInstance(radar);

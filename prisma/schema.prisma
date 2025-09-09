@@ -151,7 +151,7 @@ model Location {
   id           Int      @id @default(autoincrement())
   name         String   @db.VarChar(255)
   country      String   @map("country_code") @db.VarChar(2)
-  cityCode     String   @map("city_code") @db.VarChar(32)
+  cityCode     String   @map("city_code") @db.VarChar(255)
   cityName     String   @map("city_name") @db.VarChar(255)
   iata         String   @map("iata_code") @db.VarChar(3)
   timezone     String?  @db.VarChar(32)

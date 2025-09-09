@@ -18,10 +18,18 @@ class LocationRepository implements ILocationRepository {
           {
             name: {
               contains: key,
+              mode: 'insensitive',
+            },
+          },
+          {
+            cityName: {
+              contains: key,
+              mode: 'insensitive',
             },
           },
         ],
       },
+      take: 10,
     });
   }
 

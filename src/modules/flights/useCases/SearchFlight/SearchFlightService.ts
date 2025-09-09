@@ -17,20 +17,43 @@ class SearchFlightService {
   @Security('BearerAuth')
   @OperationId('search_flight')
   public async execute(@Body() data: SearchFlightType): Promise<ISearchFlightResponse> {
-    if (!data.return) {
-      return this.flightScraperSkyProvider.searchOneWay({
-        departDate: data.departure,
-        fromEntityId: data.origin,
-        toEntityId: data.destination,
-      });
-    }
+    const origins = data.origin.split(',');
+    const destinations = data.destination.split(',');
 
-    return this.flightScraperSkyProvider.searchORoundTrip({
-      departDate: data.departure,
-      returnDate: data.return,
-      fromEntityId: data.origin,
-      toEntityId: data.destination,
+    const promises: Promise<ISearchFlightResponse>[] = [];
+
+    origins.forEach((origin) => {
+      destinations.forEach((destination) => {
+        if (!data.return) {
+          promises.push(this.flightScraperSkyProvider.searchOneWay({
+            departDate: data.departure,
+            fromEntityId: origin,
+            toEntityId: destination,
+          }));
+        } else {
+          promises.push(this.flightScraperSkyProvider.searchORoundTrip({
+            departDate: data.departure,
+            returnDate: data.return,
+            fromEntityId: origin,
+            toEntityId: destination,
+          }));
+        }
+      });
     });
+
+    const results = await Promise.all(promises);
+    const mergedItineraries = results.flatMap((result) => result.data?.itineraries ?? []);
+
+    const response: ISearchFlightResponse = {
+      data: {
+        ...results[0].data,
+        itineraries: mergedItineraries,
+      },
+      status: results[0].status,
+      message: results[0].message,
+    };
+
+    return response;
   }
 }
 
