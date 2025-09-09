@@ -34,6 +34,9 @@ import GooglePlacesProvider from '@common/providers/GooglePlacesProvider/impleme
 import { IPushNotificationProvider } from '@common/providers/PushNotificationProvider';
 import WebPushNotificationProvider from '@common/providers/PushNotificationProvider/implementations/WebPushNotificationProvider';
 
+import { IMessageRepository } from '@common/providers/MessageProvider/repositories/IMessageRepository';
+import TwilioMessageProvider from '@common/providers/MessageProvider/implementations/TwilioMessageProvider';
+
 const ProviderContainer = new Container();
 
 ProviderContainer.bind<ISkyScannerProvider>(ProviderTypes.SkyScannerProvider).to(SkyScannerProvider);
@@ -47,5 +50,6 @@ ProviderContainer.bind<IGeoNamesProvider>(ProviderTypes.GeoNamesProvider).to(Geo
 ProviderContainer.bind<ITripAdvisorProvider>(ProviderTypes.TripAdvisorProvider).to(TripAdvisorProvider);
 ProviderContainer.bind<IGooglePlacesProvider>(ProviderTypes.GooglePlacesProvider).to(GooglePlacesProvider);
 ProviderContainer.bind<IPushNotificationProvider>(ProviderTypes.PushNotificationProvider).to(WebPushNotificationProvider);
+ProviderContainer.bind<IMessageRepository>(ProviderTypes.MessageProvider).to(TwilioMessageProvider);
 
 export default ProviderContainer;

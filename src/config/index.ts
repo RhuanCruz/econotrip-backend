@@ -99,6 +99,12 @@ const Config = ConfigSchema.parse({
     clientId: process.env.FIREBASE_CLIENT_ID,
     clientEmail: process.env.FIREBASE_CLIENTE_EMAIL,
   },
+  twilio: {
+    accountSid: process.env.TWILIO_ACCOUNT_SID,
+    authToken: process.env.TWILIO_AUTH_TOKEN,
+    smsFrom: process.env.TWILIO_SMS_FROM,
+    whatsappFrom: process.env.TWILIO_WHATSAPP_FROM,
+  },
 });
 
 export default Config;

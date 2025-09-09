@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Nova Oferta Encontrada no Radar</title>
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; color: #222; }
+    .container { background: #fff; border-radius: 12px; padding: 32px 28px; max-width: 420px; margin: 48px auto; box-shadow: 0 2px 16px #0002; }
+    h2 { font-size: 1.35rem; margin-bottom: 18px; color: #1e88e5; letter-spacing: 0.5px; }
+    .info { margin: 24px 0 18px 0; display: table; width: 100%; }
+    .row { display: table-row; }
+    .label, .value, .price, .date { display: table-cell; padding: 6px 0; vertical-align: middle; }
+    .label { color: #888; min-width: 90px; font-weight: 500; padding-right: 12px; }
+    .value { color: #222; font-weight: 500; }
+    .price { font-size: 1.25rem; color: #1e88e5; font-weight: bold; letter-spacing: 0.5px; }
+    .date { font-size: 1.05rem; color: #444; }
+    .cta { display: block; margin: 28px auto 0 auto; padding: 12px 32px; background: #1e88e5; color: #fff; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1.08rem; transition: background 0.2s; text-align: center; width: fit-content; }
+    .cta:hover { background: #1565c0; }
+    .footer { margin-top: 36px; color: #aaa; font-size: 13px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎯 Nova oferta encontrada no seu radar!</h2>
+    <p style="margin-bottom: 0;">Olá, {{username}}!</p>
+    <p style="margin-top: 4px;">Encontramos uma nova oferta de preço para o seu radar cadastrado na Econotrip:</p>
+    <div class="info">
+      <div class="row"><span class="label">Origem:</span> <span class="value">{{origin}}</span></div>
+      <div class="row"><span class="label">Destino:</span> <span class="value">{{destination}}</span></div>
+      <div class="row"><span class="label">Data:</span> <span class="date">{{date}}</span></div>
+      <div class="row"><span class="label">A partir de:</span> <span class="price">{{price}}</span></div>
+    </div>
+    <a href="https://econotrip.com.br" class="cta">Ver detalhes no sistema</a>
+    <div class="footer">
+      Você está recebendo este aviso porque ativou um radar de preços na Econotrip.
+    </div>
+  </div>
+</body>
+</html>

@@ -95,6 +95,12 @@ const ConfigSchema = Zod.object({
     clientId: Zod.string(),
     clientEmail: Zod.string(),
   }),
+  twilio: Zod.object({
+    accountSid: Zod.string(),
+    authToken: Zod.string(),
+    smsFrom: Zod.string(),
+    whatsappFrom: Zod.string(),
+  }),
 });
 
 export default ConfigSchema;

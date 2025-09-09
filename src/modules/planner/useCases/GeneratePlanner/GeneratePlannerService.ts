@@ -43,7 +43,7 @@ class GeneratePlannerService {
         cidade: dest.city,
         dias: dest.duration,
       })),
-      estiloViagem: data.tripStyle,
+      estiloViagem: data.tripStyle as 'econômico' | 'médio' | 'luxo',
       numerosPessoas: data.amountPeople ?? 1,
       origem: data.origin,
       inicio: data.start,
