@@ -8,6 +8,7 @@ import FlightContainer from '@modules/flights/container';
 import UserContainer from '@modules/user/container';
 import RadarContainer from '@modules/radar/container';
 import PlannerContainer from '@modules/planner/container';
+import NotificationContainer from '@modules/notification/container';
 
 const AppContainer = Container.merge(
   PermissionContainer,
@@ -17,6 +18,7 @@ const AppContainer = Container.merge(
   UserContainer,
   RadarContainer,
   PlannerContainer,
+  NotificationContainer,
 );
 
 export { AppContainer, Types };

@@ -35,7 +35,8 @@
         "./src/modules/user/repositories/*",
         "./src/modules/location/repositories/*",
         "./src/modules/radar/repositories/*",
-        "./src/modules/planner/repositories/*"
+        "./src/modules/planner/repositories/*",
+        "./src/modules/notification/repositories/*"
       ],
       "@providers/*": [
         "./src/common/providers/StorageProvider/repositories/*",

@@ -5,6 +5,7 @@ import FlightTypes from '@modules/flights/container/types';
 import UserTypes from '@modules/user/container/types';
 import RadarTypes from '@modules/radar/container/types';
 import PlannerTypes from '@modules/planner/container/types';
+import NotificationTypes from '@modules/notification/container/types';
 
 const Types = {
   ...PermissionTypes,
@@ -14,6 +15,7 @@ const Types = {
   ...UserTypes,
   ...RadarTypes,
   ...PlannerTypes,
+  ...NotificationTypes,
 };
 
 export default Types;

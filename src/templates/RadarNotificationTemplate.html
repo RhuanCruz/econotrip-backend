@@ -2,37 +2,100 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Nova Oferta Encontrada no Radar</title>
+  <title>Nova Oferta no seu Radar | Econotrip</title>
   <style>
-    body { font-family: 'Inter', Arial, sans-serif; background: #f6f8fa; color: #222; }
-    .container { background: #fff; border-radius: 12px; padding: 32px 28px; max-width: 420px; margin: 48px auto; box-shadow: 0 2px 16px #0002; }
-    h2 { font-size: 1.35rem; margin-bottom: 18px; color: #1e88e5; letter-spacing: 0.5px; }
-    .info { margin: 24px 0 18px 0; display: table; width: 100%; }
-    .row { display: table-row; }
-    .label, .value, .price, .date { display: table-cell; padding: 6px 0; vertical-align: middle; }
-    .label { color: #888; min-width: 90px; font-weight: 500; padding-right: 12px; }
-    .value { color: #222; font-weight: 500; }
-    .price { font-size: 1.25rem; color: #1e88e5; font-weight: bold; letter-spacing: 0.5px; }
-    .date { font-size: 1.05rem; color: #444; }
-    .cta { display: block; margin: 28px auto 0 auto; padding: 12px 32px; background: #1e88e5; color: #fff; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1.08rem; transition: background 0.2s; text-align: center; width: fit-content; }
-    .cta:hover { background: #1565c0; }
-    .footer { margin-top: 36px; color: #aaa; font-size: 13px; text-align: center; }
+    body { font-family: 'Inter', Arial, sans-serif; background: #f4f7fb; color: #222; }
+    .container { background: #fff; border-radius: 14px; padding: 36px 32px; max-width: 440px; margin: 56px auto; box-shadow: 0 4px 24px #0001; }
+    h2 { font-size: 1.5rem; margin-bottom: 18px; color: #1e88e5; letter-spacing: 0.5px; }
+    .subtitle { color: #444; font-size: 1.08rem; margin-bottom: 18px; }
+    .flight-table {
+      width: 100%;
+      background: #f0f6ff;
+      border-radius: 10px;
+      margin: 30px 0 18px 0;
+      box-shadow: 0 1px 6px #1e88e511;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    .flight-table td {
+      text-align: center;
+      padding: 8px 0 2px 0;
+    }
+    .flight-route {
+      color: #1e88e5;
+      font-size: 1.18rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding-top: 18px;
+      padding-bottom: 2px;
+    }
+    .flight-detail {
+      color: #444;
+      font-size: 1.05rem;
+      padding-bottom: 2px;
+    }
+    .price-block {
+      margin-top: 8px;
+      background: #fff;
+      border-radius: 7px;
+      padding: 10px 22px;
+      box-shadow: 0 1px 4px #1e88e511;
+      font-size: 1.25rem;
+      color: #43cea2;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      margin-bottom: 18px;
+    }
+    .cta {
+      display: block;
+      margin: 36px auto 0 auto;
+      padding: 14px 36px;
+      background: linear-gradient(90deg, #1e88e5 60%, #43cea2 100%);
+      color: #fff;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.13rem;
+      transition: background 0.2s;
+      text-align: center;
+      width: fit-content;
+      box-shadow: 0 2px 8px #1e88e522;
+    }
+    .cta:hover { background: linear-gradient(90deg, #1565c0 60%, #43cea2 100%); }
+    .footer { margin-top: 40px; color: #aaa; font-size: 13px; text-align: center; }
+    .highlight { color: #43cea2; font-weight: 600; }
+    .benefits { margin: 30px 0 0 0; padding: 0; list-style: none; color: #444; font-size: 1.01rem; }
+    .benefits li { margin-bottom: 8px; padding-left: 18px; position: relative; }
+    .benefits li:before { content: '✓'; color: #1e88e5; position: absolute; left: 0; font-weight: bold; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>🎯 Nova oferta encontrada no seu radar!</h2>
-    <p style="margin-bottom: 0;">Olá, {{username}}!</p>
-    <p style="margin-top: 4px;">Encontramos uma nova oferta de preço para o seu radar cadastrado na Econotrip:</p>
-    <div class="info">
-      <div class="row"><span class="label">Origem:</span> <span class="value">{{origin}}</span></div>
-      <div class="row"><span class="label">Destino:</span> <span class="value">{{destination}}</span></div>
-      <div class="row"><span class="label">Data:</span> <span class="date">{{date}}</span></div>
-      <div class="row"><span class="label">A partir de:</span> <span class="price">{{price}}</span></div>
-    </div>
-    <a href="https://econotrip.com.br" class="cta">Ver detalhes no sistema</a>
+    <h2>🚨 Oferta imperdível no seu radar!</h2>
+    <div class="subtitle">Olá, <span class="highlight">{{username}}</span>! Encontramos uma nova oportunidade de viagem que pode ser perfeita para você:</div>
+    <table class="flight-table" cellpadding="0" cellspacing="0" width="100%">
+      <tr>
+        <td class="flight-route" colspan="2">{{origin}} &rarr; {{destination}}</td>
+      </tr>
+      <tr>
+        <td class="flight-detail" colspan="2">{{date}}</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div class="price-block">A partir de {{price}}</div>
+        </td>
+      </tr>
+    </table>
+    <ul class="benefits">
+      <li>Radar personalizado: você recebe alertas só das rotas que realmente te interessam.</li>
+      <li>Economize tempo: não precisa buscar manualmente, a Econotrip faz isso por você.</li>
+      <li>Seja o primeiro: ofertas exclusivas e limitadas chegam antes para você.</li>
+    </ul>
+    <a href="https://econotrip.collabyt.com/meus-radares" class="cta">Ver detalhes e garantir minha oferta</a>
     <div class="footer">
-      Você está recebendo este aviso porque ativou um radar de preços na Econotrip.
+      Você está recebendo este aviso porque ativou um radar de preços na Econotrip.<br>
+      <span style="color:#bbb;">Boas viagens! 🌎✈️</span>
     </div>
   </div>
 </body>

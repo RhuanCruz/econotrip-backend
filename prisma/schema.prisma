@@ -1,3 +1,44 @@
+model Notification {
+  id      Int      @id @default(autoincrement())
+  userId  Int      @map("user_id")
+  typeId  Int      @map("type_id")
+  title   String   @db.VarChar(255)
+  message String   @db.VarChar(1024)
+  data    Json?
+  sentAt  DateTime @default(now()) @map("sent_at")
+
+  type   NotificationType    @relation(fields: [typeId], references: [id])
+  user   User                @relation(fields: [userId], references: [id])
+  radars RadarNotification[]
+
+  @@map("notification")
+}
+
+model NotificationType {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique @db.VarChar(64)
+  description String?  @db.VarChar(255)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  notifications Notification[]
+
+  @@map("notification_type")
+}
+
+model RadarNotification {
+  id             Int      @id @default(autoincrement())
+  radarId        Int      @map("radar_id")
+  notificationId Int      @map("notification_id")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  radar        Radar        @relation(fields: [radarId], references: [id])
+  notification Notification @relation(fields: [notificationId], references: [id])
+
+  @@unique([radarId, notificationId])
+  @@map("radar_notification")
+}
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -29,6 +70,7 @@ model User {
   radars                   Radar[]
   Planner                  Planner[]
   pushSubscriptions        UserPushSubscription[]
+  Notification             Notification[]
 
   @@map("user")
 }
@@ -175,7 +217,8 @@ model Radar {
   createdAt   DateTime  @default(now()) @map("created_at")
   updatedAt   DateTime  @updatedAt @map("updated_at")
 
-  user User @relation(fields: [userId], references: [id])
+  user              User                @relation(fields: [userId], references: [id])
+  RadarNotification RadarNotification[]
 
   @@map("radar")
 }
