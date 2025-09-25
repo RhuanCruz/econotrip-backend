@@ -6,6 +6,12 @@ import ICreateRadarDTO from '@src/modules/radar/dtos/ICreateRadarDTO';
 import IUpdateRadarDTO from '@src/modules/radar/dtos/IUpdateRadarDTO';
 import { DefaultArgs } from '@prisma/client/runtime/library';
 
+type RadarWithUser = Prisma.RadarGetPayload<{
+  include: {
+    user: true
+  }
+}>;
+
 @injectable()
 class RadarRepository implements IRadarRepository {
   private prisma = new PrismaClient();
@@ -28,6 +34,31 @@ class RadarRepository implements IRadarRepository {
 
   public async delete(id: number): Promise<void> {
     await this.prisma.radar.delete({ where: { id } });
+  }
+
+  public async listToNotify(): Promise<RadarWithUser[]> {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    return this.prisma.radar.findMany({
+      where: {
+        RadarNotification: {
+          none: {
+            notification: {
+              sentAt: {
+                gte: today,
+              },
+            },
+          },
+        },
+      },
+      include: {
+        user: true,
+      },
+      distinct: [
+        'userId',
+      ],
+    });
   }
 }
 

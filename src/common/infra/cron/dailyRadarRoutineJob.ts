@@ -1,7 +1,6 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
-import cron from 'node-cron';
 import { AppContainer } from '@src/common/container';
 import Types from '@src/common/container/types';
 import IRadarRepository from '@modules/radar/repositories/IRadarRepository';
@@ -13,11 +12,10 @@ import IEmailProvider from '@src/common/providers/EmailProvider/repositories/IEm
 import INotificationRepository from '@src/modules/notification/repositories/INotificationRepository';
 
 // Agenda para rodar todo dia ao meio dia
-cron.schedule('0 12 * * *', async () => {
+export const dailyRadarRoutineJob = async () => {
   const radarRepository = AppContainer.get<IRadarRepository>(Types.RadarRepository);
   const radarRoutineProvider = AppContainer.get<IRadarRoutineProvider>(Types.RadarRoutineProvider);
   const pushProvider = AppContainer.get<IPushNotificationProvider>(Types.PushNotificationProvider);
-  // const messageProvider = AppContainer.get<IMessageRepository>(Types.MessageProvider);
   const userRepository = AppContainer.get<IUserRepository>(Types.UserRepository);
   const emailProvider = AppContainer.get<IEmailProvider>(Types.EmailProvider);
   const notificationRepository = AppContainer.get<INotificationRepository>(Types.NotificationRepository);
@@ -28,7 +26,7 @@ cron.schedule('0 12 * * *', async () => {
   const notificationType = await notificationRepository.getTypeByName('RADAR_PRICE');
 
   // Buscar todos os radares ativos
-  const activeRadars = await radarRepository.list({});
+  const activeRadars = await radarRepository.listToNotify();
 
   // Coletar todos os IATAs únicos de origem e destino dos radares
   const iataSet = new Set<string>();
@@ -117,4 +115,4 @@ cron.schedule('0 12 * * *', async () => {
   }
 
   console.log('Rotina diária de radar executada ao meio dia.');
-});
+};
