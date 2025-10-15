@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Novo Feedback Recebido | Econotrip</title>
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f4f7fb; color: #222; line-height: 1.6; }
+    .container { background: #fff; border-radius: 12px; padding: 32px; max-width: 600px; margin: 40px auto; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+    h2 { font-size: 1.6rem; margin-bottom: 16px; color: #1e88e5; }
+    .category { display: inline-block; padding: 6px 14px; border-radius: 6px; font-size: 0.9rem; font-weight: 600; margin-bottom: 20px; }
+    .category-BUG { background: #ffebee; color: #c62828; }
+    .category-FEATURE_REQUEST { background: #e3f2fd; color: #1565c0; }
+    .category-IMPROVEMENT { background: #fff3e0; color: #e65100; }
+    .category-COMPLIMENT { background: #f1f8e9; color: #558b2f; }
+    .category-COMPLAINT { background: #ffe0b2; color: #e65100; }
+    .category-GENERAL { background: #f5f5f5; color: #424242; }
+    .info-block { background: #f8f9fa; border-left: 4px solid #1e88e5; padding: 16px; margin: 16px 0; border-radius: 4px; }
+    .info-label { font-weight: 600; color: #555; font-size: 0.9rem; }
+    .info-value { color: #222; margin-top: 4px; }
+    .message-box { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; margin: 20px 0; font-size: 1rem; color: #333; }
+    .rating { color: #ffa000; font-size: 1.2rem; }
+    .footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid #e0e0e0; color: #777; font-size: 0.85rem; text-align: center; }
+    .cta { display: inline-block; margin-top: 24px; padding: 12px 28px; background: #1e88e5; color: #fff; border-radius: 6px; text-decoration: none; font-weight: 600; }
+    .cta:hover { background: #1565c0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📬 Novo Feedback Recebido</h2>
+
+    <div class="category category-{{category}}">{{category}}</div>
+
+    <div class="info-block">
+      <div class="info-label">Usuário:</div>
+      <div class="info-value">{{userName}} ({{userEmail}})</div>
+    </div>
+
+    {{#if rating}}
+    <div class="info-block">
+      <div class="info-label">Avaliação:</div>
+      <div class="info-value rating">{{rating}}</div>
+    </div>
+    {{/if}}
+
+    <div class="info-block">
+      <div class="info-label">Assunto:</div>
+      <div class="info-value"><strong>{{subject}}</strong></div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-label">Mensagem:</div>
+      <div class="message-box">{{message}}</div>
+    </div>
+
+    <a href="{{adminUrl}}/feedback/{{feedbackId}}" class="cta">Ver no Painel Admin</a>
+
+    <div class="footer">
+      Este é um email automático gerado pelo sistema Econotrip.<br>
+      Feedback ID: #{{feedbackId}}
+    </div>
+  </div>
+</body>
+</html>

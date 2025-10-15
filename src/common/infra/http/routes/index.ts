@@ -8,6 +8,7 @@ import userRoutes from '@src/modules/user/infra/http/routes/UserRoutes';
 import authRoutes from '@src/modules/auth/infra/http/routes/AuthRoutes';
 import radarRoutes from '@src/modules/radar/infra/http/routes/RadarRoutes';
 import plannerRoutes from '@src/modules/planner/infra/http/routes/PlannerRoutes';
+import feedbackRoutes from '@src/modules/feedback/infra/http/routes/FeedbackRoutes';
 
 const routes = Router();
 
@@ -19,5 +20,6 @@ routes.use('/users', userRoutes);
 routes.use('/auth', authRoutes);
 routes.use('/radars', radarRoutes);
 routes.use('/planners', plannerRoutes);
+routes.use('/feedback', feedbackRoutes);
 
 export default routes;

@@ -7,6 +7,9 @@ const CreateRadarSchema = object({
   destination: string().max(32),
   value: number().min(1).optional(),
   type: ENUM(['MONEY', 'AIRMILES']),
+  airline: string().max(64).optional(),
+  tripType: ENUM(['ONE_WAY', 'ROUND_TRIP']).optional(),
+  returnDateRange: number().min(1).max(30).optional(),
 });
 
 interface CreateRadarType {
@@ -16,6 +19,9 @@ interface CreateRadarType {
   destination: string;
   value?: number;
   type: 'MONEY' | 'AIRMILES';
+  airline?: string;
+  tripType?: 'ONE_WAY' | 'ROUND_TRIP';
+  returnDateRange?: number;
 }
 
 export { CreateRadarSchema, CreateRadarType };

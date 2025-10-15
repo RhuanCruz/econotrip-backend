@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>🚨 BUG CRÍTICO REPORTADO | Econotrip</title>
+  <style>
+    body { font-family: 'Inter', Arial, sans-serif; background: #f4f7fb; color: #222; line-height: 1.6; }
+    .container { background: #fff; border-radius: 12px; padding: 32px; max-width: 600px; margin: 40px auto; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 6px solid #c62828; }
+    h2 { font-size: 1.8rem; margin-bottom: 16px; color: #c62828; }
+    .alert-badge { display: inline-block; padding: 8px 16px; background: #ffebee; color: #c62828; border-radius: 20px; font-weight: 700; font-size: 0.9rem; margin-bottom: 20px; }
+    .severity { background: #c62828; color: #fff; padding: 12px; border-radius: 6px; text-align: center; font-weight: 700; font-size: 1.1rem; margin: 16px 0; }
+    .info-block { background: #f8f9fa; border-left: 4px solid #c62828; padding: 16px; margin: 16px 0; border-radius: 4px; }
+    .info-label { font-weight: 600; color: #555; font-size: 0.9rem; }
+    .info-value { color: #222; margin-top: 4px; font-family: 'Courier New', monospace; }
+    .message-box { background: #fff9c4; border: 2px solid #fbc02d; border-radius: 8px; padding: 20px; margin: 20px 0; font-size: 1rem; color: #333; }
+    .tech-details { background: #263238; color: #00ff00; padding: 16px; border-radius: 6px; font-family: 'Courier New', monospace; font-size: 0.85rem; margin: 16px 0; overflow-x: auto; }
+    .rating { color: #c62828; font-size: 1.4rem; font-weight: 700; }
+    .footer { margin-top: 32px; padding-top: 20px; border-top: 1px solid #e0e0e0; color: #777; font-size: 0.85rem; text-align: center; }
+    .cta { display: inline-block; margin-top: 24px; padding: 14px 32px; background: #c62828; color: #fff; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+    .cta:hover { background: #b71c1c; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🚨 BUG CRÍTICO REPORTADO</h2>
+
+    <div class="alert-badge">AÇÃO IMEDIATA NECESSÁRIA</div>
+
+    <div class="severity">
+      SEVERIDADE: CRÍTICA - Rating {{rating}}/5
+    </div>
+
+    <div class="info-block">
+      <div class="info-label">Reportado por:</div>
+      <div class="info-value">{{userName}} ({{userEmail}})</div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-label">Assunto:</div>
+      <div class="info-value"><strong>{{subject}}</strong></div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-label">Descrição do Bug:</div>
+      <div class="message-box">{{message}}</div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-label">Detalhes Técnicos:</div>
+      <div class="tech-details">
+        User-Agent: {{userAgent}}<br>
+        IP Address: {{ipAddress}}<br>
+        Feedback ID: #{{feedbackId}}
+      </div>
+    </div>
+
+    <a href="{{adminUrl}}/feedback/{{feedbackId}}" class="cta">INVESTIGAR AGORA</a>
+
+    <div class="footer">
+      <strong style="color: #c62828;">⚠️ Este bug foi classificado como CRÍTICO pelo usuário.</strong><br>
+      Por favor, priorize a investigação e correção deste problema.<br>
+      Email automático gerado pelo sistema Econotrip.
+    </div>
+  </div>
+</body>
+</html>

@@ -39,6 +39,9 @@ class CreateRadarService {
       destination: data.destination,
       type: data.type,
       value: data.value,
+      airline: data.airline,
+      tripType: data.tripType || 'ONE_WAY',
+      returnDateRange: data.returnDateRange || 15,
     });
 
     const origins = data.origin.split(',');

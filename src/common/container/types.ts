@@ -6,6 +6,7 @@ import UserTypes from '@modules/user/container/types';
 import RadarTypes from '@modules/radar/container/types';
 import PlannerTypes from '@modules/planner/container/types';
 import NotificationTypes from '@modules/notification/container/types';
+import FeedbackTypes from '@modules/feedback/container/types';
 
 const Types = {
   ...PermissionTypes,
@@ -16,6 +17,7 @@ const Types = {
   ...RadarTypes,
   ...PlannerTypes,
   ...NotificationTypes,
+  ...FeedbackTypes,
 };
 
 export default Types;

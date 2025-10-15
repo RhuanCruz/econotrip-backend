@@ -71,6 +71,7 @@ model User {
   Planner                  Planner[]
   pushSubscriptions        UserPushSubscription[]
   Notification             Notification[]
+  feedbacks                Feedback[]
 
   @@map("user")
 }
@@ -206,16 +207,19 @@ model Location {
 }
 
 model Radar {
-  id          Int       @id @default(autoincrement())
-  userId      Int       @map("user_id")
-  start       DateTime?
-  end         DateTime?
-  origin      String    @db.VarChar(32)
-  destination String    @db.VarChar(32)
-  value       Float?
-  type        String?   @db.VarChar(32)
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAt   DateTime  @updatedAt @map("updated_at")
+  id              Int       @id @default(autoincrement())
+  userId          Int       @map("user_id")
+  start           DateTime?
+  end             DateTime?
+  origin          String    @db.VarChar(32)
+  destination     String    @db.VarChar(32)
+  value           Float?
+  type            String?   @db.VarChar(32)
+  airline         String?   @db.VarChar(64)
+  tripType        String?   @default("ONE_WAY") @map("trip_type") @db.VarChar(16)
+  returnDateRange Int?      @default(15) @map("return_date_range")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
 
   user              User                @relation(fields: [userId], references: [id])
   RadarNotification RadarNotification[]
@@ -249,4 +253,26 @@ model Planner {
   user User @relation(fields: [userId], references: [id])
 
   @@map("planner")
+}
+
+model Feedback {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  category    String   @db.VarChar(32)
+  subject     String   @db.VarChar(200)
+  message     String   @db.VarChar(5000)
+  rating      Int?
+  email       String?  @db.VarChar(255)
+  status      String   @default("PENDING") @db.VarChar(16)
+  attachments String[]
+  userAgent   String?  @map("user_agent") @db.VarChar(512)
+  ipAddress   String?  @map("ip_address") @db.VarChar(45)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId, createdAt])
+  @@index([category, status])
+  @@map("feedback")
 }

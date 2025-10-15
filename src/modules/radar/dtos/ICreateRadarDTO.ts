@@ -6,6 +6,9 @@ interface ICreateRadarDTO {
   destination: string;
   type: string;
   value?: number;
+  airline?: string;
+  tripType?: 'ONE_WAY' | 'ROUND_TRIP';
+  returnDateRange?: number;
 }
 
 export default ICreateRadarDTO;
