@@ -1,6 +1,6 @@
 interface ICreateFeedbackDTO {
   userId: number;
-  category: 'BUG' | 'FEATURE_REQUEST' | 'IMPROVEMENT' | 'GENERAL' | 'COMPLIMENT' | 'COMPLAINT';
+  category: 'BUG' | 'FEATURE_REQUEST' | 'IMPROVEMENT' | 'GENERAL' | 'COMPLIMENT' | 'COMPLAINT' | 'OTHER';
   subject: string;
   message: string;
   rating?: number;

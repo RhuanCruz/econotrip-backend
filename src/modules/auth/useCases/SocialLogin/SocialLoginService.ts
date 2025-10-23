@@ -28,6 +28,10 @@ class SocialLoginService {
   @Security('BearerAuth')
   @OperationId('social_login')
   public async execute(@Body() data: SocialLoginType): Promise<SocialLoginResponse> {
+    if (!auth) {
+      throw AppError.createAppError(Errors.AUTH_TOKEN_INCORRECT);
+    }
+
     const decodedToken = await auth.verifyIdToken(data.token).catch(() => {
       throw AppError.createAppError(Errors.AUTH_TOKEN_INCORRECT);
     });

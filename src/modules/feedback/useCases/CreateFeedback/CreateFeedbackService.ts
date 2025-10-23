@@ -8,7 +8,7 @@ import { CreateFeedbackType } from './CreateFeedbackSchema';
 import { Types } from '@src/common/container/';
 import IFeedbackRepository from '@src/modules/feedback/repositories/IFeedbackRepository';
 import IUserRepository from '@src/modules/user/repositories/IUserRepository';
-import { AppError, Errors } from '@src/common/errors';
+import { AppError, AppErrorDetail, Errors } from '@src/common/errors';
 
 @injectable()
 @Route('feedback')
@@ -30,8 +30,12 @@ class CreateFeedbackService {
     // Validar rating apenas para categorias que fazem sentido
     if (data.rating && !['BUG', 'GENERAL', 'COMPLAINT'].includes(data.category)) {
       throw new AppError({
-        statusCode: 400,
-        message: 'Rating só pode ser fornecido para categorias: BUG, GENERAL, COMPLAINT',
+        status: 400,
+        errors: new AppErrorDetail(
+          'Validation Error',
+          'Rating só pode ser fornecido para categorias: BUG, GENERAL, COMPLAINT',
+          'FEEDBACK_RATING_INVALID',
+        ),
       });
     }
 
